@@ -10,7 +10,7 @@ All Content between the DO and END is looped by the number of statuses available
 -->
 
 <div class="status">
-  <strong><%= status.name %></strong>
+  <strong><%= status.user.full_name %></strong>
   <p><%= status.content %></p>
   <div class="meta">
     <%= link_to time_ago_in_words(status.created_at) + " ago", status %>
