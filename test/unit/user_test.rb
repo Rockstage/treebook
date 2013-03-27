@@ -44,7 +44,7 @@ class UserTest < ActiveSupport::TestCase
 		user.password = user.password_confirmation = 'jokojoko123'
 
 
-		user.profile_name = "georgepetrov"
+		user.profile_name = "Test123_-"
 		assert user.invalid?
 	end
 
