@@ -3,7 +3,7 @@ class Status < ActiveRecord::Base
   belongs_to :user
 
   validates :content, presence: true,
-                     numericality: { greater_than: 2 }
+            length: { minimum: 2 }
 
   validates :user_id, presence: true
 end
