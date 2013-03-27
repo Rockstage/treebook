@@ -3,3 +3,9 @@ george:
   last_name: 'Petrov'
   email: 'jokopetrov@gmail.com'
   profile_name: 'georgepetrov'
+
+emilly:
+  first_name: 'Emilly'
+  last_name: 'Angelheart'
+  email: 'openwings@abv.bg'
+  profile_name: 'EmAngel'
