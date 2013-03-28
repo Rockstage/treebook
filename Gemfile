@@ -10,6 +10,10 @@ gem 'simple_form'
 gem 'skrollr-rails'
 gem 'rename'
 
+group :test do
+	gem 'shoulda'
+end
+
 group :development, :test do
 	gem 'sqlite3'
 end
