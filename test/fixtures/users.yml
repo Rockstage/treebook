@@ -3,6 +3,8 @@ george:
   last_name: 'Petrov'
   email: 'jokopetrov@gmail.com'
   profile_name: 'georgepetrov'
+  encrypted_password: $2a$10$Fh/Hm8RxDsuPTeBUr6864.GARlcmt7zF2WspaXGr3BIv2C27N.osq
+# encripted array for the word testing
 
 emilly:
   first_name: 'Emilly'
