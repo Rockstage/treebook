@@ -85,3 +85,9 @@ class StatusesController < ApplicationController
     end
   end
 end
+
+#class string
+  #def display_length
+    #ActiveSupport::Multibyte::Chars.new(self).normalize(:c).length
+  #end
+#end

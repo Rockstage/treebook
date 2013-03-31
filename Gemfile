@@ -9,6 +9,7 @@ gem 'devise'
 gem 'simple_form'
 gem 'skrollr-rails'
 gem 'rename'
+gem 'state_machine'
 
 group :test do
 	gem 'shoulda'
