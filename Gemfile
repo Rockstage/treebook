@@ -10,6 +10,8 @@ gem 'simple_form'
 gem 'skrollr-rails'
 gem 'rename'
 gem 'state_machine'
+gem 'draper'
+gem "js-routes"
 
 group :test do
 	gem 'shoulda'

@@ -208,35 +208,34 @@ class UserFriendshipsControllerTest < ActionController::TestCase
 		end
 	end
 
-	context "#edit" do
-		context "when not logged in" do
-			should "redirect to the login page" do
-				get :edit, id: 1
-				assert_response :redirect
-			end
-		end
+  context "#edit" do
+    context "when not logged in" do
+      should "redirect to the login page" do
+        get :edit, id: 1
+        assert_response :redirect
+      end
+    end
 
-		context "when logged in" do
-			setup do
-				@user_friendship = create(:pending_user_friendship, user: users(:george))
-				sign_in users(:george)
-				get :edit, id: @user_friendship
-			end
+    context "when logged in" do
+      setup do
+        @user_friendship = create(:pending_user_friendship, user: users(:george))
+        sign_in users(:george)
+        get :edit, id: @user_friendship.friend.profile_name
+      end
 
-			should "get new and return success" do
-				get :edit, id: @user_friendship
-				assert_response :success
-			end
+      should "get edit and return success" do
+        assert_response :success
+      end
 
-			should "assign to user_friendship" do
-				assert assigns(:user_friendship)
-			end
+      should "assign to user_friendship" do
+        assert assigns(:user_friendship)
+      end
 
-			should "assign to friend" do
-				assert assigns(:friend)
-			end
-		end
-	end
+      should "assign to friend" do
+        assert assigns(:friend)
+      end
+    end
+  end
 
 	context "#destroy" do
 		context "when not logged in" do
