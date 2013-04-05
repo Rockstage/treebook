@@ -9,24 +9,41 @@ class UserFriendship < ActiveRecord::Base
 
   state_machine :state, initial: :pending do
     after_transition on: :accept, do: [:send_acceptance_email, :accept_mutual_friendship!]
+    after_transition on: :block, do: [:block_mutual_friendship!]
 
     state :requested
+    state :blocked
 
     #creates the :accept! method
     event :accept do
       #Set the state to :accepted
       transition any => :accepted
     end
+
+    event :block do
+      transition any => :blocked
+    end
   end
+
+  validate :not_blocked
 
   #the self keyword states that the method applied applies to self
   def self.request(user1, user2)
     transaction do
-      friendship1 = create!(user: user1, friend: user2, state: 'pending')
-      friendship2 = create!(user: user2, friend: user1, state: 'requested')
+      friendship1 = create(user: user1, friend: user2, state: 'pending')
+      friendship2 = create(user: user2, friend: user1, state: 'requested')
 
-      friendship1.send_request_email
+      #if the new record cannot be created it sends back the friendship object with errors.
+      #only sends request email if valid
+      friendship1.send_request_email if !friendship1.new_record?
       friendship1
+    end
+  end
+
+  def not_blocked
+    if UserFriendship.exists?(user_id: user_id, friend_id: friend_id, state: 'blocked') ||
+        UserFriendship.exists?(user_id: friend_id, friend_id: user_id, state: 'blocked')
+      errors.add(:base, "The friendship cannot be added.")
     end
   end
 
@@ -55,6 +72,10 @@ class UserFriendship < ActiveRecord::Base
     mutual_friendship.delete
     #deletes the object from the DB without any callbacks
     #if we wanted to use callbacks we'd use the destroy method
+  end
+
+  def block_mutual_friendship!
+    mutual_friendship.update_attribute(:state, 'blocked') if mutual_friendship
   end
 end
 

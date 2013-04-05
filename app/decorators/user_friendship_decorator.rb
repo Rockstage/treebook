@@ -1,5 +1,6 @@
 class UserFriendshipDecorator < Draper::Decorator
   delegate_all
+  #if a method doesn't exist in the decorator, try it on the model 
   decorates :user_friendship
   #deligate_all fixes an error: unindentified method 'required?'
 

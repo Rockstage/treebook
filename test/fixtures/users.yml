@@ -17,3 +17,9 @@ ivelina:
   last_name: 'Atanasova'
   email: 'ivelina@gmail.com'
   profile_name: 'Calixa'
+
+blocked_friend:
+  first_name: 'Blocked'
+  last_name: 'Friend'
+  email: blocked@abv.bg
+  profile_name: 'YouBlockedMe'
