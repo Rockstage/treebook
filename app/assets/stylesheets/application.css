@@ -14,6 +14,7 @@
  *= require_tree .
  */
 
+/*
  @font-face {
  	font-family: 'Century Gothic';
  	src:url('GOTHIC.TTF');
@@ -24,6 +25,20 @@
  		font-weight: normal;
 	 	font-style: normal;  
  }
+*/
+
+@font-face {
+    font: {
+       family: 'Century Gothic';
+       weight: 'normal';
+       style: 'normal';
+    }
+    src: asset-url('GOTHIC.eot', font);
+    src: asset-url('GOTHIC.eot', font) format('embedded-opentype'),
+         asset-url('GOTHIC.woff', font) format('woff'),
+         asset-url('GOTHIC.ttf', font) format('truetype'),
+         asset-url('GOTHIC.svg#JunctionRegular', font) format('svg')
+}
 
 body, html {
 	height: 100%;
