@@ -114,7 +114,10 @@ body {
 	transition: left .5s;
 }
 
-
+.horizontalContent .page-header {
+	position: absolute;
+	left: 11%;
+}
 
 /* SIDEBAR MENU */
 #sidebar {

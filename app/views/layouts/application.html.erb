@@ -40,10 +40,12 @@
 		
 		<section id="sidebar">
 			<div class="navbar-inner">
+				<% if user_signed_in? %>
 				<header id="sidebar-header">
 					<%= link_to image_tag(current_user.gravatar_url), profile_path(current_user) %>
 					<p><%= current_user.full_name %></p>
 				</header>
+				<% end %>
 				<nav>
 					<ul class="nav nav-tabs nav-stacked">
 						<li>Home</li>
