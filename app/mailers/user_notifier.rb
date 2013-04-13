@@ -1,5 +1,5 @@
 class UserNotifier < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "no-reply@rockstage.org"
 
 #We define the method - each method has an action and an associated view
   def friend_requested(user_friendship_id)

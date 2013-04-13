@@ -8,14 +8,134 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require global_reset
+ *= require bootstrap
  *= require_self
  *= require_tree .
  */
 
+ @font-face {
+ 	font-family: 'Century Gothic';
+ 	src:url('GOTHIC.TTF');
+ 	src:url('GOTHIC.TTF?#iefix') format('embedded-opentype'),
+ 		url('GOTHIC.svg#GOTHIC') format('svg'),
+ 		url('GOTHIC.woff') format('woff'),
+ 		url('GOTHIC.ttf') format('truetype');
+ 		font-weight: normal;
+	 	font-style: normal;  
+ }
+
+body, html {
+	height: 100%;
+}
+
 body {
-	padding-top: 40px;
+	background: #F4F4F4;
+	color: #0c0c0c;
+	font-size: 1em;
+	font-family: "century gothic", tahoma, sans-serif;
+	font-smooth: always;
+	-webkit-font-smoothing: subpixel-antialiased;
 }
 
 .alert {
 	margin-top: 10px;
 }
+
+#container {
+	padding-top: 40px;
+}
+
+#wrapper {
+	margin-left: 11%;
+	padding: 15px 15px 0 0;
+}
+
+/* -------------------------- YIELD BEGINS HERE --------------------- */
+
+.horizontalContent {
+	position: absolute;
+	top: 40px;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.horizontalContent > div {
+	white-space: nowrap;
+}
+
+#background {
+	width: 95%;
+	z-index: -1;
+	position: fixed;
+	left: 0;
+	top: 40px;
+	bottom: 0;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+#foreground {
+	position: relative;
+	height: 100%;
+	left: 0;
+	background-color: #F0F0F0;
+}
+
+#parallax {
+	white-space: normal;
+}
+
+#parallax #foreground {
+	left: 95%;
+	-webkit-transition: left .5s;
+	-moz-transition: left .5s;
+	transition: left .5s;
+}
+
+#parallax #background {
+	margin-left: 0;
+	-webkit-transition: left .5s;
+	-moz-transition: left .5s;
+	transition: left .5s;
+}
+
+
+
+/* SIDEBAR MENU */
+#sidebar {
+	position: fixed;
+	width: 10%;
+	*width: 9.994680851063829;
+	margin-top: 5%;
+	z-index: 5;
+}
+
+#sidebar > * {
+
+	padding: 10%;
+}
+
+#sidebar-header * {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	border-radius: 3px;
+}
+
+
+
+/* Large desktop */
+@media (min-width: 1200px) { ... }
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) { ... }
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) { ... }
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) { ... }
