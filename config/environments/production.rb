@@ -68,10 +68,6 @@ Rockstage::Application.configure do
   # Add the fonts path
   config.assets.paths << Rails.root.join('app', 'asserts', 'fonts')
 
-  # Precompile additional asserts
-  config.assets.precompile += %w( .svg .eot .woff .ttf)
-
-
 end
 
 
