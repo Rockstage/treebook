@@ -33,12 +33,9 @@
        weight: 'normal';
        style: 'normal';
     }
-    src: asset-url('GOTHIC.eot', font);
-    src: asset-url('GOTHIC.eot', font) format('embedded-opentype'),
-         asset-url('GOTHIC.woff', font) format('woff'),
-         asset-url('GOTHIC.ttf', font) format('truetype'),
-         asset-url('GOTHIC.svg#JunctionRegular', font) format('svg')
+    src: asset-url('GOTHIC.ttf', font) format('truetype');
 }
+
 
 body, html {
 	height: 100%;
