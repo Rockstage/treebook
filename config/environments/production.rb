@@ -66,10 +66,10 @@ Rockstage::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   # Add the fonts path
-  config.asserts.paths << Rails.root.join('app', 'asserts', 'fonts')
+  config.assets.paths << Rails.root.join('app', 'asserts', 'fonts')
 
   # Precompile additional asserts
-  config.asserts.precompile += %w( .svg .eot .woff .ttf)
+  config.assets.precompile += %w( .svg .eot .woff .ttf)
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
