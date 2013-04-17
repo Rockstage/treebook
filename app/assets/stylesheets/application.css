@@ -49,7 +49,7 @@ body {
 	background: #F4F4F4;
 	color: #0c0c0c;
 	font-size: 1em;
-	font-family: "century gothic", tahoma, sans-serif;
+	font-family: "Century Gothic", tahoma, sans-serif;
 	font-smooth: always;
 	-webkit-font-smoothing: subpixel-antialiased;
 }
@@ -65,6 +65,18 @@ body {
 #wrapper {
 	margin-left: 11%;
 	padding: 15px 15px 0 0;
+}
+
+/* -------------------------- HEADER MENU --------------------- */
+
+.header_menu {
+	background-image: url('header_menu_bg.png') !important;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.navbar .nav > li > a {
+	
 }
 
 /* -------------------------- YIELD BEGINS HERE --------------------- */

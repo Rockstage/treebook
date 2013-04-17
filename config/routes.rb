@@ -1,4 +1,6 @@
 Rockstage::Application.routes.draw do
+  get "clock/index"
+
   resources :breaking_news
 
 
