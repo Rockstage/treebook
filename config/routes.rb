@@ -1,4 +1,7 @@
 Rockstage::Application.routes.draw do
+  resources :breaking_news
+
+
   get "profiles/show"
 
   
