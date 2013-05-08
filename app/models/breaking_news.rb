@@ -5,5 +5,4 @@ validates :name, presence: true
 validates :content, presence: true
 validates :title, presence: true
 
-
 end

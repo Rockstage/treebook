@@ -12,6 +12,7 @@ gem 'rename'
 gem 'state_machine'
 gem 'draper'
 gem "js-routes"
+gem 'fancybox2-rails', '~> 0.2.4'
 
 group :test do
 	gem 'shoulda'
