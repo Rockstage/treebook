@@ -16,30 +16,6 @@
  *= require_tree .
  */
 
-/*
- @font-face {
- 	font-family: 'Century Gothic';
- 	src:url('GOTHIC.TTF');
- 	src:url('GOTHIC.TTF?#iefix') format('embedded-opentype'),
- 		url('GOTHIC.svg#GOTHIC') format('svg'),
- 		url('GOTHIC.woff') format('woff'),
- 		url('GOTHIC.ttf') format('truetype');
- 		font-weight: normal;
-	 	font-style: normal;  
- }
-
-
-@font-face {
-    font: {
-       family: 'Century Gothic';
-       weight: 'normal';
-       style: 'normal';
-    }
-    src: asset-url('GOTHIC.ttf', font) format('truetype');
-}
-
-*/
-
 
 
 body, html {
@@ -50,7 +26,7 @@ body {
 	background: #F4F4F4;
 	color: #0c0c0c;
 	font-size: 1em;
-	font-family: "Century Gothic", tahoma, sans-serif;
+	font-family: GOTHIC, tahoma, sans-serif;
 	font-smooth: always;
 	-webkit-font-smoothing: subpixel-antialiased;
 }
