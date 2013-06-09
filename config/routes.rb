@@ -1,9 +1,6 @@
 Rockstage::Application.routes.draw do
   get "clock/index"
 
-  resources :breaking_news
-
-
   get "profiles/show"
 
   
@@ -34,6 +31,8 @@ Rockstage::Application.routes.draw do
   root to: 'statuses#index'
 
   get '/:id', to: 'profiles#show', as: 'profile'
+
+  resources :breaking_news
 
 
 

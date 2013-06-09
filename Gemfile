@@ -10,7 +10,7 @@ gem 'simple_form'
 gem 'skrollr-rails'
 gem 'rename'
 gem 'state_machine'
-gem 'draper'
+gem 'draper', '~> 1.0'
 gem "js-routes"
 gem 'fancybox2-rails', '~> 0.2.4'
 
