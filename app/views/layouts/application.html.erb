@@ -51,8 +51,8 @@
 					<ul class="nav nav-tabs nav-stacked">
 						<li><%= link_to "Home", profile_path(current_user) %></li>
 						<li><a rel="fancybox" href="/user_friendships">Browse</a></li>
-						<li><a href="#">Charts</a></li>
-						<li><a href="#">Discover</a></li>
+						<li><%= link_to "Charts", profile_path(current_user) %></li>
+						<li><%= link_to "Discover", profile_path(current_user) %></li>
 					</ul>
 				</nav>
 				<footer>
@@ -66,6 +66,5 @@
 		</div>
 		
 	</div>
-	<%= javascript_include_tag "bottom/retina.js" %>
 </body>
 </html>

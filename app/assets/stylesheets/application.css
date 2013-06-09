@@ -8,22 +8,13 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require fonts
  *= require global_reset
  *= require bootstrap
  *= require_self
  *= require fancybox
  *= require_tree .
  */
-
- @font-face {
-  font-family: 'GOTHIC';
-  src: url('GOTHIC.eot?#iefix') format('embedded-opentype'),
-       url('GOTHIC.woff') format('woff'),
-       url('GOTHIC.ttf')  format('truetype'),
-       url('GOTHIC.svg#svgFontName') format('svg');
-       font-weight: normal;
-	   font-style: normal;
-}
 
 body, html {
 	height: 100%;
