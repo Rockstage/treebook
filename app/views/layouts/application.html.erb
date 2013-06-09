@@ -49,10 +49,34 @@
 				<% end %>
 				<nav>
 					<ul class="nav nav-tabs nav-stacked">
-						<li><%= link_to "Home", profile_path(current_user) %></li>
-						<li><a rel="fancybox" href="/user_friendships">Browse</a></li>
-						<li><%= link_to "Charts", profile_path(current_user) %></li>
-						<li><%= link_to "Discover", profile_path(current_user) %></li>
+						<li>
+							<% if user_signed_in? %>
+								<%= link_to "Home", profile_path(current_user) %>
+							<% else %>
+								<%= link_to "Home", login_path %>
+							<% end %>
+						</li>
+						<li>
+							<% if user_signed_in? %>
+								<%= link_to "Browse", user_friendships_path %>
+							<% else %>
+								<%= link_to "Browse", login_path %>
+							<% end %>
+						</li>
+						<li>
+							<% if user_signed_in? %>
+								<%= link_to "Charts", profile_path(current_user) %>
+							<% else %>
+								<%= link_to "Charts", login_path %>
+							<% end %>
+						</li>
+						<li>
+							<% if user_signed_in? %>
+								<%= link_to "Discover", profile_path(current_user) %>
+							<% else %>
+								<%= link_to "Discover", login_path %>
+							<% end %>
+						</li>
 					</ul>
 				</nav>
 				<footer>

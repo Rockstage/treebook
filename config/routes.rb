@@ -1,9 +1,8 @@
 Rockstage::Application.routes.draw do
-  get "clock/index"
 
   get "profiles/show"
 
-  
+  get "clock/index"
 
   as :user do
     get '/register', to: 'devise/registrations#new', as: :register
