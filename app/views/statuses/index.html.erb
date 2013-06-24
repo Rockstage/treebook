@@ -19,6 +19,9 @@ All Content between the DO and END is looped by the number of statuses available
               <p>
                 <%= status.content %>
               </p>
+
+              <%= status_document_link(status) %>
+
           <div class="meta">
             <%= link_to time_ago_in_words(status.created_at) + " ago", status %>
             <span class="admin">

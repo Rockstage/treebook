@@ -14,4 +14,6 @@
 //= require fancybox
 //= require jquery_ujs
 //= require js-routes
+//= require select2
 //= require_tree .
+

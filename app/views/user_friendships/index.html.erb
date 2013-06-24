@@ -30,3 +30,19 @@
 		</div>
 	</div>
 <% end %>
+<br />
+<selection id="nav-friends">
+<form>
+<select id="find-friends">
+<% @user_friendships.each do |friendship| %>
+<% @friend = friendship.friend %>
+<option value="<%= @user_friendships %>"><%= @friend.full_name %></option>
+<% end %>
+</select>
+</form>
+</selection>
+
+<form>
+	<%= select_tag "friends", options_from_collection_for_select(@user_friendships, "friend_id", "friend"), id: "find-friends" %>
+</form>
+

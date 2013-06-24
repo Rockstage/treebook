@@ -13,6 +13,8 @@ gem 'state_machine'
 gem 'draper', '~> 1.0'
 gem "js-routes"
 gem 'fancybox2-rails', '~> 0.2.4'
+gem 'select2-rails'
+gem 'paperclip'
 
 group :test do
 	gem 'shoulda'
