@@ -1,8 +1,11 @@
 <div class="horizontalContent">
 	<div id="parallax">
-		<div id="background">
-			<p>Users background image with parallax scrolling</p>
-		</div>
+		<% if @user.gravatar_url %>
+			<div id="background" style="background-image: url('<%= image_path('sempiternal.png') %>');">
+			</div>
+		<% else %>
+			<div id="background"></div>
+		<% end %>
 		<div class="page-header">
 			<h1><%= @user.full_name %></h1>
 		</div>

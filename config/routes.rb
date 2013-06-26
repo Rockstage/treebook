@@ -4,6 +4,8 @@ Rockstage::Application.routes.draw do
 
   get "clock/index"
 
+  # To create a user restriction use the controllers and a before_filter
+
   as :user do
     get '/register', to: 'devise/registrations#new', as: :register
     get '/login', to: 'devise/sessions#new', as: :login

@@ -7,7 +7,6 @@ gem 'rails', '3.2.12'
 
 gem 'devise'
 gem 'simple_form'
-gem 'skrollr-rails'
 gem 'rename'
 gem 'state_machine'
 gem 'draper', '~> 1.0'

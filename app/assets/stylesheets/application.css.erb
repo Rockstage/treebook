@@ -28,6 +28,15 @@ body {
 	font-family: GOTHIC, tahoma, sans-serif;
 	font-smooth: always;
 	-webkit-font-smoothing: subpixel-antialiased;
+	/*
+	background-image: url('<%= asset_path 'RSWelcome.png' %>');
+	background-repeat: no-repeat;
+	background-position: center;
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+  	*/
 }
 
 .alert {
@@ -67,15 +76,20 @@ body {
 
 .horizontalContent > div {
 	white-space: nowrap;
+	height: 100%;
+/*	overflow-x: scroll; */
+/*	overflow-y: hidden; */
 }
 
 #background {
+
 	width: 95%;
 	z-index: -1;
 	position: fixed;
 	left: 0;
 	top: 40px;
 	bottom: 0;
+	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -89,6 +103,7 @@ body {
 }
 
 #parallax {
+	padding-left: 0;
 	white-space: normal;
 }
 

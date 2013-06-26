@@ -130,8 +130,6 @@ GEM
     simple_form (2.1.0)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
-    skrollr-rails (0.6.5)
-      rails (>= 3.1.0)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -170,7 +168,6 @@ DEPENDENCIES
   select2-rails
   shoulda
   simple_form
-  skrollr-rails
   sqlite3
   state_machine
   uglifier (>= 1.0.3)
