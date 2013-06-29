@@ -1,5 +1,17 @@
 module ApplicationHelper
 
+	# Sends a message to the called object
+	def bootstrap_paperclip_picture(form, paperclip_object)
+		if form.object.send("#{paperclip_object}?")
+			content_tag(:div, class: 'control-group') do
+				content_tag(:label, "Current #{paperclip_object.to_s.titleize}", class: 'control-label') +
+				content_tag(:div, class: 'controls') do
+					image_tag form.object.send(paperclip_object).send(:url, :small)
+				end
+			end
+		end
+	end
+
 	def can_display_status?(status)
 		signed_in? && !current_user.has_blocked?(status.user) || !signed_in?
 	end

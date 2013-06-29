@@ -14,6 +14,7 @@ gem "js-routes"
 gem 'fancybox2-rails', '~> 0.2.4'
 gem 'select2-rails'
 gem 'paperclip'
+gem 'twitter-bootstrap-rails'
 
 group :test do
 	gem 'shoulda'

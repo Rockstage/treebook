@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
               message: 'Must be formatted correctly.'
             }
 
+  has_many :albums
+  has_many :pictures
   has_many :statuses
   has_many :user_friendships
   has_many :friends, through: :user_friendships,
@@ -45,11 +47,12 @@ class User < ActiveRecord::Base
                                       conditions: { state: 'accepted' }
   has_many :accepted_friends, through: :accepted_user_friendships, source: :friend
 
+  # If changing styles, also change in picture model and do the rake task to clean up
   has_attached_file :avatar, styles: {
     large: "800x800>", medium: "300x200>", small: "260x180>", thumb: "80x80#"
   }
 
-  # Remove this when setting default avatars
+  # Remove this when setting default avatars and the associated rake task
   def self.get_gravatars
     all.each do |user|
       if !user.avatar?
@@ -68,6 +71,11 @@ class User < ActiveRecord::Base
   #to param method helps when link to various locations
   def to_param
     profile_name
+  end
+
+  #overriding the to_string method helps us properly show first name in the string of the breadcrumbs
+  def to_s
+    first_name
   end
 
   def gravatar_url
