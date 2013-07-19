@@ -5,7 +5,6 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-
 </head>
 <body onload="startTime(); onLoad();">
 	<div id="header">
@@ -47,7 +46,11 @@
 			<div class="navbar-inner">
 				<% if user_signed_in? %>
 				<header id="sidebar-header">
-					<%= link_to image_tag(current_user.gravatar_url), profile_path(current_user) %>
+			        <% if current_user.avatar? %>
+			            <%= link_to(image_tag(current_user.avatar(:thumb)), profile_path(current_user)) %>
+			        <% else %>
+				        <%= link_to(image_tag(current_user.default_avatar_menu), profile_path(current_user)) %>
+			        <% end %>
 					<p><%= current_user.full_name %></p>
 				</header>
 				<% end %>
@@ -62,7 +65,7 @@
 						</li>
 						<li>
 							<% if user_signed_in? %>
-								<%= link_to "Browse", user_friendships_path %>
+								<a href="#browsePage" role="button" class="" data-toggle="modal">Browse</a>
 							<% else %>
 								<%= link_to "Browse", login_path %>
 							<% end %>
@@ -92,7 +95,22 @@
 		<div id="wrapper" class="yield">
 			<%= yield %>
 		</div>
-		
+	</div>
+
+
+	<div id="modals">
+		<div id="browsePage" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3 id="myModalLabel">Browse Page</h3>
+			</div>
+			<div class="modal-body">
+				<p>Browse this and that</p>
+			</div>
+			<div class="modal-footer">
+				<p>Terms of Service</p>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

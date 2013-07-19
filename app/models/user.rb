@@ -52,16 +52,24 @@ class User < ActiveRecord::Base
     large: "800x800>", medium: "300x200>", small: "260x180>", thumb: "80x80#"
   }
 
-  # Remove this when setting default avatars and the associated rake task
-  def self.get_gravatars
-    all.each do |user|
-      if !user.avatar?
-        user.avatar = URI.parse(user.gravatar_url)
-        user.save
-        print "."
-      end
-    end
+  def default_avatar_feed
+    "Avatar-default-thumb.png"
   end
+  def default_avatar_menu
+    "Avatar-default.png"
+  end
+
+  # Remove this when setting default avatars and the associated rake task
+  #def self.get_gravatars
+  #  all.each do |user|
+  #    if !user.avatar?
+  #      # user.avatar = URI.parse(user.gravatar_url)
+  #      user.avatar = 'images/avatar.png'
+  #      user.save
+  #      print "."
+  #    end
+  #  end
+  #end
   #URI.prase tells paperclip to fetch a URI instead of the returned string
 
   def full_name

@@ -60,7 +60,7 @@ module Rockstage
     config.assets.version = '1.0'
 
     #Gives an error when false, app error - something went wrong
-    config.assets.initialize_on_precompile = false
+    config.assets.initialize_on_precompile = true
 
     # adds app/assets/fonts to the asset path
     config.assets.paths << Rails.root.join("app", "assets", "fonts")

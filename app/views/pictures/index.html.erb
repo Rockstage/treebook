@@ -8,7 +8,10 @@
 <% @pictures.each do |picture| %>
   <li>
     <div class="thumbnail">
-    <%= link_to image_tag(picture.asset.url(:small)), album_picture_path(@user, @album, picture) %><br />
+
+    <a href='<%= picture.asset.url(:large) %>' rel="lightbox" title="<%= picture.caption %>">
+      <%= image_tag(picture.asset.url(:small)) %>
+    </a>
       <div class="caption">
         <% if picture.caption? %><%= picture.caption %><br /><% end %>
         

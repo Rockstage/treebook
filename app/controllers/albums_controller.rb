@@ -8,7 +8,7 @@ class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.json
   def index
-    @albums = Album.all
+    @albums = @user.albums.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -58,7 +58,7 @@ class AlbumsController < ApplicationController
   # PUT /albums/1
   # PUT /albums/1.json
   def update
-    @album = Album.find(params[:id])
+    #@album = Album.find(params[:id])
 
     respond_to do |format|
       if @album.update_attributes(params[:album])
@@ -74,7 +74,7 @@ class AlbumsController < ApplicationController
   # DELETE /albums/1
   # DELETE /albums/1.json
   def destroy
-    @album = Album.find(params[:id])
+    #@album = Album.find(params[:id])
     @album.destroy
 
     respond_to do |format|

@@ -20,7 +20,7 @@ class PicturesController < ApplicationController
   # GET /pictures/1
   # GET /pictures/1.json
   def show
-    @picture = @album.pictures.find(params[:id])
+    #@picture = @album.pictures.find(params[:id])
     add_breadcrumb @picture, album_pictures_path(@album, @picture)
 
     respond_to do |format|
@@ -65,7 +65,7 @@ class PicturesController < ApplicationController
   # PUT /pictures/1
   # PUT /pictures/1.json
   def update
-    @picture = Picture.find(params[:id])
+    #@picture = Picture.find(params[:id])
 
     respond_to do |format|
       if @picture.update_attributes(params[:picture])

@@ -4,6 +4,9 @@ module AlbumsHelper
 		signed_in? && current_user == album.user
 	end
 
+	def can_view_album?(album)
+    	signed_in? && current_user == album.user
+	end
 
 	def album_thumbnail(album)
 		if album.pictures.count > 0
