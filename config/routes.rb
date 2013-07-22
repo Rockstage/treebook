@@ -1,5 +1,9 @@
 Rockstage::Application.routes.draw do
 
+  resources :activities, only: [:index]
+  
+  root to: 'activities#index'
+
   get "clock/index"
 
   # To create a user restriction use the controllers and a before_filter
@@ -27,7 +31,7 @@ Rockstage::Application.routes.draw do
 
   resources :statuses
   get 'feed', to: 'statuses#index', as: :feed
-  root to: 'statuses#index'
+
 
   #to create /emmy/albums
   scope ":profile_name" do
@@ -39,7 +43,7 @@ Rockstage::Application.routes.draw do
   get '/:id', to: 'profiles#show', as: 'profile'
 
   resources :breaking_news
-
+  match ':profile_name/albums/:album_id/slideshow', to: 'pictures#slideshow', as: 'slideshow'
 
 
   # The priority is based upon order of creation:

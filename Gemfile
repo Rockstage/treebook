@@ -14,6 +14,7 @@ gem "js-routes"
 gem 'select2-rails'
 gem 'paperclip'
 gem 'twitter-bootstrap-rails'
+gem 'rails-ajax'
 
 group :test do
 	gem 'shoulda'

@@ -6,7 +6,7 @@ class Status < ActiveRecord::Base
   accepts_nested_attributes_for :document
 
   validates :content, presence: true,
-            length: { minimum: 2, maximum: 140 }
+            length: { minimum: 2, maximum: 280 }
 
   validates :user_id, presence: true
 end

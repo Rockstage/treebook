@@ -1,0 +1,31 @@
+
+<h2>Activity Feed</h2>
+	<% if @user == current_user %>
+		<%= link_to "Post a New Status", new_status_path, class: "btn btn-success" %><hr />
+	<% end %>
+
+	<ul id="activities">
+	<% @activities.each do |activity| %>
+		
+			<% if activity.targetable %>
+				<li>
+					<div id="feed" class="media">
+						<%= avatar_profile_link activity.user, {}, class: 'pull-left' %>
+						<div id="feed-body" class="media-body">
+							<h4 id="feed-heading" class="media-heading">
+								<%= activity.user.full_name %>
+							</h4>
+								<blockquote>
+								<%= render partial: "activities/#{activity.targetable_type.underscore}/#{activity.action}", locals: { activity: activity } %>
+								<small id="feed-small"><%= time_ago_in_words(activity.created_at) + ' ago' %></small>
+								</blockquote>
+							<br />
+							
+						</div>
+					</div>
+					<hr />
+				</li>
+			<% end %>
+		
+	<% end %>
+	</ul>

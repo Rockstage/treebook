@@ -1,3 +1,4 @@
+<%= render_breadcrumbs %>
 <h2><%= @picture.caption %></h2>
 
 <%= image_tag(@picture.asset.url(:large), alt: @picture.caption, class: 'img-polaroid') %>

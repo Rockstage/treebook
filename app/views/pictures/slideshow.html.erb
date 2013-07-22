@@ -1,0 +1,29 @@
+<%= render_breadcrumbs %>
+<div id="myCarousel" class="carousel slide">
+  <ol class="carousel-indicators">
+    <% @pictures.each do |picture| %>
+      <% if picture == @album.pictures.first %>
+        <li data-target="#myCarousel" data-slide-to="<% 0 + 1 %>" class="active"></li>
+      <% else %>
+        <li data-target="#myCarousel" data-slide-to="<% + 1 %>" class=""></li>
+      <% end %>
+    <% end %>
+  </ol>
+  <!-- Carousel items -->
+  <div class="carousel-inner">
+    <% @pictures.each do |picture| %>
+      <% if picture == @album.pictures.first %>
+        <div class="active item"><%= image_tag(picture.asset.url(:large)) %></div>
+      <% else %>
+        <div class="item"><%= image_tag(picture.asset.url(:large)) %></div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Carousel nav -->
+  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div>
+
+<script>
+  $('.carousel').carousel()
+</script>

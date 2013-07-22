@@ -12,6 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//
+// RailsAjax
+//= require jquery.history
+//= require jquery.rails-ajax
+//= require RailsAjax-Config
+//
 //= require js-routes
 //= require select2
 //= require_tree .

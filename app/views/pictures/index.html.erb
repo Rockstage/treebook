@@ -1,7 +1,8 @@
+<%= render_breadcrumbs %>
 <% if signed_in? && current_user == @user %>
     <%= link_to 'Add Picture', new_album_picture_path(current_user, @album), class: 'btn pull-right' %>
 <% end %>
-<h1><%= @album.title %></h1>
+<h1><%= @album.title %> <%= link_to "Slideshow", slideshow_path(@user, @album), class: 'btn' %></h1>
 
 
 <ul class="thumbnails">

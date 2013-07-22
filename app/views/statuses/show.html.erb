@@ -18,4 +18,5 @@
 <% end %>
 
 <%= link_to 'Edit', edit_status_path(@status) %> |
-<%= link_to 'Back', statuses_path %>
+<%= link_to 'Back', statuses_path %> |
+<%= link_to "Delete", status_path, method: :delete, data: { confirm: "Are you sure?"} %>

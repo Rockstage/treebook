@@ -30,10 +30,12 @@
           <p>Experience<br />a new world.</p>
         </div>
 
-        <div class="span3 offset9"><%= f.button :submit, "Sign up" %></div>
+        <div class="span3 offset9"><%= f.button :submit, "Sign up", class: 'btn btn-success btn-large' %></div>
       </fieldset>
+
     <% end %>
-      <div class="span3 offset9">
+      <div class="span12">
+        <br />
         <%= render "devise/shared/links" %>
       </div>
 </div>

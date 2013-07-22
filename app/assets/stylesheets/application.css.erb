@@ -16,12 +16,13 @@
  *= require_tree .
  */
 
-body, html {
+html {
 	height: 100%;
+	width: 100%;
 }
 
 body {
-	background: #F4F4F4;
+	/* background: #F4F4F4; */
 	color: #0c0c0c;
 	font-size: 1em;
 	font-family: GOTHIC, tahoma, sans-serif;
@@ -38,16 +39,14 @@ body {
   	*/
 }
 
-.alert {
-	margin-top: 10px;
-}
-
 #container {
 	padding-top: 40px;
+	margin-left: 11%;
+	height: 95vmin;
 }
 
 #wrapper {
-	margin-left: 11%;
+
 	padding: 15px 15px 0 0;
 }
 
@@ -61,6 +60,17 @@ body {
 
 .navbar .nav > li > a {
 	
+}
+
+/* -------------------------- MUSIC PLAYER --------------------- */
+
+#player {
+	position: fixed;
+	width: 30%;
+	left: 35%;
+	right: 35%;
+	top: 0;
+	z-index: 9999;
 }
 
 /* -------------------------- YIELD BEGINS HERE --------------------- */
@@ -147,6 +157,17 @@ body {
 	border-radius: 3px;
 }
 
+#profile_activities {
+	width: 400px;
+}
+
+
+/* GLOBAL STUFF */
+
+.smaller {
+	font-size: 0.9em;
+}
+
 
 /* BOOTSTRAP FIXES */
 
@@ -156,11 +177,34 @@ body {
 
 .alert {
 	position: absolute;
-	width: 80%;
-	top: 41px;
-	left: 10%;
-	right: 10%;
-	margin-top: 0;
+	width: 40%;
+	top: 42px;
+	left: 30%;
+	right: 30%;
+}
+
+ul.breadcrumb {
+	margin: 0 0 0;
+}
+
+blockquote {
+	border-left: 5px solid rgb(230,230,230);
+}
+
+/* ----- VIDEO TAG ------ */
+
+.full-screen-video {
+	position: fixed;
+	z-index: -99;
+	top: 0;
+	left: 0;
+	min-width: 100%;
+	min-height: 100%;
+}
+
+
+#main-flow {
+
 }
 
 
