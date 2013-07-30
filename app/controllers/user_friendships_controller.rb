@@ -97,6 +97,9 @@ class UserFriendshipsController < ApplicationController
 			current_user.requested_user_friendships
 		end
 	end
+
+	# Fixes a NoMethodError (protected method `render' called for ...) error, investigate later
+	public :render
 end
 
 #Finds a friend, by the friend_id which is their profile_name

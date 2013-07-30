@@ -4,7 +4,8 @@
 		<%= link_to "Post a New Status", new_status_path, class: "btn btn-success" %><hr />
 	<% end %>
 
-	<ul id="activities">
+<div id="links">
+	<ul id="activities" data-role="listview" data-filter="true">
 	<% @activities.each do |activity| %>
 		
 			<% if activity.targetable %>
@@ -29,3 +30,27 @@
 		
 	<% end %>
 	</ul>
+</div>
+
+<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+
+    <div class="slides"></div>
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+
+</div>
+
+<script>
+document.getElementById('links').onclick = function (event) {
+    event = event || window.event;
+    var target = event.target || event.srcElement,
+        link = target.src ? target.parentNode : target,
+        options = {index: link, event: event},
+        links = this.getElementsByTagName('a');
+    blueimp.Gallery(links, options);
+};
+</script>

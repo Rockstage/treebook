@@ -1,29 +1,50 @@
 <%= render_breadcrumbs %>
-<div id="myCarousel" class="carousel slide">
-  <ol class="carousel-indicators">
-    <% @pictures.each do |picture| %>
-      <% if picture == @album.pictures.first %>
-        <li data-target="#myCarousel" data-slide-to="<% 0 + 1 %>" class="active"></li>
-      <% else %>
-        <li data-target="#myCarousel" data-slide-to="<% + 1 %>" class=""></li>
-      <% end %>
-    <% end %>
-  </ol>
-  <!-- Carousel items -->
-  <div class="carousel-inner">
-    <% @pictures.each do |picture| %>
-      <% if picture == @album.pictures.first %>
-        <div class="active item"><%= image_tag(picture.asset.url(:large)) %></div>
-      <% else %>
-        <div class="item"><%= image_tag(picture.asset.url(:large)) %></div>
-      <% end %>
-    <% end %>
-  </div>
-  <!-- Carousel nav -->
-  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+<div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel" data-start-slideshow="true" data-filter=":even">
+  <% @pictures.each do |picture| %>
+    <div class="slides"></div>
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+  <% end %>
 </div>
 
+<div id="links" style="display: none;">
+  <ul class="thumbnails">
+    <% @pictures.each do |picture| %>
+      <li class="span4">
+        <div class="thumbnail">
+          <a href="<%= picture.asset.url %>" title="<% if picture.caption %><%= picture.caption %><% end %>">
+              <img src="<%= picture.asset.url(:medium) %>" alt="<% if picture.caption %><%= picture.caption %><% end %>" style="max-height: 170px; width: auto;">
+          </a>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+
+
+
+
 <script>
-  $('.carousel').carousel()
+document.getElementById('links').onclick = function (event) {
+    event = event || window.event;
+    var target = event.target || event.srcElement,
+        link = target.src ? target.parentNode : target,
+        options = {index: link, event: event},
+        links = this.getElementsByTagName('a');
+    blueimp.Gallery(links, options);
+};
+</script>
+<script>
+blueimp.Gallery(
+    document.getElementById('links').getElementsByTagName('a'),
+    {
+        container: '#blueimp-gallery-carousel',
+        carousel: true
+    }
+);
 </script>
