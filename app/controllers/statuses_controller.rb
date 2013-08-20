@@ -1,17 +1,13 @@
 class StatusesController < ApplicationController
-  before_filter :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  # before_filter :ensure_proper_user, only: [:new, :edit]
 
   rescue_from ActiveModel::MassAssignmentSecurity::Error, with: :render_permission_error
 
   # GET /statuses
   # GET /statuses.json
   def index
-    @statuses = Status.order('created_at desc').all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @statuses }
-    end
+    statuses_dashboard
   end
 
   # GET /statuses/1
@@ -50,7 +46,7 @@ class StatusesController < ApplicationController
     respond_to do |format|
       if @status.save
         current_user.create_activity(@status, 'created')
-        format.html { redirect_to @status, notice: 'Status was successfully created.' }
+        format.html { redirect_to statuses_path(current_user), notice: 'Status was successfully created.' }
         format.json { render json: @status, status: :created, location: @status }
       else
         format.html { render action: "new" }
@@ -77,7 +73,7 @@ class StatusesController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { redirect_to @status, notice: 'Status was successfully updated.' }
+      format.html { redirect_to statuses_path(current_user), notice: 'Status was successfully updated.' }
       format.json { head :no_content }
     end
 
@@ -103,6 +99,23 @@ class StatusesController < ApplicationController
     end
   end
 
+
+  private
+
+  def statuses_dashboard
+    @statuses = Status.order('created_at desc').all
+
+    @status ||= Status.new
+    @status.build_document
+  end
+
+  private
+  def ensure_proper_user
+    if current_user != @user
+      flash[:error] = "You do not have premission to do that."
+      redirect_to statuses_path
+    end
+  end
 
 end
 

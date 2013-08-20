@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Rockstage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= stylesheet_link_tag    "application", :media => "all" %>
   
   <%= csrf_meta_tags %>
@@ -22,12 +23,14 @@
 	</section>
 
 	<div id="container">
-		<% flash.each do |type, message| %>
-			<div class="alert <%= flash_class type %>">
-				<button class="close" data-dismiss="alert">x</button>
-				<%= message %>
-			</div>
-		<% end %>
+		<div class="flash-ajax">
+			<% flash.each do |type, message| %>
+				<div class="alert <%= flash_class type %>">
+					<button class="close" data-dismiss="alert">x</button>
+					<%= message %>
+				</div>
+			<% end %>
+		</div>
 
 
 		<div id="wrapper" class="yield">
@@ -42,26 +45,45 @@
 
 
 
-	<div id="modals">
-		<div id="browsePage" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-				<h3 id="myModalLabel">Browse Page</h3>
-			</div>
-			<div class="modal-body">
-				<p>Browse this and that</p>
-			</div>
-			<div class="modal-footer">
-				<p>Terms of Service</p>
-			</div>
-		</div>
-	</div>
-
+	<%= render template: 'layouts/_browse.html.erb' %>
 
 
 
 	<video id="main-flow" class="full-screen-video" poster="<%= asset_path("RockstageFlowback.png") %>" autobuffer autoplay loop>
 		<source src="<%= asset_path("RockstageBackground.mov") %>" />
 	</video>
+
+
+	<div id="popup-playlist" class="dark-bg" style="height: 350px; display: none; ">
+		<h2>now playing...</h2>
+		<ul>
+			<li>
+				<h3>Song one</h3>
+				<p class="gray">Artist one</p>
+			</li>
+			<li>
+				<h3>Song two</h3>
+				<p class="gray">Artist two</p>
+			</li>
+			<li>
+				<h3>Song three</h3>
+				<p class="gray">Artist three</p>
+			</li>
+		</ul>
+	</div>
+
+<% if false %>
+<script>
+$(document).ready(
+
+  function() { 
+
+    $("html").niceScroll();
+
+  }
+
+);
+</script>
+<% end %>
 </body>
 </html>

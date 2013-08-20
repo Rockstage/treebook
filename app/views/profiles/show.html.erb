@@ -1,16 +1,16 @@
 <div class="horizontalContent">
 	<div id="parallax">
 		<% if @user.gravatar_url %>
-			<div id="background" style="background-image: url('<%= image_path('sempiternal.png') %>');">
+			<div id="background">
 			</div>
 		<% else %>
 			<div id="background"></div>
 		<% end %>
 		<div class="page-header">
 			<h1><%= @user.full_name %></h1>
-		</div>
-		<div id="foreground">
-			<% if signed_in? %>
+				<%= link_to "Albums", albums_path(@user), class: 'btn' %>
+
+				<% if signed_in? %>
 				<span id="friend-status">
 					<% if current_user.friends.include?(@user) || current_user.pending_friends.include?(@user) %>
 					<%= link_to "Edit Friendship", edit_user_friendship_path(friend_id: @user), class: 'btn' %>
@@ -21,14 +21,24 @@
 					<% end %>
 				</span>
 			<% end %>
-			<%= link_to "Albums", albums_path(@user), class: 'btn' %>
+		</div>
+		<div id="foreground">
 			
-				<div id="profile_activities">
-					
-					<% if @activities %>
-						<%= render :template => 'activities/index' %>
-					<% end %>
-				</div>
+			<!-- ul id="activities" class="columns" also known as the user stream -->
+			<% if @activities %>
+				<%= render :template => 'activities/index' %>
+			<% end %>
+			<!-- do not place content below as the stream is paginated -->
 		</div>
 	</div>
 </div>
+
+<!-- dub due to ajax -->
+<script>
+$(function() {
+   $("#parallax").mousewheel(function(event, delta) {
+      this.scrollLeft -= (delta * 30);
+      event.preventDefault();
+   });
+});
+</script>

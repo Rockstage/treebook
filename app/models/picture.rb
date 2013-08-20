@@ -8,6 +8,8 @@ class Picture < ActiveRecord::Base
     large: "800x800>", medium: "300x200>", small: "260x180>", thumb: "80x80#"
   }
 
+  validates :asset, attachment_presence: true
+
   def to_s
   	caption? ? caption : "Current Picture"
   end

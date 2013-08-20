@@ -3,23 +3,9 @@
 </script>
 
 <% if user_signed_in? %>
-<div class="page-header">
-  <h1>All of the Statuses</h1>
-</div>
 
-<%= link_to "Post a New Status", new_status_path, class: "btn btn-success" %>
+<%= render :partial => "form", :locals => { :statuses => @status } %>
 
-<a href="#newStat" role="button" class="btn btn-success" data-toggle="modal">Post a New Status</a>
-
-<div id="newStat" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">What's on your mind?</h3>
-  </div>
-  <div class="modal-body">
-    <p>Form for new status</p>
-  </div>
-</div>
 
 <% @statuses.each do |status| %>
   <% if can_display_status?(status) %>
