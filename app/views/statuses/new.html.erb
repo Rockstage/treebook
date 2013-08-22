@@ -1,5 +1,12 @@
-<h1>New status</h1>
+<div class="full-screen-div">
+			<%= link_to 'X', profile_path(current_user), class: 'pull-right x-back' %>
+			<br />
+			<br />
+			<br />
+			<h1 class="text-center">New status</h1>
+			<div>
+				<%= render 'form' %>
+			</div>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', statuses_path %>
+			
+</div>

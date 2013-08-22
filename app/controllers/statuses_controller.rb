@@ -46,7 +46,7 @@ class StatusesController < ApplicationController
     respond_to do |format|
       if @status.save
         current_user.create_activity(@status, 'created')
-        format.html { redirect_to statuses_path(current_user), notice: 'Status was successfully created.' }
+        format.html { redirect_to profile_path(current_user), notice: 'Status was successfully created.' }
         format.json { render json: @status, status: :created, location: @status }
       else
         format.html { render action: "new" }
@@ -73,7 +73,7 @@ class StatusesController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { redirect_to statuses_path(current_user), notice: 'Status was successfully updated.' }
+      format.html { redirect_to profile_path(current_user), notice: 'Status was successfully updated.' }
       format.json { head :no_content }
     end
 
@@ -94,7 +94,7 @@ class StatusesController < ApplicationController
     @status.destroy
 
     respond_to do |format|
-      format.html { redirect_to statuses_url }
+      format.html { redirect_to profile_path(current_user) }
       format.json { head :no_content }
     end
   end

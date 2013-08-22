@@ -1,11 +1,13 @@
-<div class="content-fluid" style="width: 600px;">
+<div class="content-fluid" style="width: 725px; margin: auto;">
 <fieldset>
-  <legend>Statuses</legend>
+  <legend></legend>
   <div class="row-fluid">
       <%= simple_form_for(@status, html: { class: "form-inline", multipart: true }) do |f| %>
 
-        <div class="span12">
-          <%= f.input :content, input_html: { rows: 1, class: 'input-xxlarge large-text' }, label: '<span class="large-text">What&#39;s on your mind?</span>'.html_safe %>
+
+        <div class="span2"><%= avatar_profile_link current_user, {} %></div>
+        <div class="span9">
+          <%= f.input :content, input_html: { rows: 1, class: 'input-xxlarge large-text' }, label: '', placeholder: 'What&#39;s on your mind, '.html_safe + current_user.first_name + '?' %>
         </div>
 
         <div id="attachments" class="span8">
@@ -24,6 +26,7 @@
         </div>
 
         <div class="span3">
+          <%= link_to 'back', profile_path(current_user), class: 'gray' %>
           <%= f.button :submit, class: 'btn btn-primary pull-right' %>
         </div>
         

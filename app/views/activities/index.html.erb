@@ -1,8 +1,8 @@
 
 <ul class="columns" id="activities" data-role="listview" data-filter="true">
-	<h2><% if @user %><%= @user.first_name %>&#39;s <% else %>Your <% end %> activity</h2>
+	<h2><% if @user != current_user %><%= @user.first_name %>&#39;s feed<% else %>Your feed <%= link_to "Post a New Status", new_status_path, class: "btn btn-primary" %><hr /><% end %></h2>
 <% if @user == current_user %>
-	<%= link_to "Post a New Status", new_status_path, class: "btn btn-success" %><hr />
+	
 <% end %>
 <% @activities.reverse.each do |activity| %>
 	
