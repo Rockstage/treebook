@@ -45,7 +45,9 @@
 			<ul class="nav">
 				<li class="divider-vertical"><%= link_to "All Statuses", feed_path %></li>
 				<% if user_signed_in? %>
+					<li id="activity-feed"><%= link_to "Notifications", "#" %></li>
 					<li><%= link_to "Activity Feed", activities_path %></li>
+					<li><%= link_to "Share", new_status_path, class: 'blue-link' %></li>
 				<% end %>
 			</ul>
 			<ul class="nav pull-right">

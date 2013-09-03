@@ -106,6 +106,10 @@ class PicturesController < ApplicationController
     { profile_name: params[:profile_name] }.merge(super)
   end
 
+  def page_title
+    "RS " + @user.profile_name + "'s albums"
+  end
+
   private
 
   def ensure_proper_user

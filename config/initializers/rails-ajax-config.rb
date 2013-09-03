@@ -17,8 +17,8 @@ RailsAjax::configure do
   # If not set for a given flash message type, you have to return the corresponding flash yourself in each Ajax's response.
   flash_containers(
     :notice => '.flash-ajax',
-    :error => '.alert',
-    :alert => '.alert'
+    :error => '.flash-ajax',
+    :alert => '.flash-ajax'
   )
 
   # Activate debugging alerts in the JS code.

@@ -7,7 +7,7 @@
   
   <%= csrf_meta_tags %>
 </head>
-<body onload="startTime(); onLoad();">
+<body onload="startTime();">
 	<div id="player">
 		<audio controls loop class="music_player">
 			<source src="<%= asset_path("RockstageSoundtrackFinal.mp3") %>" type="audio/mpeg">
@@ -22,21 +22,20 @@
 		<%= render template: 'activities/_sidebar' %>
 	</section>
 
+	<div class="flash-ajax">
+		<% flash.each do |type, message| %>
+			<div class="alert <%= flash_class type %>">
+				<button class="close" data-dismiss="alert">x</button>
+				<%= message %>
+			</div>
+		<% end %>
+	</div>
+
 	<div id="container">
-		<div class="flash-ajax">
-			<% flash.each do |type, message| %>
-				<div class="alert <%= flash_class type %>">
-					<button class="close" data-dismiss="alert">x</button>
-					<%= message %>
-				</div>
-			<% end %>
-		</div>
 
-
-		<div id="wrapper" class="yield">
+		
 			<%= yield %>
-			<%= javascript_include_tag "application" %>
-		</div>
+		
 	</div>
 
 
@@ -46,7 +45,6 @@
 
 
 	<%= render template: 'layouts/_browse.html.erb' %>
-
 
 
 	<video id="main-flow" class="full-screen-video" poster="<%= asset_path("RockstageFlowback.png") %>" autobuffer autoplay loop>
@@ -72,18 +70,24 @@
 		</ul>
 	</div>
 
-<% if false %>
-<script>
-$(document).ready(
 
-  function() { 
-
-    $("html").niceScroll();
-
-  }
-
-);
-</script>
-<% end %>
+<%= javascript_include_tag "application" %>
 </body>
+
+<script id="activities-template" type="text/x-handlebars-template">
+	<a class="dropdown-toggle" href="#">Notifications ({{count}})</a>
+	<ul class="dropdown-menu">
+	{{#each activities}}
+		{{activityLink}}
+	{{/each}}
+	<li class="divider"></li>
+	<li><a href="{{activityFeedLink}}">All Activities</a></li>
+	</ul>	
+</script>
+
 </html>
+
+
+
+
+

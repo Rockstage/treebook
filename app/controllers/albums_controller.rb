@@ -91,6 +91,10 @@ class AlbumsController < ApplicationController
   end
   #super automatically calls the previous version of the overwrited method
 
+  def page_title
+    "RS " + @user.profile_name + "'s albums"
+  end
+
   private
 
   def ensure_proper_user

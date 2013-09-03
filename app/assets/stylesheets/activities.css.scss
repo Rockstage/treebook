@@ -1,6 +1,3 @@
-// Place all the styles related to the activities controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 
 #feed {
 	width: 360px;
@@ -16,7 +13,6 @@
 }
 
 
-
 ul#activities {
 	float: left;
 	white-space: normal;
@@ -27,10 +23,17 @@ ul#activities {
 .columns {
 	-webkit-column-gap: 5px;
 	-webkit-column-width: 360px;
+	-moz-column-gap: 5px;
+	-moz-column-width: 360px;
+	column-gap: 5px;
+	column-width: 360px;
+	
 }
 
 .columns > li {
 	-webkit-column-break-inside: avoid;
+	-moz-column-break-inside: avoid;
+	column-break-inside: avoid;
 	padding: 5px 5px;
 }
 

@@ -9,9 +9,9 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :profile_name, :avatar
   # attr_accessible :title, :body
 
-  validates :first_name, presence: true
+  validates :first_name, presence: true, length: { :maximum => 50 }
 
-  validates :last_name, presence: true
+  validates :last_name, presence: true, length: { :maximum => 50 }
 
   validates :email, presence: true, uniqueness: true
 

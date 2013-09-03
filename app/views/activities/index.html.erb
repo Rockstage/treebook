@@ -1,9 +1,14 @@
-
 <ul class="columns" id="activities" data-role="listview" data-filter="true">
-	<h2><% if @user != current_user %><%= @user.first_name %>&#39;s feed<% else %>Your feed <%= link_to "Post a New Status", new_status_path, class: "btn btn-primary" %><hr /><% end %></h2>
-<% if @user == current_user %>
-	
-<% end %>
+	<h2>
+		<% if (@user && @user == current_user) %>
+		Recent activity<br />
+		<%= link_to "Post a New Status", new_status_path, class: "btn btn-primary" %>
+		<% else %>
+		Recent activity
+		<% end %>
+	</h2>
+		
+
 <% @activities.reverse.each do |activity| %>
 	
 		<% if activity.targetable %>
@@ -26,7 +31,7 @@
 	
 <% end %>
 </ul>
-
+<% if @activity %>
 <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
 	<% @activities.each do |activity| %>
     <div class="slides"></div>
@@ -38,7 +43,9 @@
     <ol class="indicator"></ol>
     <% end %>
 </div>
+<% end %>
 
+<% if @activity %>
 <script>
   document.getElementById('links').onclick = function (event) {
       event = event || window.event;
@@ -50,3 +57,4 @@
       blueimp.Gallery(links, options);
   };
 </script>
+<% end %>

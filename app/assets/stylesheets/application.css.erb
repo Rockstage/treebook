@@ -98,7 +98,7 @@ div.dark-bg {
 	height: 100%;
 	left: 0;
 	top: 0;
-	z-index: 10000;
+	z-index: 1030;
 	background-color: rgba(243,243,243,0.95);
 }
 
@@ -118,13 +118,21 @@ div.dark-bg {
 
 
 #container {
+	position: relative;
+	z-index: 5;
 	padding-top: 40px;
-	margin-left: 11%;
-	/* height: 95vmin; */
+	padding-left: 11%;
+	height: 95vmin;
 }
 
 #wrapper {
+	
+	padding: 15px 15px 0 0;
+	z-index: 5 !important;
+}
 
+
+#wrapper-profile {
 	padding: 15px 15px 0 0;
 }
 
@@ -140,6 +148,10 @@ div.dark-bg {
 	background-image: url('header_menu_bg.png') !important;
 	background-repeat: no-repeat;
 	background-position: center;
+}
+
+.navbar {
+	z-index: 1030;
 }
 
 .navbar .nav > li > a {
@@ -165,6 +177,7 @@ div.dark-bg {
 	right: 0;
 	bottom: 0;
 	left: 0;
+	z-index: 6 !important;
 }
 
 .horizontalContent > div {
@@ -176,7 +189,7 @@ div.dark-bg {
 
 #background {
 
-	width: 95%;
+	width: 90%;
 	z-index: -1;
 	position: fixed;
 	left: 0;
@@ -215,7 +228,7 @@ div.dark-bg {
 }
 
 #parallax #foreground {
-	left: 72.5%;
+	left: 72%;
 	-webkit-transition: left .5s;
 	-moz-transition: left .5s;
 	transition: left .5s;
@@ -230,7 +243,10 @@ div.dark-bg {
 
 .horizontalContent .page-header {
 	position: absolute;
-	left: 11%;
+}
+
+.page-header {
+	padding-left: 11%;
 }
 
 /* SIDEBAR MENU */
@@ -239,7 +255,7 @@ div.dark-bg {
 	width: 10%;
 	*width: 9.994680851063829;
 	margin-top: 6.5%;
-	z-index: 5;
+	z-index: 1030 !important;
 }
 
 #sidebar > * {
@@ -332,16 +348,21 @@ ul.breadcrumb {
 }
 
 #header ul.nav li a {
-	padding: 18px 15px 2px !important;
+	padding: 18px 7px 2px !important;
 }
 
-div.navbar * {
-	color: rgb(235,235,235) !important;
+.navbar-inverse .brand, .navbar-inverse .nav > li > a {
+	color: rgb(235,235,235);
+}
+
+.blue-link {
+	color: #00ccff !important;
 }
 
 blockquote {
 	border-left: 5px solid rgb(230,230,230);
 }
+
 
 .modal-fullscreen {
 	position: fixed;
@@ -427,7 +448,7 @@ blockquote {
 
 .full-screen-video {
 	position: fixed;
-	z-index: -99;
+
 	top: 0;
 	left: 0;
 	min-width: 100%;
