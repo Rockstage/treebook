@@ -15,6 +15,7 @@ gem 'select2-rails'
 gem 'paperclip'
 gem 'twitter-bootstrap-rails'
 gem 'rails-ajax'
+gem 'jquery_mobile_rails'
 
 group :test do
 	gem 'shoulda'
