@@ -14,8 +14,8 @@ class ActivitiesController < ApplicationController
     @activities = Activity.for_user(current_user, params)
     respond_with @activities
     # Ensures that menus get updated when a user logs in since activities#index is root
-    refresh_dom_with_partial('div#header', 'navbar')
-    refresh_dom_with_partial('section#sidebar', 'sidebar')
+    # refresh_dom_with_partial('div#header', 'navbar')
+    # refresh_dom_with_partial('section#sidebar', 'sidebar')
     # Also refresh the Flow
   end
 end

@@ -222,12 +222,14 @@ textarea {
 }
 
 body {
+  /*
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
   color: #333333;
   background-color: #ffffff;
+  */
 }
 
 a {
@@ -738,10 +740,9 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 10px 0;
+
   font-family: inherit;
-  font-weight: bold;
-  line-height: 20px;
+  line-height: 18px;
   color: inherit;
   text-rendering: optimizelegibility;
 }
@@ -760,7 +761,7 @@ h6 small {
 h1,
 h2,
 h3 {
-  line-height: 40px;
+  line-height: 18px;
 }
 
 h1 {

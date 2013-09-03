@@ -12,14 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//
-// RailsAjax
-//= require jquery.history
-//= require jquery.rails-ajax
-//= require RailsAjax-Config
-//
+//= require jquery.mobile
 //= require js-routes
-//= require select2
 //= require_tree .
 
 window.loadedActivities = [];

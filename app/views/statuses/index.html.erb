@@ -1,12 +1,10 @@
-<script>
-  $.getScript("<%= asset_path('statuses.js.coffee') %>");
-</script>
+<% content_for :heading do %>
+  <a href="#sidebar" data-position="inline" class="ui-btn-left" data-icon="home">Menu</a>
+  <h1>All Statuses</h1>
+  <a href="<%= new_status_path %>" class="button" data-icon="star" data-theme="b">New Status</a>
+<% end %>
 
-<% if user_signed_in? %>
-
-<%= render :partial => "form", :locals => { :statuses => @status } %>
-
-
+<ul data-role="listview" data-inset="true" data-filter="true">
 <% @statuses.each do |status| %>
   <% if can_display_status?(status) %>
     <div class="status media">
@@ -16,10 +14,10 @@
         <p><%= status.content %></p>
         <%= status_document_link(status) %>
         <div class="meta">
-            <%= link_to time_ago_in_words(status.created_at) + " ago", status %> 
+            <%= link_to time_ago_in_words(status.created_at) + " ago", status, data: { transition: 'slide' } %> 
             <% if signed_in? && current_user == status.user %>
             <span class="admin">
-              | <%= link_to "Edit", edit_status_path(status) %> | 
+              | <%= link_to "Edit", edit_status_path(status), data: { transition: 'flip' } %> | 
               <%= link_to "Delete", status, method: :delete, data: { confirm: "Are you sure your want to delete this status?"} %>
             </span>
             <% end %>
@@ -28,7 +26,11 @@
     </div>
   <% end %>
 <% end %>
-<% else %>
+</ul>
+
+<% if false %>
+<%= render :partial => "form", :locals => { :statuses => @status } %>
+
 <div onload="script(twitter-wjs);">
 <a class="twitter-timeline" href="https://twitter.com/RockStageOrg" data-widget-id="358720631455498243">Tweets by @RockStageOrg</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>

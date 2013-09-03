@@ -11,10 +11,7 @@ gem 'rename'
 gem 'state_machine'
 gem 'draper', '~> 1.0'
 gem "js-routes"
-gem 'select2-rails'
 gem 'paperclip'
-gem 'twitter-bootstrap-rails'
-gem 'rails-ajax'
 gem 'jquery_mobile_rails'
 
 group :test do

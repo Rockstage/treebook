@@ -10,10 +10,10 @@
  *
  *= require fonts
  *= require global_reset
- *= require bootstrap
+ *= require jquery.mobile
  *= require_self
- *= require select2
  *= require_tree .
+
  */
 
 html {
@@ -21,13 +21,13 @@ html {
 }
 
 body {
-	/* background: #F4F4F4; */
+	
 	
 	color: #0c0c0c;
-	
 	font-family: GOTHIC, tahoma, sans-serif;
 	font-smooth: always;
 	-webkit-font-smoothing: subpixel-antialiased;
+	/* background: #F4F4F4; */
 	/*
 	background-image: url('<%= asset_path 'joker.gif' %>');
 	background-repeat: no-repeat;
@@ -43,14 +43,21 @@ body {
 
 h1, h2, h3, h4, h5, p {
 	font-weight: lighter;
-	margin: 0;
 }
 
-ul {
-	list-style: none;
-}
 
 /* -------- GLOBAL FIXTURES ------- */
+
+.center-contents * {
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.bottom-spacing {
+	margin-bottom: 20px;
+}
+
 
 textarea.large-text {
 	height: 2em;
@@ -113,35 +120,6 @@ div.dark-bg {
 
 
 
-
-
-
-
-#container {
-	position: relative;
-	z-index: 5;
-	padding-top: 40px;
-	padding-left: 11%;
-	height: 95vmin;
-}
-
-#wrapper {
-	
-	padding: 15px 15px 0 0;
-	z-index: 5 !important;
-}
-
-
-#wrapper-profile {
-	padding: 15px 15px 0 0;
-}
-
-*:hover,
-*:focus {
-	-webkit-transition: 0.2s;
-	transition: 0.2s;
-}
-
 /* -------------------------- HEADER MENU --------------------- */
 
 .header_menu {
@@ -150,27 +128,9 @@ div.dark-bg {
 	background-position: center;
 }
 
-.navbar {
-	z-index: 1030;
-}
-
-.navbar .nav > li > a {
-	
-}
-
-/* -------------------------- MUSIC PLAYER --------------------- */
-
-#player {
-	position: fixed;
-	width: 30%;
-	left: 35%;
-	right: 35%;
-	top: 0;
-	z-index: 9999;
-}
-
 /* -------------------------- YIELD BEGINS HERE --------------------- */
 
+/*
 .horizontalContent {
 	position: absolute;
 	top: 40px;
@@ -199,7 +159,7 @@ div.dark-bg {
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-	/* -webkit-transform: translate3d(-540px, 0px, 0px); */
+	-webkit-transform: translate3d(-540px, 0px, 0px);
 	-webkit-transition: opacity .5s;
 	-webkit-transition-delay: 0s;
 	-webkit-transition-duration: 0.5s;
@@ -214,8 +174,10 @@ div.dark-bg {
 	left: 0;
 	background-color: #F0F0F0;
 }
+*/
 
 /* This part makes it all work */
+/*
 #foreground > * {
 	border-sizing: border-box;
 	float: left;
@@ -248,8 +210,10 @@ div.dark-bg {
 .page-header {
 	padding-left: 11%;
 }
+*/
 
 /* SIDEBAR MENU */
+/*
 #sidebar {
 	position: fixed;
 	width: 10%;
@@ -272,7 +236,6 @@ div.dark-bg {
 
 #sidebar > .navbar-inner {
 	padding: 5px;
-	/*
 	margin-right: 1%;
 	background: rgb(47,48,50);
 	border: 1px solid rgba(0, 204, 255, 0.5);
@@ -282,8 +245,6 @@ div.dark-bg {
 	  background-image: -o-linear-gradient(top, #282828, #5f5f64);
 	  background-image: linear-gradient(to bottom, #282828, #5f5f64);
 	  background-repeat: repeat-x;
-    */
-
 }
 #sidebar ul li {
 	line-height: 30px;
@@ -298,7 +259,6 @@ div.dark-bg {
 	font-size: 1.4em;
 	border-bottom: 1px solid rgb(230,230,230);
 	border-top: 1px solid rgb(240,240,240);
-	/* color: rgb(50,50,50); */
 	color: rgb(50,50,50);
 }
 
@@ -316,7 +276,7 @@ div.dark-bg {
 #profile_activities {
 	width: 400px;
 }
-
+*/
 
 /* GLOBAL STUFF */
 
@@ -326,11 +286,11 @@ div.dark-bg {
 
 
 /* BOOTSTRAP FIXES */
-
+/*
 .glyphw {
     background-image: url(/assets/glyphicons-halflings.png);
 }
-
+*/
 .media > a > img {
 	margin-right: 10px;
 }
@@ -406,7 +366,7 @@ blockquote {
 
 
 /* ------ BROWSE PAGE ----- */
-
+/*
 .browse-page {
 	width: 700px;
 	margin-left: auto;
@@ -443,21 +403,11 @@ blockquote {
 	padding: 60px;
 	padding-bottom: 30px;
 }
-
-/* ----- VIDEO TAG ------ */
-
-.full-screen-video {
-	position: fixed;
-
-	top: 0;
-	left: 0;
-	min-width: 100%;
-	min-height: 100%;
-}
+*/
 
 
 /* ----- MUSIC TAG ----- */
-
+/*
 audio {
 	background: none !important;
 	margin-top: 5px;
@@ -469,11 +419,9 @@ input[type="range"]::-webkit-slider-thumb, input[type="range"]::-webkit-media-sl
 	max-height: 15px;
 	max-width: 2px !important;
 	background-color: #00ccff;
-	/*
 	background-image: url('play-pause.png');
 	background-repeat: no-repeat;
 	background-position: center;
-	*/
 }
 
 
@@ -506,13 +454,13 @@ audio::-webkit-media-controls-volume-slider {
 	-moz-box-shadow: #000 0 0 6px;
 	box-shadow: #000 0 0 6px;
 	overflow-x: hidden;
-/*	overflow-y: scroll; */
 }
 
 #popup-playlist h2 {
 	padding: 10px;
 	border-bottom: 1px solid #5f5f64;
 }
+*/
 
 
 

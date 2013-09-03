@@ -2,7 +2,7 @@ Rockstage::Application.routes.draw do
 
   resources :activities, only: [:index]
   
-  root to: 'activities#index'
+  root to: 'statuses#index'
 
   get "clock/index"
 

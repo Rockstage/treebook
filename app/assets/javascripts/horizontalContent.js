@@ -1,3 +1,4 @@
+/*
 $(function() {
 
    $("#parallax").mousewheel(function(event, delta) {
@@ -9,3 +10,4 @@ $(function() {
    });
 
 });
+*/
