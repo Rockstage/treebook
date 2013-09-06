@@ -1,7 +1,6 @@
-<%= render_breadcrumbs %>
-<h1>Editing album</h1>
+<% content_for :heading do %>
+	<a href="#" data-role="button" data-rel="back" data-direction="reverse" data-icon="back">Back</a>
+	<h1>Editing '<%= @album.title %>' album</h1>
+<% end %>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @album %> |
-<%= link_to 'Back', albums_path %>

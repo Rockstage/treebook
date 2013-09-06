@@ -43,16 +43,18 @@ class StatusesController < ApplicationController
   def create
     @status = current_user.statuses.new(params[:status])
 
-    respond_to do |format|
+    # respond_to do |format|
       if @status.save
         current_user.create_activity(@status, 'created')
-        format.html { redirect_to profile_path(current_user), notice: 'Status was successfully created.' }
-        format.json { render json: @status, status: :created, location: @status }
+        redirect_to statuses_path
+        # format.html { redirect_to profile_path(current_user), notice: 'Status was successfully created.' }
+        # format.json { render json: @status, status: :created, location: @status }
       else
-        format.html { render action: "new" }
-        format.json { render json: @status.errors, status: :unprocessable_entity }
+        # format.html { render action: "new" }
+        redirect_to new_status_path
+        # format.json { render json: @status.errors, status: :unprocessable_entity }
       end
-    end
+    # end
   end
 
   # PUT /statuses/1

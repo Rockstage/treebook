@@ -1,5 +1,8 @@
-
-
+<% content_for :heading do %>
+  <a href="#sidebar" data-position="inline" class="ui-btn-left" data-icon="home">Menu</a>
+  <h1>All Statuses</h1>
+  <a href="<%= new_user_registration_path %>" class="button" data-icon="star" data-theme="b">Register now!</a>
+<% end %>
 <div class="row">
 	<div class="span5">
 	<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class: "well"}) do |f| %>
@@ -13,7 +16,7 @@
 	    <div><%= f.input :remember_me, as: :boolean %></div>
 	  <% end -%>
 
-	  <div><%= f.button :submit, "Sign in", class: 'btn btn-primary' %><%= render "devise/shared/links" %></div>
+	  <div><%= f.button :submit, "Sign in", class: 'btn btn-primary', data: { role: 'button', inline: 'true' } %><%= render "devise/shared/links" %></div>
 
 	</fieldset>
 	<% end %>

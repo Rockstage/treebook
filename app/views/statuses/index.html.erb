@@ -8,9 +8,9 @@
 <% @statuses.each do |status| %>
   <% if can_display_status?(status) %>
     <div class="status media">
-      <%= avatar_profile_link status.user, { class: "pull-left" }, class: "media-object" %>
+      <%= avatar_profile_link status.user, { class: "pull-left" }, class: "media-object", "data-transition" => "slidedown" %>
       <div class="media-body">
-        <h4 class="media-heading"><%= status.user.full_name %></h4>
+        <h4 class="media-heading"><%= link_to status.user.full_name, profile_path(status.user), "data-transition" => "slidedown" %></h4>
         <p><%= status.content %></p>
         <%= status_document_link(status) %>
         <div class="meta">

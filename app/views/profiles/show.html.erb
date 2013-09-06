@@ -1,3 +1,56 @@
+<% content_for :heading do %>
+	<a href="#sidebar" data-position="inline" class="ui-btn-left" data-icon="home">Menu</a>
+	<h1>Profile page</h1>
+	<a href="#notifications" data-role="button" data-position="inline" data-icon="star">Notifications</a>
+<% end %>
+
+<section id="profile-widget">
+	<div class="navbar-inner">
+		<% if user_signed_in? %>
+		<header id="profile-widget-header" class="center-contents bottom-spacing">
+        <% if @user.avatar? %>
+            <%= link_to(image_tag(@user.avatar(:thumb)), profile_path(@user), class: 'smooth-image') %>
+        <% else %>
+	        <%= link_to(image_tag(@user.default_avatar_menu), profile_path(@user), class: 'smooth-image') %>
+        <% end %>
+		<p><%= @user.full_name %></p>
+		</header>
+		<nav>
+			<ul id="profile-widget-links">
+				<li>Female</li>
+				<li>21 years old</li>
+				<li>PA, US</li>
+				<li><%= link_to "+ Friend", "#" %></li>
+				<li></li>
+			</ul>
+		</nav>
+
+	<% end %>
+	</div>
+</section>
+
+
+<div id="profile-page">
+	<h1><%= @user.full_name %></h1>
+
+</div>
+
+<% content_for :footer do %>
+	<div data-role="footer" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><%= link_to "Stream", profile_path(@user), class: 'ui-btn-active' %></li>
+				<li><%= link_to "About", profile_path(@user) %></li>
+				<li><%= link_to "Gallery", albums_path(@user) %></li>
+			</ul>
+		</div>
+	</div>
+<% end %>
+
+
+
+
+<% if false %>
 <div class="horizontalContent">
 	<div id="parallax">
 		<% if @user.gravatar_url %>
@@ -32,7 +85,9 @@
 		</div>
 	</div>
 </div>
+<% end %>
 
+<% if false %>
 <!-- dub due to ajax -->
 <script>
 $(function() {
@@ -42,3 +97,4 @@ $(function() {
    });
 });
 </script>
+<% end %>

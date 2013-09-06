@@ -1,4 +1,7 @@
-<%= render_breadcrumbs %>
+<% content_for :heading do %>
+  <a href="#" data-role="button" data-rel="back" data-direction="reverse" data-icon="back">Back</a>
+  <h1><%= @album.title %> &raquo; Editing <%= @picture.caption %> &laquo;</h1>
+<% end %>
 <h1>Editing picture</h1>
 
 <p>Hint: <em>Leave it as "no file chosen" if you do not want to change the picture</em></p>

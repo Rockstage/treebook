@@ -51,11 +51,14 @@ var renderActivities = function() {
 		activities: window.loadedActivities, 
 		count: window.loadedActivities.length
 	});
-	var $activityFeedLink = $('li#activity-feed');
+	var $activityFeedLink = $('ul#activity-feed');
+	// var $activityFeedList = $(ul#notifications);
 
-	$activityFeedLink.addClass('dropdown');
+	// $activityFeedLink.html(html);
 	$activityFeedLink.html(html);
-	$activityFeedLink.find('a.dropdown-toggle').dropdown();
+	// $activityFeedLink.addClass('dropdown');
+	// $activityFeedLink.html(html);
+	// $activityFeedLink.find('a.dropdown-toggle').dropdown();
 }
 
 
@@ -104,7 +107,8 @@ Handlebars.registerHelper('activityLink', function() {
       break;
   }
 	
-	html = "<li><a href='" + path + "'>" + this.user_name + " " + this.action + " a " + linkText + ".</a></li>";
+	// html = "<li class='notificationItem'><a class='notificationLink' href='" + path + "'>" + this.user_name + " " + this.action + " a " + linkText + ".</a></li>";
+	html = "<li data-corners='false' data-shadow='false' data-iconshadow='true' data-wrapperels='div' data-icon='arrow-r' data-iconpos='right' data-theme='a' class='ui-btn ui-btn-up-a ui-btn-icon-right ui-li-has-arrow ui-li'><div class='ui-btn-inner ui-li'><div class='ui-btn-text'><a href='" + path + "' data-transition='slide' class='ui-link-inherit notificationLink'>" + this.user_name + " " + this.action + " a " + linkText + ".</a></div><span class='ui-icon ui-icon-arrow-r ui-icon-shadow'>&nbsp;</span></div></li>";
 	return new Handlebars.SafeString( html );
 });
 

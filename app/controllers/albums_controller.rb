@@ -2,7 +2,7 @@ class AlbumsController < ApplicationController
   before_filter :authenticate_user!, only: [:create, :new, :update, :edit, :destroy]
   before_filter :find_user
   before_filter :find_album, only: [:edit, :update, :destroy]
-  before_filter :add_breadcrumbs
+  # before_filter :add_breadcrumbs
   before_filter :ensure_proper_user, only: [:edit, :new, :create, :update, :destroy]
 
   # GET /albums
@@ -36,7 +36,7 @@ class AlbumsController < ApplicationController
   # GET /albums/1/edit
   def edit
     # @album = Album.find(params[:id])
-    add_breadcrumb "Editing Album"
+    # add_breadcrumb "Editing Album"
   end
 
   # POST /albums
@@ -104,10 +104,10 @@ class AlbumsController < ApplicationController
     end
   end
 
-  def add_breadcrumbs
-    add_breadcrumb @user, profile_path(@user)
-    add_breadcrumb "Albums", albums_path
-  end
+  # def add_breadcrumbs
+  #   add_breadcrumb @user, profile_path(@user)
+  #   add_breadcrumb "Albums", albums_path
+  # end
 
   def find_user
     @user = User.find_by_profile_name(params[:profile_name])
