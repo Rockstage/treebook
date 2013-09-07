@@ -2,10 +2,16 @@
   <a href="#" data-role="button" data-rel="back" data-direction="reverse" data-icon="back">Back</a>
   <h1><%= @album.title %> &raquo; Editing <%= @picture.caption %> &laquo;</h1>
 <% end %>
-<h1>Editing picture</h1>
 
 <p>Hint: <em>Leave it as "no file chosen" if you do not want to change the picture</em></p>
-<%= render 'form' %>
+<%= simple_form_for([@album, @picture], html: { class: 'form-horizontal', "data-ajax" => "false" }) do |f| %>
 
-<%= link_to 'Show', album_picture_path(@album, @picture) %> |
-<%= link_to 'Back', album_pictures_path(@album) %>
+  <div class="form-inputs">
+    <%= f.input :asset, as: :file %>
+    <%= bootstrap_paperclip_picture f, :asset %>
+    <%= f.input :caption, required: true, input_html: { class: 'input-xxlarge' } %>
+    <%= f.input :description, input_html: { class: 'input-xxlarge', rows: 4 } %>
+  </div>
+
+  <button type="submit" data-theme="b" data-position="inline" data-icon="check">Change Picture</button>
+<% end %>

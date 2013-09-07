@@ -2,8 +2,5 @@
   <a href="#" data-role="button" data-rel="back" data-direction="reverse" data-icon="back">Back</a>
   <h1> <%= @album.title %> &raquo; Upload picture</h1>
 <% end %>
-<h1>New picture</h1>
-
+<p>Hint: <em>Uploading and Editing pictures may cause music playback interruptions</em>.</p>
 <%= render 'form' %>
-
-<%= link_to 'Back', album_pictures_path(@album) %>

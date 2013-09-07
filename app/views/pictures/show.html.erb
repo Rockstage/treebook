@@ -1,5 +1,5 @@
 <% content_for :heading do %>
-  <a href="#" data-role="button" data-rel="back" data-direction="reverse" data-icon="back">Back</a>
+  <a href="<%= album_pictures_path(@user, @album) %>" data-role="button" data-direction="reverse" data-icon="back">Back</a>
   <h1><%= @album.title %> &raquo; <%= @picture.caption %> &laquo;</h1>
   <% if signed_in? && current_user == @user %>
   <div data-role="navbar">

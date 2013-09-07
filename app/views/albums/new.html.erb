@@ -2,8 +2,8 @@
 	<a href="#" data-role="button" data-rel="back" data-direction="reverse" data-icon="back">Back</a>
 	<h1>New album</h1>
 <% end %>
-<h1>New album</h1>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', albums_path %>
+<%= simple_form_for(@album) do |f| %>
+<%= f.input :title, input_html: { rows: 1, class: 'input-xxlarge large-text' } %>
+<button type="submit" data-theme="b" data-position="inline" data-icon="check">Create Album</submit>
+<% end %>

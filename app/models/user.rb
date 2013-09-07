@@ -57,6 +57,9 @@ class User < ActiveRecord::Base
     large: "800x800>", medium: "300x200>", small: "260x180>", thumb: "80x80#"
   }
 
+  # Deletes all associated objects - statuses, albums, pictures
+  after_destroy :delete_associations
+
   def default_avatar_feed
     "Avatar-default-thumb.png"
   end
@@ -112,6 +115,15 @@ class User < ActiveRecord::Base
     activity.save
     # The create_activity method returns the actual activity instance
     activity
+  end
+
+  private
+
+  def delete_associations
+    self.statuses.destroy_all
+    self.albums.destroy_all
+    self.activities.destroy_all
+    self.user_friendships.destroy_all
   end
   
 end

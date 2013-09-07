@@ -97,7 +97,7 @@ class PicturesController < ApplicationController
 
     respond_to do |format|
       #current_user.create_activity(@picture, 'deleted')
-      format.html { redirect_to album_pictures_url(@album) }
+      format.html { redirect_to album_pictures_url(@album), notise: 'Picture was successfully removed.' }
       format.json { head :no_content }
     end
   end

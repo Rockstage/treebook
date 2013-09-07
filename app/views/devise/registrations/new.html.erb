@@ -1,8 +1,13 @@
+<% content_for :heading do %>
+  <a href="#sidebar" data-position="inline" class="ui-btn-left" data-icon="home">Menu</a>
+  <h1>Register free and easy!</h1>
+<% end %>
 
-<div class="row">
-    <h2>Welcome to a world united by music</h2>
+<div id="registration_screen">
+<div class="content-fluid" style="width: 1000px; margin: auto; padding-top: 15%;">
+<div class="row-fluid">
 
-    <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: {class: "well"}) do |f| %>
+    <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: {class: "registration_form"}) do |f| %>
       <%= devise_error_messages! %>
 
       <fieldset>
@@ -29,8 +34,7 @@
           <p>Support.</p>
           <p>Experience<br />a new world.</p>
         </div>
-
-        <div class="span3 offset9"><%= f.button :submit, "Sign up", class: 'btn btn-success btn-large' %></div>
+        <div class="span3"><hr /><button type="submit" data-theme="b" data-position="inline" data-icon="check">Sign up for free!</button></div>
       </fieldset>
 
     <% end %>
@@ -38,4 +42,6 @@
         <br />
         <%= render "devise/shared/links" %>
       </div>
+</div>
+</div>
 </div>

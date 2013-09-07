@@ -10,7 +10,7 @@ module AlbumsHelper
 
 	def album_thumbnail(album)
 		if album.pictures.count > 0
-			album.pictures.first.asset.url(:medium)
+			album.pictures.first.asset.url(:large)
 		else
 			"http://placekitten.com/260/180"
 		end

@@ -1,6 +1,6 @@
 <% content_for :heading do %>
   <a href="#sidebar" data-position="inline" class="ui-btn-left" data-icon="home">Menu</a>
-  <h1>All Statuses</h1>
+  <h1>Welcome back to Rockstage, Sign In!</h1>
   <a href="<%= new_user_registration_path %>" class="button" data-icon="star" data-theme="b">Register now!</a>
 <% end %>
 <div class="row">
@@ -13,10 +13,13 @@
 		<%= f.input :password, input_html: { class: 'input-xlarge' } %>
 
 	  <% if devise_mapping.rememberable? -%>
-	    <div><%= f.input :remember_me, as: :boolean %></div>
+	    <div><%= f.input :remember_me, as: :boolean, data: { role: 'none' } %></div>
 	  <% end -%>
 
-	  <div><%= f.button :submit, "Sign in", class: 'btn btn-primary', data: { role: 'button', inline: 'true' } %><%= render "devise/shared/links" %></div>
+	  <div>
+	  	<button type="submit" data-theme="b" data-position="inline" data-icon="check">Sign in!</button>
+	  	<%= render "devise/shared/links" %>
+	  </div>
 
 	</fieldset>
 	<% end %>

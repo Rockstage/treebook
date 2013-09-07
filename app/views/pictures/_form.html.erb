@@ -1,5 +1,4 @@
-<%= simple_form_for([@album, @picture], html: { class: 'form-horizontal' }) do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for([@album, @picture], html: { class: 'form-horizontal', "data-ajax" => "false" }) do |f| %>
 
   <div class="form-inputs">
     <%= f.input :asset, as: :file %>
@@ -8,7 +7,5 @@
     <%= f.input :description, input_html: { class: 'input-xxlarge', rows: 4 } %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <button type="submit" data-theme="b" data-position="inline" data-icon="check">Upload Picture</submit>
 <% end %>

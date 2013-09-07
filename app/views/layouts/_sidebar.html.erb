@@ -17,6 +17,9 @@
 		<li><a href="#browsePage" role="button" class="" data-toggle="modal">Browse</a></li>
 		<li><%= link_to "Charts", profile_path(current_user) %></li>
 		<li><%= link_to "Discover", profile_path(current_user) %></li>
+		<li></li>
+		<li><%= link_to "Edit Profile", edit_user_registration_path(current_user) %></li>
+		<li><%= link_to "Log out", logout_path(current_user) %></li>
 	<% else %>
 		<li><%= link_to "Home", login_path %></li>
 		<li><%= link_to "Browse", login_path %></li>

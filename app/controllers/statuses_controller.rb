@@ -25,6 +25,18 @@ class StatusesController < ApplicationController
   # GET /statuses/new.json
   def new
     @status = Status.new
+    # @status.build_document
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @status }
+    end
+  end
+
+  # A seperate form is required due to the need to set data-ajax to false
+  # We do not want to interrupt the music on each new post
+  def new_with_upload
+    @status = Status.new
     @status.build_document
 
     respond_to do |format|
@@ -43,18 +55,18 @@ class StatusesController < ApplicationController
   def create
     @status = current_user.statuses.new(params[:status])
 
-    # respond_to do |format|
+    respond_to do |format|
       if @status.save
         current_user.create_activity(@status, 'created')
-        redirect_to statuses_path
-        # format.html { redirect_to profile_path(current_user), notice: 'Status was successfully created.' }
-        # format.json { render json: @status, status: :created, location: @status }
+        # redirect_to statuses_path
+        format.html { redirect_to statuses_path, notice: 'Status was successfully created.' }
+        format.json { render json: @status, status: :created, location: @status }
       else
-        # format.html { render action: "new" }
-        redirect_to new_status_path
-        # format.json { render json: @status.errors, status: :unprocessable_entity }
+        # redirect_to new_status_path
+        format.html { render action: "new" }
+        format.json { render json: @status.errors, status: :unprocessable_entity }
       end
-    # end
+    end
   end
 
   # PUT /statuses/1
@@ -74,8 +86,9 @@ class StatusesController < ApplicationController
       end
     end
 
+    # redirect_to statuses_path
     respond_to do |format|
-      format.html { redirect_to profile_path(current_user), notice: 'Status was successfully updated.' }
+      format.html { redirect_to statuses_path, notice: 'Status was successfully updated.' }
       format.json { head :no_content }
     end
 
@@ -95,9 +108,10 @@ class StatusesController < ApplicationController
     @status = Status.find(params[:id])
     @status.destroy
 
+    # redirect_to statuses_path
     respond_to do |format|
-      format.html { redirect_to profile_path(current_user) }
-      format.json { head :no_content }
+     format.html { redirect_to statuses_path, notice: 'Status was successfully removed.' }
+     format.json { head :no_content }
     end
   end
 
@@ -106,6 +120,7 @@ class StatusesController < ApplicationController
 
   def statuses_dashboard
     @statuses = Status.order('created_at desc').all
+
 
     @status ||= Status.new
     @status.build_document

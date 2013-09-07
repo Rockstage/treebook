@@ -9,7 +9,7 @@
 		<% if user_signed_in? %>
 		<header id="profile-widget-header" class="center-contents bottom-spacing">
         <% if @user.avatar? %>
-            <%= link_to(image_tag(@user.avatar(:thumb)), profile_path(@user), class: 'smooth-image') %>
+            <%= link_to(image_tag(@user.avatar(:small)), profile_path(@user), class: 'smooth-image') %>
         <% else %>
 	        <%= link_to(image_tag(@user.default_avatar_menu), profile_path(@user), class: 'smooth-image') %>
         <% end %>
@@ -22,6 +22,17 @@
 				<li>PA, US</li>
 				<li><%= link_to "+ Friend", "#" %></li>
 				<li></li>
+				<% if signed_in? %>
+				<span id="friend-status">
+					<% if current_user.friends.include?(@user) || current_user.pending_friends.include?(@user) %>
+					<%= link_to "Edit Friendship", edit_user_friendship_path(friend_id: @user), class: 'btn' %>
+					<% else %>
+						<% if current_user != @user %>
+							<%= link_to "Add Friend", new_user_friendship_path(friend_id: @user), class: 'btn', id: 'add-friendship', data: { friend_id: @user.to_param } %>
+						<% end %>
+					<% end %>
+				</span>
+			<% end %>
 			</ul>
 		</nav>
 
@@ -40,13 +51,12 @@
 		<div data-role="navbar">
 			<ul>
 				<li><%= link_to "Stream", profile_path(@user), class: 'ui-btn-active' %></li>
-				<li><%= link_to "About", profile_path(@user) %></li>
+				<li><%= link_to "About", about_me_path(@user), "data-transition" => "flip" %></li>
 				<li><%= link_to "Gallery", albums_path(@user) %></li>
 			</ul>
 		</div>
 	</div>
 <% end %>
-
 
 
 

@@ -41,9 +41,12 @@ Rockstage::Application.routes.draw do
   end
 
   get '/:id', to: 'profiles#show', as: 'profile'
+  get '/:id/about', to: 'profiles#about_me', as: 'about_me'
 
   resources :breaking_news
   match ':profile_name/albums/:album_id/slideshow', to: 'pictures#slideshow', as: 'slideshow'
+  match 'statuses/new/new_with_upload', :controller => 'statuses', :action => 'new_with_upload', as: 'new_status_with_upload'
+  # get ':profile_name/about', to: 'profiles#about_me', as: 'about_me'
 
 
   # The priority is based upon order of creation:

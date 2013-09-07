@@ -1,0 +1,73 @@
+.grid-about * {
+	vertical-align: top;
+	text-align: left;
+}
+.grid-music * {
+	vertical-align: top;
+	text-align: right;
+}
+.grid-character * {
+	vertical-align: text-bottom;
+	text-align: left;
+}
+.grid-interests * {
+	vertical-align: text-bottom;
+	text-align: right;
+}
+
+.grid-about {
+	position: absolute;
+	width: 50%;
+	height: 50%;
+	top: 0;
+	left: 0;
+	text-align: left;
+}
+
+.grid-music {
+	position: absolute;
+	width: 50%;
+	height: 50%;
+	top: 0;
+	right: 0;
+
+}
+
+.grid-character {
+	position: absolute;
+	width: 50%;
+	height: 50%;
+	bottom: 0;
+	left: 0;
+
+}
+
+.grid-interests {
+	position: absolute;
+	width: 50%;
+	height: 50%;
+	bottom: 0;
+	right: 0;
+}
+
+.grid-avatar {
+	position: absolute;
+	width: 20%;
+	height: 20%;
+	top: 40%;
+	left: 40%;
+	right: 40%;
+	bottom: 40%;
+}
+
+.grid-avatar img {
+	border-radius: 100%;
+}
+
+
+
+
+
+
+
+

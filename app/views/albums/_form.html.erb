@@ -2,10 +2,10 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :title %>
+    <%= f.input :title, input_html: { rows: 1, class: 'input-xxlarge large-text' } %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <button type="submit" data-theme="b" data-position="inline" data-icon="check">Create Album</submit>
   </div>
 <% end %>

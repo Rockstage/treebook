@@ -3,4 +3,7 @@
 	<h1>Editing '<%= @album.title %>' album</h1>
 <% end %>
 
-<%= render 'form' %>
+<%= simple_form_for(@album) do |f| %>
+<%= f.input :title, input_html: { rows: 1, class: 'input-xxlarge large-text' } %>
+<button type="submit" data-theme="b" data-position="inline" data-icon="check">Edit Album Title</submit>
+<% end %>

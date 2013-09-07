@@ -47,9 +47,11 @@ class AlbumsController < ApplicationController
     respond_to do |format|
       if @album.save
         # current_user.create_activity(@album, 'created')
+        # redirect_to @album
         format.html { redirect_to @album, notice: 'Album was successfully created.' }
         format.json { render json: @album, status: :created, location: @album }
       else
+        # render action: "new"
         format.html { render action: "new" }
         format.json { render json: @album.errors, status: :unprocessable_entity }
       end
@@ -81,7 +83,7 @@ class AlbumsController < ApplicationController
 
     respond_to do |format|
       #current_user.create_activity(@album, 'deleted')
-      format.html { redirect_to albums_url }
+      format.html { redirect_to albums_path, notice: 'The Album and its pictures were successfully removed.' }
       format.json { head :no_content }
     end
   end

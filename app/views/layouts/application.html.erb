@@ -33,7 +33,7 @@
 		<div id="container" data-role="content">
 			<% flash.each do |type, message| %>
 				<div class="alert <%= flash_class type %>">
-					<button class="close" data-dismiss="alert">x</button>
+					<button data-role="none" class="close" data-dismiss="alert">x</button>
 					<%= message %>
 				</div>
 			<% end %>
