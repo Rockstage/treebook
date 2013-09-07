@@ -6,13 +6,8 @@
 
 <section id="profile-widget">
 	<div class="navbar-inner">
-		<% if user_signed_in? %>
 		<header id="profile-widget-header" class="center-contents bottom-spacing">
-        <% if @user.avatar? %>
-            <%= link_to(image_tag(@user.avatar(:small)), profile_path(@user), class: 'smooth-image') %>
-        <% else %>
-	        <%= link_to(image_tag(@user.default_avatar_menu), profile_path(@user), class: 'smooth-image') %>
-        <% end %>
+        <%= avatar_profile_link @user, {}, "data-transition" => "slidedown" %>
 		<p><%= @user.full_name %></p>
 		</header>
 		<nav>
@@ -20,23 +15,20 @@
 				<li>Female</li>
 				<li>21 years old</li>
 				<li>PA, US</li>
-				<li><%= link_to "+ Friend", "#" %></li>
 				<li></li>
-				<% if signed_in? %>
-				<span id="friend-status">
-					<% if current_user.friends.include?(@user) || current_user.pending_friends.include?(@user) %>
-					<%= link_to "Edit Friendship", edit_user_friendship_path(friend_id: @user), class: 'btn' %>
-					<% else %>
-						<% if current_user != @user %>
-							<%= link_to "Add Friend", new_user_friendship_path(friend_id: @user), class: 'btn', id: 'add-friendship', data: { friend_id: @user.to_param } %>
+				<% if user_signed_in? %>
+					<span id="friend-status">
+						<% if current_user.friends.include?(@user) || current_user.pending_friends.include?(@user) %>
+						<%= link_to "Edit Friendship", edit_user_friendship_path(friend_id: @user), class: 'btn' %>
+						<% else %>
+							<% if current_user != @user %>
+								<%= link_to "Add Friend", new_user_friendship_path(friend_id: @user), class: 'btn', id: 'add-friendship', data: { friend_id: @user.to_param } %>
+							<% end %>
 						<% end %>
-					<% end %>
-				</span>
-			<% end %>
+					</span>
+				<% end %>
 			</ul>
 		</nav>
-
-	<% end %>
 	</div>
 </section>
 

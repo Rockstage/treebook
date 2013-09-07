@@ -3,7 +3,7 @@
   <h1>Editing My Profile</h1>
 <% end %>
 
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, class: 'form-horizontal', "data-ajax" => "false" }) do |f| %>
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { multipart: true, :method => :put, class: 'form-horizontal', "data-ajax" => "false" }) do |f| %>
 
   <fieldset>
     <legend>About Me</legend>
@@ -14,6 +14,7 @@
 
   <fieldset>
     <legend>Profile Picture</legend>
+    <p class="text-center">Avatar must be .jpg / .png / .gif and up to 3mb.</p>
     <%= f.input :avatar, as: :file %>
     <%= bootstrap_paperclip_picture f, :avatar %>
   </fieldset>

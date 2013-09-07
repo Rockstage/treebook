@@ -30,7 +30,7 @@
       <ul class="horizontalGridList" id="album-list">
       <% @pictures.each do |picture| %>
         <li class="list-container">
-          <div class="album-pictures-grid-img" style="background-image: url(<%= picture.asset.url(:large) %>);">
+          <div class="album-pictures-grid-img" style="background-image: url(<%= picture.asset.url(:small) %>);">
             <div class="album-grid-overlay">
                 <a href="<%= album_picture_path(@album, picture) %>" class="album-grid-overlay-link"></a>
             </div>

@@ -1,11 +1,7 @@
 <div id="sidebar-inner">
 	<% if user_signed_in? %>
 	<header id="sidebar-header" class="center-contents bottom-spacing">
-        <% if current_user.avatar? %>
-            <%= link_to(image_tag(current_user.avatar(:medium)), profile_path(current_user), class: 'smooth-image') %>
-        <% else %>
-	        <%= link_to(image_tag(current_user.default_avatar_menu), profile_path(current_user), class: 'smooth-image') %>
-        <% end %>
+        <%= avatar_profile_link current_user, {}, "data-transition" => "slidedown" %>
 		<p><%= current_user.full_name %></p>
 	</header>
 	<% end %>

@@ -54,17 +54,17 @@ class User < ActiveRecord::Base
 
   # If changing styles, also change in picture model and do the rake task to clean up
   has_attached_file :avatar, styles: {
-    large: "800x800>", medium: "300x200>", small: "260x180>", thumb: "80x80#"
+    thumb: "80x80#", avatar: "300x300#"
   }
+  
+  validates_attachment_size :asset, :less_than => 3.megabytes
+  validates_attachment_content_type :asset, :content_type => ['image/jpeg', 'image/png', 'image/gif']
 
   # Deletes all associated objects - statuses, albums, pictures
   after_destroy :delete_associations
 
-  def default_avatar_feed
-    "Avatar-default-thumb.png"
-  end
-  def default_avatar_menu
-    "Avatar-default.png"
+  def default_avatar
+    "avatar.png"
   end
 
   # Remove this when setting default avatars and the associated rake task

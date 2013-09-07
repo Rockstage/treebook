@@ -11,8 +11,9 @@ gem 'rename'
 gem 'state_machine'
 gem 'draper', '~> 1.0'
 gem "js-routes"
-gem 'paperclip'
+gem 'paperclip', '~> 2.7'
 gem 'jquery_mobile_rails'
+gem 'aws-sdk'
 
 group :test do
 	gem 'shoulda'
