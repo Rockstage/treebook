@@ -1,0 +1,36 @@
+<% content_for :heading do %>
+  <a href="#sidebar" data-position="inline" class="ui-btn-left" data-icon="home">Menu</a>
+  <h1>Your Authentications</h1>
+<% end %>
+
+<div id="container" data-role="content">
+  <% if @authentications %>
+    <% unless @authentications.empty? %>
+      <h2>You can sign in to this rockstage account using:</h2><hr />
+      <div class="media">
+        <% for authentication in @authentications %>
+          <a href="#" class="pull-left">
+            <%= image_tag "#{authentication.provider}_32.png", :size => "32x32", class: 'media-object' %>
+          </a>
+          <div class="media-body">
+            <h4 class="media-heading"><%= authentication.provider.capitalize %> <%= link_to " remove", authentication, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete, :class => "remove" %></h4>
+            <p>uid: <%= authentication.uid %></p>
+          </div>
+          <hr />
+        <% end %>
+      </div>
+    <% end %>
+    <p><strong>Add another service to sign in with:</strong></p>
+  <% else %>
+    <h2>Sign in through these services:<h2>
+  <% end %>
+
+  <a href="/users/auth/twitter" class="auth_provider">
+    <%= image_tag "twitter_64.png", :size => "64x64", :alt => "Twitter" %>
+    Twitter
+  </a>
+  <a href="/users/auth/facebook" class="auth_provider">
+    <%= image_tag "facebook_64.png", :size => "64x64", :alt => "Facebook" %>
+    Facebook
+  </a>
+</div>

@@ -26,14 +26,16 @@
     <%= f.input :password_confirmation, input_html: { class: 'input-xxlarge', autocomplete: 'off' } %>
   </fieldset>
 
+  <% if false %>
   <fieldset>
     <legend>Confirm Changes</legend>
     <%= f.input :current_password, hint: "We need your current password to confirm your changes", input_html: { class: 'input-xxlarge', autocomplete: 'off' } %>
   </fieldset>
+  <% end %>
 
   <div class="form-actions">
     <button type="submit" data-theme="b" data-position="inline" data-icon="check">Update</button>
-    <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure you want to delete your account? Most of your content may be deleted." }, :method => :delete, class: 'pull-right' %>
+    <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure you want to delete your account? Most of your content may be deleted.", :ajax => 'false' }, :method => :delete, class: 'pull-right' %>
   </div>
 <% end %>
 </div>

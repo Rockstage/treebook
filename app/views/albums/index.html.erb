@@ -4,7 +4,8 @@
 	<h1>Gallery</h1>
 	<%= link_to "New Album", new_album_path(current_user), data: { transition: 'slideup' } %>
 	<% else %>
-	<h1><%= @user.first_name %>'s Gallery</h1>
+	<h1 class="breadcrumbnav"><%= link_to @user.first_name, profile_path(@user) %> &raquo; Gallery &laquo;</h1>
+	<a href="#notifications" data-role="button" data-position="inline" data-icon="star">Notifications</a>
 	<% end %>
 <% end %>
 

@@ -20,6 +20,8 @@
 		  <div>
 		  	<button type="submit" data-theme="b" data-position="inline" data-icon="check">Sign in!</button>
 		  	<%= render "devise/shared/links" %>
+		  	<%= link_to "Twitter", user_omniauth_authorize_path(:twitter), "data-ajax" => "false" %>
+		  	<%= link_to "Facebook", user_omniauth_authorize_path(:facebook) %>
 		  </div>
 
 		</fieldset>

@@ -1,14 +1,17 @@
 <% content_for :heading do %>
   <a href="<%= albums_path(@user) %>" data-role="button" data-direction="reverse" data-icon="back">Back</a>
-  <h1>Gallery &raquo; <%= @album.title %> &laquo;</h1>
   <% if signed_in? && current_user == @user %>
-  <div data-role="navbar">
-    <ul>
-      <li><%= link_to "Edit Album", edit_album_path(current_user, @album), data: { transition: 'flip' } %></li>
-      <li><%= link_to "Upload Pictures", new_album_picture_path(current_user, @album), data: { transition: 'slideup' } %></li>
-      <li><%= link_to "Delete Album", album_path(current_user, @album), method: :delete, data: { confirm: "Are you sure you want to permanently delete this album and all of its pictures?"} %></li>
-    </ul>
-  </div>
+    <h1 class="breadcrumbnav"><%= link_to 'Gallery', albums_path(current_user) %> &raquo; <%= @album.title %> &laquo;</h1>
+    <div data-role="navbar">
+      <ul>
+        <li><%= link_to "Edit Album", edit_album_path(current_user, @album), data: { transition: 'flip' } %></li>
+        <li><%= link_to "Upload Pictures", new_album_picture_path(current_user, @album), data: { transition: 'slideup' } %></li>
+        <li><%= link_to "Delete Album", album_path(current_user, @album), method: :delete, data: { confirm: "Are you sure you want to permanently delete this album and all of its pictures?"} %></li>
+      </ul>
+    </div>
+  <% else %>
+    <h1 class="breadcrumbnav"><%= link_to @user.first_name, profile_path(@user) %> &raquo; <%= link_to 'Gallery', albums_path(@user) %> &raquo; <%= @album.title %> &laquo;</h1>
+    <a href="#notifications" data-role="button" data-position="inline" data-icon="star">Notifications</a>
   <% end %>
 <% end %>
 

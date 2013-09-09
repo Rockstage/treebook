@@ -35,7 +35,7 @@
 		<% if @user.avatar? %>
             <%= link_to(image_tag(@user.avatar(:avatar)), profile_path(@user), class: 'smooth-image') %>
         <% else %>
-	        <%= link_to(image_tag(@user.default_avatar_menu), profile_path(@user), class: 'smooth-image') %>
+	        <%= link_to(image_tag(@user.default_avatar), profile_path(@user), class: 'smooth-image') %>
         <% end %>
 	</div>
 </div>

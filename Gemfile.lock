@@ -29,6 +29,7 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     arel (3.0.2)
+    attr_required (0.0.5)
     aws-sdk (1.16.0)
       json (~> 1.4)
       nokogiri (< 1.6.0)
@@ -63,7 +64,17 @@ GEM
     factory_girl_rails (4.2.1)
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
+    faraday (0.8.4)
+      multipart-post (~> 1.1)
+    fb_graph (2.5.8)
+      httpclient (>= 2.2.0.2)
+      json
+      rack-oauth2 (>= 0.14.4)
+      tzinfo
+    hashie (1.2.0)
     hike (1.2.3)
+    httpauth (0.2.0)
+    httpclient (2.3.0.1)
     i18n (0.6.4)
     journey (1.0.4)
     jquery-rails (3.0.1)
@@ -74,13 +85,41 @@ GEM
     js-routes (0.9.0)
       rails (>= 3.2)
     json (1.8.0)
+    jwt (0.1.5)
+      multi_json (>= 1.0)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    metaclass (0.0.1)
     mime-types (1.23)
+    mocha (0.13.3)
+      metaclass (~> 0.0.1)
     multi_json (1.7.6)
+    multipart-post (1.1.5)
+    nifty-generators (0.4.6)
     nokogiri (1.5.10)
+    oauth (0.4.7)
+    oauth2 (0.8.0)
+      faraday (~> 0.8)
+      httpauth (~> 0.1)
+      jwt (~> 0.1.4)
+      multi_json (~> 1.0)
+      rack (~> 1.2)
+    omniauth (1.1.1)
+      hashie (~> 1.2)
+      rack
+    omniauth-facebook (1.4.1)
+      omniauth-oauth2 (~> 1.1.0)
+    omniauth-oauth (1.0.1)
+      oauth
+      omniauth (~> 1.0)
+    omniauth-oauth2 (1.1.1)
+      oauth2 (~> 0.8.0)
+      omniauth (~> 1.0)
+    omniauth-twitter (0.0.14)
+      multi_json (~> 1.3)
+      omniauth-oauth (~> 1.0)
     orm_adapter (0.4.0)
     paperclip (2.8.0)
       activerecord (>= 2.3.0)
@@ -92,6 +131,13 @@ GEM
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
+    rack-oauth2 (1.0.0)
+      activesupport (>= 2.3)
+      attr_required (>= 0.0.5)
+      httpclient (>= 2.2.0.2)
+      i18n
+      multi_json (>= 1.3.6)
+      rack (>= 1.1)
     rack-ssl (1.3.3)
       rack
     rack-test (0.6.2)
@@ -131,6 +177,7 @@ GEM
     simple_form (2.1.0)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
+    simple_oauth (0.1.9)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -143,6 +190,10 @@ GEM
     treetop (1.4.14)
       polyglot
       polyglot (>= 0.3.1)
+    twitter (4.2.0)
+      faraday (~> 0.8)
+      multi_json (~> 1.3)
+      simple_oauth (~> 0.1.6)
     tzinfo (0.3.37)
     uglifier (2.1.1)
       execjs (>= 0.3.0)
@@ -160,9 +211,14 @@ DEPENDENCIES
   devise
   draper (~> 1.0)
   factory_girl_rails
+  fb_graph
   jquery-rails
   jquery_mobile_rails
   js-routes
+  mocha
+  nifty-generators
+  omniauth-facebook
+  omniauth-twitter
   paperclip (~> 2.7)
   pg
   rails (= 3.2.12)
@@ -172,4 +228,5 @@ DEPENDENCIES
   simple_form
   sqlite3
   state_machine
+  twitter
   uglifier (>= 1.0.3)

@@ -1,13 +1,17 @@
 <% content_for :heading do %>
-  <a href="<%= album_pictures_path(@user, @album) %>" data-role="button" data-direction="reverse" data-icon="back">Back</a>
-  <h1><%= @album.title %> &raquo; <%= @picture.caption %> &laquo;</h1>
   <% if signed_in? && current_user == @user %>
-  <div data-role="navbar">
-    <ul>
-      <li><%= link_to "Edit Picture", edit_album_picture_path(@album, @picture), data: { transition: 'flip' } %></li>
-      <li><%= link_to "Delete Picture", album_picture_path(@album, @picture), method: :delete, data: { confirm: "Are you sure you want to permanently delete this picture?"} %></li>
-    </ul>
-  </div>
+    <a href="<%= album_pictures_path(@user, @album) %>" data-role="button" data-direction="reverse" data-icon="back">Back</a>
+    <h1 class="breadcrumbnav"><%= link_to 'Gallery', albums_path(@user) %> &raquo; <%= link_to @album.title, album_pictures_path(@user, @album) %> &raquo; <%= @picture.caption %> &laquo;</h1>
+    <div data-role="navbar">
+      <ul>
+        <li><%= link_to "Edit Picture", edit_album_picture_path(@album, @picture), data: { transition: 'flip' } %></li>
+        <li><%= link_to "Delete Picture", album_picture_path(@album, @picture), method: :delete, data: { confirm: "Are you sure you want to permanently delete this picture?"} %></li>
+      </ul>
+    </div>
+  <% else %>
+    <a href="#" data-rel="back" data-direction="reverse" data-position="inline" data-icon="back">Back</a>
+    <h1 class="breadcrumbnav"><%= link_to @user.first_name, profile_path(@user) %> &raquo; <%= link_to 'Gallery', albums_path(@user) %> &raquo; <%= link_to @album.title, album_pictures_path(@user, @album) %> &raquo; <%= @picture.caption %> &laquo;</h1>
+    <a href="#notifications" data-role="button" data-position="inline" data-icon="star">Notifications</a>
   <% end %>
 <% end %>
 

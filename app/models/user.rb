@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
 
   # validates :age, presence: true, length: '> 13' or something similar
 
+  has_many :authentications
   has_many :activities
   has_many :albums
   has_many :pictures
@@ -56,9 +57,8 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, styles: {
     thumb: "80x80#", avatar: "300x300#"
   }
-  
-  validates_attachment_size :asset, :less_than => 3.megabytes
-  validates_attachment_content_type :asset, :content_type => ['image/jpeg', 'image/png', 'image/gif']
+  validates_attachment_size :avatar, :less_than => 3.megabytes
+  validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png', 'image/gif']
 
   # Deletes all associated objects - statuses, albums, pictures
   after_destroy :delete_associations
@@ -107,6 +107,30 @@ class User < ActiveRecord::Base
     blocked_friends.include?(other_user)
   end
 
+
+  # OMNIAUTH Authentications Controller methods
+  def apply_omniauth(omni)
+    authentications.build(:provider => omni['provider'],
+    :uid => omni['uid'],
+    :token => omni['credentials'].token,
+    :token_secret => omni['credentials'].secret)
+  end
+
+  def password_required?
+    (authentications.empty? || !password.blank?) && super #&& provider.blank?
+  end
+
+  def update_with_password(params, *options)
+    if encrypted_password.blank?
+      update_attributes(params, *options)
+    else
+      super
+    end
+  end
+
+
+
+
   def create_activity(item, action)
     # This will be scoped automatically to the user instance
     activity = activities.new
@@ -124,6 +148,7 @@ class User < ActiveRecord::Base
     self.albums.destroy_all
     self.activities.destroy_all
     self.user_friendships.destroy_all
+    self.authentications.destroy_all
   end
   
 end

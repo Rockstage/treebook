@@ -56,12 +56,8 @@
 
 	</div>
 	<!-- END OF PAGE/AJAX -->
+	
 
-		<script id="activities-template" type="text/x-handlebars-template">
-		{{#each activities}}
-		{{activityLink}}
-		{{/each}}
-	</script>
 
 	<% if false %>
 	<video id="main-flow" class="full-screen-video" poster="<%= asset_path("RockstageFlowback.png") %>" autobuffer autoplay loop>
@@ -71,6 +67,14 @@
 
 
 </body>
+
+<% if user_signed_in? %>
+	<script id="activities-template" type="text/x-handlebars-template">
+		{{#each activities}}
+		{{activityLink}}
+		{{/each}}
+	</script>
+<% end %>
 
 <% if false %>
 <script id="activities-template" type="text/x-handlebars-template">

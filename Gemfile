@@ -14,6 +14,11 @@ gem "js-routes"
 gem 'paperclip', '~> 2.7'
 gem 'jquery_mobile_rails'
 gem 'aws-sdk'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'twitter'
+gem 'fb_graph'
+gem 'nifty-generators'
 
 group :test do
 	gem 'shoulda'
@@ -56,3 +61,5 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+gem "mocha", :group => :test
