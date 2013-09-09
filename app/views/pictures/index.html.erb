@@ -12,6 +12,28 @@
   <% end %>
 <% end %>
 
+
+
+<div id="gallery" data-role="content" class="no-padding">
+  <section class="horizontalContainer">
+    <div class="horizontalSlider">
+      <div class="horizontalContent">
+        <ul class="horizontalGridList" id="album-list">
+        <% @pictures.each do |picture| %>
+          <li class="list-container">
+            <div class="album-pictures-grid-img" style="background-image: url(<%= picture.asset.url(:small) %>);">
+              <div class="album-grid-overlay">
+                  <a href="<%= album_picture_path(@album, picture) %>" class="album-grid-overlay-link"></a>
+              </div>
+            </div>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+
 <% content_for :footer do %>
   <div data-role="footer" data-position="fixed">
     <div data-role="navbar">
@@ -23,24 +45,6 @@
     </div>
   </div>
 <% end %>
-
-<section class="horizontalContainer">
-  <div class="horizontalSlider">
-    <div class="horizontalContent">
-      <ul class="horizontalGridList" id="album-list">
-      <% @pictures.each do |picture| %>
-        <li class="list-container">
-          <div class="album-pictures-grid-img" style="background-image: url(<%= picture.asset.url(:small) %>);">
-            <div class="album-grid-overlay">
-                <a href="<%= album_picture_path(@album, picture) %>" class="album-grid-overlay-link"></a>
-            </div>
-          </div>
-        </li>
-      <% end %>
-      </ul>
-    </div>
-  </div>
-</section>
 
 <script language="JavaScript" type="text/javascript">
 $(document).ready(function() {

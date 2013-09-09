@@ -12,6 +12,17 @@ module ApplicationHelper
 		end
 	end
 
+	def bootstrap_paperclip_avatar(form, paperclip_object)
+		if form.object.send("#{paperclip_object}?")
+			content_tag(:div, class: 'control-group') do
+				content_tag(:label, "Current #{paperclip_object.to_s.titleize}", class: 'control-label') +
+				content_tag(:div, class: 'controls') do
+					image_tag form.object.send(paperclip_object).send(:url, :thumb)
+				end
+			end
+		end
+	end
+
 	def can_display_status?(status)
 		signed_in? && !current_user.has_blocked?(status.user) || !signed_in?
 	end
@@ -26,6 +37,11 @@ module ApplicationHelper
 
 	def avatar_profile_link(user, image_options={}, html_options={})
 		avatar_url = user.avatar? ? user.avatar.url(:avatar) : user.default_avatar
+		link_to(image_tag(avatar_url, image_options), profile_path(user.profile_name), html_options)
+	end
+
+	def thumb_profile_link(user, image_options={}, html_options={})
+		avatar_url = user.avatar? ? user.avatar.url(:thumb) : user.default_avatar
 		link_to(image_tag(avatar_url, image_options), profile_path(user.profile_name), html_options)
 	end
 

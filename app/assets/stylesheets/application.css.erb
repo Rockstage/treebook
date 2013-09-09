@@ -39,25 +39,42 @@ body {
   	-o-background-size: cover;
   	background-size: cover;
   	*/
-  	background: none !important;
+  	
   	/* overflow-x: auto;
   	overflow-y: hidden; */
+  	text-shadow: none;
 }
-
+/*
 #page {
 	background: none;
 }
 
 #container {
 	background: none;
-
 }
 
 .ui-panel-content-wrap {
 	background: none;
 }
 
-.ui-body-c {
+*/
+
+.ui-panel-content-wrap {
+	height: 100% !important;
+}
+
+
+
+.no-padding {
+	padding: 0;
+}
+
+
+
+
+
+.ui-body-c,
+.ui-body-a {
 	font-family: GOTHIC, tahoma, Helvetica, sans-serif !important;
 	text-shadow: none;
 }
@@ -68,6 +85,15 @@ h1, h2, h3, h4, h5, p {
 	font-weight: lighter;
 }
 
+/*
+.ui-block-a,
+.ui-block-b,
+.ui-block-c,
+.ui-block-d {
+	position: relative !important;
+	min-height: 50%;
+}
+*/
 
 /* -------- GLOBAL FIXTURES ------- */
 
@@ -142,7 +168,17 @@ div.dark-bg {
 	font-weight: bold;
 }
 
+.office {
+	background: url('office.png');
+}
 
+.full-page {
+	position: relative;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
 
 
 
@@ -258,6 +294,18 @@ div.dark-bg {
 	padding: 15px;
 	background: rgba(255,255,255,0.75);
 	border-radius: 5px;
+}
+
+/* ------- ABOUT ME -------- */
+
+#about-me {
+	position: absolute;
+	overflow: hidden;
+	height: 100%;
+	width: 100%;
+	background: url('office.png');
+	bottom: 0;
+	top: 0;
 }
 
 /* ----------- ALBUM GRID ---------- */
@@ -378,7 +426,7 @@ ul.album-grid-list {
 	min-width: 120px;
 	*width: 9.994680851063829;
 	z-index: 1030 !important;
-	margin: 5% 0 0 -15px;
+	margin: 5% 0 0 0;
 }
 
 #profile-widget > * {

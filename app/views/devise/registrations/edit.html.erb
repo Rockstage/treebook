@@ -3,6 +3,7 @@
   <h1>Editing My Profile</h1>
 <% end %>
 
+<div id="container" data-role="content">
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { multipart: true, :method => :put, class: 'form-horizontal', "data-ajax" => "false" }) do |f| %>
 
   <fieldset>
@@ -16,7 +17,7 @@
     <legend>Profile Picture</legend>
     <p class="text-center">Avatar must be .jpg / .png / .gif and up to 3mb.</p>
     <%= f.input :avatar, as: :file %>
-    <%= bootstrap_paperclip_picture f, :avatar %>
+    <%= bootstrap_paperclip_avatar f, :avatar %>
   </fieldset>
 
   <fieldset>
@@ -35,3 +36,4 @@
     <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure you want to delete your account? Most of your content may be deleted." }, :method => :delete, class: 'pull-right' %>
   </div>
 <% end %>
+</div>

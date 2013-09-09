@@ -3,7 +3,9 @@
 	<h1>New album</h1>
 <% end %>
 
-<%= simple_form_for(@album) do |f| %>
-<%= f.input :title, input_html: { rows: 1, class: 'input-xxlarge large-text' } %>
-<button type="submit" data-theme="b" data-position="inline" data-icon="check">Create Album</submit>
-<% end %>
+<div id="container" data-role="content">
+	<%= simple_form_for(@album) do |f| %>
+		<%= f.input :title, input_html: { rows: 1, class: 'input-xxlarge large-text' } %>
+		<button type="submit" data-theme="b" data-position="inline" data-icon="check">Create Album</submit>
+	<% end %>
+</div>

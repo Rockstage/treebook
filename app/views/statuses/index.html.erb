@@ -4,30 +4,31 @@
   <a href="<%= new_status_path %>" class="button" data-icon="star" data-theme="b">New Status</a>
 <% end %>
 
-<ul data-role="listview" data-inset="true" data-filter="true">
-<% @statuses.each do |status| %>
-  <% if can_display_status?(status) %>
-    <div class="status media">
-      <%= avatar_profile_link status.user, { class: "pull-left" }, class: "media-object", "data-transition" => "slidedown" %>
-      <div class="media-body">
-        <h4 class="media-heading"><%= link_to status.user.full_name, profile_path(status.user), "data-transition" => "slidedown" %></h4>
-        <p><%= status.content %></p>
-        <%= status_document_link(status) %>
-        <div class="meta">
-            <%= link_to time_ago_in_words(status.created_at) + " ago", status, data: { transition: 'slide' } %> 
-            <% if signed_in? && current_user == status.user %>
-            <span class="admin">
-              | <%= link_to "Edit", edit_status_path(status), data: { transition: 'flip' } %> | 
-              <%= link_to "Delete", status, method: :delete, data: { confirm: "Are you sure your want to delete this status?"} %>
-            </span>
-            <% end %>
+<div id="container" data-role="content">
+  <ul data-role="listview" data-inset="true" data-filter="true">
+  <% @statuses.each do |status| %>
+    <% if can_display_status?(status) %>
+      <div class="status media">
+        <%= thumb_profile_link status.user, { class: "pull-left" }, class: "media-object", "data-transition" => "slidedown" %>
+        <div class="media-body">
+          <h4 class="media-heading"><%= link_to status.user.full_name, profile_path(status.user), "data-transition" => "slidedown" %></h4>
+          <p><%= status.content %></p>
+          <%= status_document_link(status) %>
+          <div class="meta">
+              <%= link_to time_ago_in_words(status.created_at) + " ago", status, data: { transition: 'slide' } %> 
+              <% if signed_in? && current_user == status.user %>
+              <span class="admin">
+                | <%= link_to "Edit", edit_status_path(status), data: { transition: 'flip' } %> | 
+                <%= link_to "Delete", status, method: :delete, data: { confirm: "Are you sure your want to delete this status?"} %>
+              </span>
+              <% end %>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
-<% end %>
-</ul>
-
+  </ul>
+<div>
 <% if false %>
 <%= render :partial => "form", :locals => { :statuses => @status } %>
 

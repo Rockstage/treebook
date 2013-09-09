@@ -18,7 +18,7 @@ class Picture < ActiveRecord::Base
 
   validates_attachment_presence :asset
   validates_attachment_size :asset, :less_than => 5.megabytes
-  validates_attachment_content_type :asset, :content_type => ['image/jpeg', 'image/png']
+  validates_attachment_content_type :asset, :content_type => ['image/jpeg', 'image/png', 'image/gif']
 
   # small: "360x240>", medium: "720x480", hd: "1280x720", fullhd: "1920x1080"
   # small - Activity feed and album grids

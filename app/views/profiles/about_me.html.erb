@@ -1,6 +1,6 @@
 <% content_for :heading do %>
 	<a href="#sidebar" data-position="inline" class="ui-btn-left" data-icon="home">Menu</a>
-	<h1>Profile page</h1>
+	<h1>About &raquo; <%= @user.first_name %> &laquo;</h1>
 	<a href="#notifications" data-role="button" data-position="inline" data-icon="star">Notifications</a>
 <% end %>
 
@@ -10,13 +10,13 @@
 			<ul>
 				<li><%= link_to "Stream", profile_path(@user), "data-transition" => "flip" %></li>
 				<li><%= link_to "About", about_me_path(@user), class: 'ui-btn-active' %></li>
-				<li><%= link_to "Gallery", albums_path(@user) %></li>
+				<li><%= link_to "Gallery", albums_path(@user), "data-transition" => "slidefade" %></li>
 			</ul>
 		</div>
 	</div>
 <% end %>
 
-<div data-theme="a">
+<div id="about-me" data-role="content" class="ui-body-a no-padding">
 	<div class="ui-grid-a">
 		<div class="ui-block-a grid-about">
 			<h2>About</h2>
@@ -33,7 +33,7 @@
 	</div>
 	<div class="grid-avatar">
 		<% if @user.avatar? %>
-            <%= link_to(image_tag(@user.avatar(:medium)), profile_path(@user), class: 'smooth-image') %>
+            <%= link_to(image_tag(@user.avatar(:avatar)), profile_path(@user), class: 'smooth-image') %>
         <% else %>
 	        <%= link_to(image_tag(@user.default_avatar_menu), profile_path(@user), class: 'smooth-image') %>
         <% end %>

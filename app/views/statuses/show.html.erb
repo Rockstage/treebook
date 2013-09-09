@@ -3,6 +3,8 @@
 	<h1>Status Preview</h1>
 	<%= link_to 'Edit', edit_status_path(@status), data: { transition: 'flip', role: 'button', icon: 'gear' } %>
 <% end %>
+
+<div id="container" data-role="content">
 <p>
   <b>Name:</b>
   <%= @status.user.full_name %>
@@ -22,3 +24,4 @@
 
 <%= link_to 'Edit', edit_status_path(@status), data: { transition: 'flip' } %> |
 <%= link_to "Delete", status_path, method: :delete, data: { confirm: "Are you sure?"} %>
+</div>

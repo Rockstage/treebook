@@ -11,13 +11,15 @@
   <% end %>
 <% end %>
 
-<h1>Add the awesome touch slider here</h1>
-<h2><%= @picture.caption %></h2>
+<div id="container" data-role="content">
+  <h1>Add the awesome touch slider here</h1>
+  <h2><%= @picture.caption %></h2>
 
-<%= image_tag(@picture.asset.url(:fullhd), alt: @picture.caption, class: 'img-polaroid') %>
+  <%= image_tag(@picture.asset.url(:fullhd), alt: @picture.caption, class: 'img-polaroid') %>
 
-<br />
+  <br />
 
-<div>
-	<br /><p><em><%= @picture.description %></em></p><hr />
+  <div>
+  	<br /><p><em><%= @picture.description %></em></p><hr />
+  </div>
 </div>

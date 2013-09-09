@@ -30,17 +30,14 @@
 			<%= yield :heading %>
 		</div>
 
-		<div id="container" data-role="content">
-			<% flash.each do |type, message| %>
-				<div class="alert <%= flash_class type %>">
-					<button data-role="none" class="close" data-dismiss="alert">x</button>
-					<%= message %>
-				</div>
-			<% end %>
+		<% flash.each do |type, message| %>
+		    <div class="alert <%= flash_class type %>">
+		      <button data-role="none" class="close" data-dismiss="alert">x</button>
+		      <%= message %>
+		    </div>
+		<% end %>
 
 			<%= yield %>
-			
-		</div>
 
 		<%= yield :footer %>
 
@@ -66,9 +63,11 @@
 		{{/each}}
 	</script>
 
+	<% if false %>
 	<video id="main-flow" class="full-screen-video" poster="<%= asset_path("RockstageFlowback.png") %>" autobuffer autoplay loop>
 		<source src="<%= asset_path("RockstageBackground.mov") %>" />
 	</video>
+	<% end %>
 
 
 </body>

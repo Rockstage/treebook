@@ -13,30 +13,33 @@
 		<div data-role="navbar">
 			<ul>
 				<li><%= link_to "Stream", profile_path(@user) %></li>
-				<li><%= link_to "About", profile_path(@user) %></li>
+				<li><%= link_to "About", about_me_path(@user) %></li>
 				<li><%= link_to "Gallery", albums_path(@user), class: 'ui-btn-active' %></li>
 			</ul>
 		</div>
 	</div>
 <% end %>
 
-<section class="horizontalContainer">
-	<div class="horizontalSlider">
-		<div class="horizontalContent">
-			<ul class="horizontalGridList album-grid-list">
-				<% @albums.each do |album| %>
-				  <li>
-				  	<div class="album-grid-img" style="background-image: url(<%= album_thumbnail(album) %>);">
-					    <div class="album-grid-overlay">
-					    	<a href="<%= album_pictures_path(@user, album) %>" class="album-grid-overlay-link" data-transition="pop"></a>
+
+<div id="gallery" class="no-padding">
+	<section class="horizontalContainer">
+		<div class="horizontalSlider">
+			<div class="horizontalContent">
+				<ul class="horizontalGridList album-grid-list">
+					<% @albums.each do |album| %>
+					  <li>
+					  	<div class="album-grid-img" style="background-image: url(<%= album_thumbnail(album) %>);">
+						    <div class="album-grid-overlay">
+						    	<a href="<%= album_pictures_path(@user, album) %>" class="album-grid-overlay-link" data-transition="pop"></a>
+							</div>
 						</div>
-					</div>
-				  </li>
-				<% end %>
-			</ul>
+					  </li>
+					<% end %>
+				</ul>
+			</div>
 		</div>
-	</div>
-</section>
+	</section>
+</div>
 
 <script language="JavaScript" type="text/javascript">
 $(document).ready(function() {

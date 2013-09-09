@@ -3,45 +3,47 @@
   <h1>Register free and easy!</h1>
 <% end %>
 
-<div id="registration_screen">
-<div class="content-fluid" style="width: 1000px; margin: auto; padding-top: 15%;">
-<div class="row-fluid">
+<div id="container" data-role="content">
+  <div id="registration_screen">
+    <div class="content-fluid" style="width: 1000px; margin: auto; padding-top: 15%;">
+      <div class="row-fluid">
 
-    <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: {class: "registration_form"}) do |f| %>
-      <%= devise_error_messages! %>
+          <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: {class: "registration_form"}) do |f| %>
+            <%= devise_error_messages! %>
 
-      <fieldset>
-        <div class="span3">
-          <p>Sign-in with Facebook</p>
-          <p>Sign-in with Twitter</p>
-          <p>Crate a business page</p>
-          <p>PR Agent?<p>
-          <em>Find resources here<em>
-        </div>
-        <div class="span3">
-        <%= f.input :first_name %>
-        <%= f.input :last_name %>
-        <%= f.input :profile_name %>
-        </div>
-        <div class="span3">
-        <%= f.input :email %>
-        <%= f.input :password %>
-        <%= f.input :password_confirmation %>
-        </div>
-        <div class="span3">
-          <p>Discover.</p>
-          <p>Share.</p>
-          <p>Support.</p>
-          <p>Experience<br />a new world.</p>
-        </div>
-        <div class="span3"><hr /><button type="submit" data-theme="b" data-position="inline" data-icon="check">Sign up for free!</button></div>
-      </fieldset>
+            <fieldset>
+              <div class="span3">
+                <p>Sign-in with Facebook</p>
+                <p>Sign-in with Twitter</p>
+                <p>Crate a business page</p>
+                <p>PR Agent?<p>
+                <em>Find resources here<em>
+              </div>
+              <div class="span3">
+              <%= f.input :first_name %>
+              <%= f.input :last_name %>
+              <%= f.input :profile_name %>
+              </div>
+              <div class="span3">
+              <%= f.input :email %>
+              <%= f.input :password %>
+              <%= f.input :password_confirmation %>
+              </div>
+              <div class="span3">
+                <p>Discover.</p>
+                <p>Share.</p>
+                <p>Support.</p>
+                <p>Experience<br />a new world.</p>
+              </div>
+              <div class="span3"><hr /><button type="submit" data-theme="b" data-position="inline" data-icon="check">Sign up for free!</button></div>
+            </fieldset>
 
-    <% end %>
-      <div class="span12">
-        <br />
-        <%= render "devise/shared/links" %>
+          <% end %>
+            <div class="span12">
+              <br />
+              <%= render "devise/shared/links" %>
+            </div>
       </div>
-</div>
-</div>
+    </div>
+  </div>
 </div>

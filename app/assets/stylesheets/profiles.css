@@ -17,47 +17,47 @@
 
 .grid-about {
 	position: absolute;
-	width: 50%;
+	width: 45%;
 	height: 50%;
 	top: 0;
-	left: 0;
+	left: 1em;
 	text-align: left;
 }
 
 .grid-music {
 	position: absolute;
-	width: 50%;
+	width: 45%;
 	height: 50%;
 	top: 0;
-	right: 0;
+	right: 1em;
 
 }
 
 .grid-character {
 	position: absolute;
-	width: 50%;
+	width: 45%;
 	height: 50%;
 	bottom: 0;
-	left: 0;
+	left: 1em;
 
 }
 
 .grid-interests {
 	position: absolute;
-	width: 50%;
+	width: 45%;
 	height: 50%;
 	bottom: 0;
-	right: 0;
+	right: 1em;
 }
 
 .grid-avatar {
 	position: absolute;
-	width: 20%;
-	height: 20%;
-	top: 40%;
-	left: 40%;
-	right: 40%;
-	bottom: 40%;
+	width: 16%;
+	height: 16%;
+	top: 30%;
+	left: 42%;
+	right: 42%;
+	bottom: 54%;
 }
 
 .grid-avatar img {

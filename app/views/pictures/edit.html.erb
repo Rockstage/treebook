@@ -3,15 +3,17 @@
   <h1><%= @album.title %> &raquo; Editing <%= @picture.caption %> &laquo;</h1>
 <% end %>
 
-<p>Hint: <em>Leave it as "no file chosen" if you do not want to change the picture</em></p>
-<%= simple_form_for([@album, @picture], html: { class: 'form-horizontal', "data-ajax" => "false" }) do |f| %>
+<div id="container" data-role="content">
+	<p>Hint: <em>Leave it as "no file chosen" if you do not want to change the picture</em></p>
+	<%= simple_form_for([@album, @picture], html: { class: 'form-horizontal', "data-ajax" => "false" }) do |f| %>
 
-  <div class="form-inputs">
-    <%= f.input :asset, as: :file %>
-    <%= bootstrap_paperclip_picture f, :asset %>
-    <%= f.input :caption, required: true, input_html: { class: 'input-xxlarge' } %>
-    <%= f.input :description, input_html: { class: 'input-xxlarge', rows: 4 } %>
-  </div>
+	  <div class="form-inputs">
+	    <%= f.input :asset, as: :file %>
+	    <%= bootstrap_paperclip_picture f, :asset %>
+	    <%= f.input :caption, required: true, input_html: { class: 'input-xxlarge' } %>
+	    <%= f.input :description, input_html: { class: 'input-xxlarge', rows: 4 } %>
+	  </div>
 
-  <button type="submit" data-theme="b" data-position="inline" data-icon="check">Change Picture</button>
-<% end %>
+	  <button type="submit" data-theme="b" data-position="inline" data-icon="check">Change Picture</button>
+	<% end %>
+</div>
