@@ -16,14 +16,46 @@
 <% end %>
 
 <div id="container" data-role="content">
-  <h1>Add the awesome touch slider here</h1>
-  <h2><%= @picture.caption %></h2>
 
+<section class="horizontalContainer">
+    <div class="horizontalSlider">
+      <div class="horizontalContent">
+        <div id="image-show" style="background-image: url(<%= @picture.asset.url(:fullhd) %>);">
+        </div>
+        <div class="side-comments">
+          <ul>
+            <li>This is a comment</li>
+            <li>This is also a comment</li>
+            <li>This is also a comment</li>
+            <li>This is also a comment</li>
+            <li>This is also a comment</li>
+            <li>This is also a comment</li>
+            <li>This is also a comment</li>
+            <li>This is also a comment</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<% if false %>
   <%= image_tag(@picture.asset.url(:fullhd), alt: @picture.caption, class: 'img-polaroid') %>
-
-  <br />
-
-  <div>
-  	<br /><p><em><%= @picture.description %></em></p><hr />
-  </div>
+<% end %>
 </div>
+
+<% content_for :footer do %>
+  <div data-role="footer" data-position="fixed">
+    <div class="footer-content">
+      <div class="row-fluid tight">
+        <div class="span6 image-info-left">
+          <h2><%= @picture.caption %></h2>
+          <p><%= @picture.description %></p>
+        </div>
+        <div class="span6 image-info-right">
+          <p class="gray">Uploader: <%= @user.profile_name %> | Copyrights: <%= @user.profile_name %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
