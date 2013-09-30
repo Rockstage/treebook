@@ -1,0 +1,55 @@
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { multipart: true, :method => :put, class: 'form-horizontal', "data-ajax" => "false" }) do |f| %>
+
+  <fieldset>
+    <legend>About Me</legend>
+    <%= f.input :first_name, input_html: { class: 'input-xxlarge' } %>
+    <%= f.input :last_name, input_html: { class: 'input-xxlarge' } %>
+    <%= f.input :birthday, as: :date, start_year: Date.today.year - 90,
+                           end_year: Date.today.year - 12, order: [:day, :month, :year], input_html: { "data-role" => "none"} %>
+    <%= f.input :gender, collection: ["male", "female"] %>
+    <%= f.input :location, input_html: { class: 'input-xxlarge' }, placeholder: 'Country, City' %>
+    <%= f.input :relationship, input_html: { class: 'input-xxlarge' }, placeholder: '(single)' %>
+  </fieldset>
+
+  <fieldset>
+    <legend>Detailed Information</legend>
+    <p class="text-center gray">Hint: Press [enter] for a new paragraph.</p>
+    <%= f.input :about, input_html: { class: 'input-xxlarge' }, label: 'About you', placeholder: 'I am... I think... I feel...' %>
+    <%= f.input :music, input_html: { class: 'input-xxlarge' }, label: 'Top favourite Artists' %>
+    <%= f.input :character, input_html: { class: 'input-xxlarge' }, placeholder: '(moody, kind, forgiving,...)' %>
+    <%= f.input :interests, input_html: { class: 'input-xxlarge' }, placeholder: '(photography, showboarding, guitars,...' %>
+  </fieldset>
+
+  <fieldset>
+    <legend>Profile Picture</legend>
+    <p class="text-center gray">Avatar must be .jpg / .png / .gif and up to 3mb.</p>
+    <%= f.input :avatar, as: :file %>
+    <%= bootstrap_paperclip_avatar f, :avatar %>
+    <%= f.input :background, as: :file %>
+  </fieldset>
+
+  <fieldset>
+    <legend>Account Info</legend>
+    <%= f.input :role, disabled: true %>
+    <%= f.input :email, disabled: true, input_html: { class: 'input-xxlarge' } %>
+    <%= f.input :profile_name, disabled: true, input_html: { class: 'input-xxlarge'} %>
+  </fieldset>
+
+  <fieldset>
+    <legend>Update Password</legend>
+    <%= f.input :password, hint: "Leave blank if you do not want to change it", input_html: { class: 'input-xxlarge', autocomplete: 'off', value: "" } %>
+    <%= f.input :password_confirmation, input_html: { class: 'input-xxlarge', autocomplete: 'off' } %>
+  </fieldset>
+
+
+  <fieldset>
+    <legend>Confirm Changes</legend>
+    <%= f.input :current_password, hint: "We need your current password to confirm your changes", input_html: { class: 'input-xxlarge', autocomplete: 'off' } %>
+  </fieldset>
+
+
+  <div class="form-actions">
+    <button type="submit" data-theme="b" data-position="inline" data-icon="check">Update</button>
+    <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure you want to delete your account? Most of your content may be deleted.", :ajax => 'false' }, :method => :delete, class: 'pull-right' %>
+  </div>
+<% end %>

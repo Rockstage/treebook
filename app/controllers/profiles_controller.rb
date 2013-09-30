@@ -4,6 +4,7 @@ class ProfilesController < ApplicationController
   def show
   	if @user 
   		@statuses = @user.statuses.all
+      @status ||= Status.new
 		  @activities = @user.activities.all
   		render action: :show
   	else

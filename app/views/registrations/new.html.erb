@@ -4,16 +4,19 @@
 <% end %>
 
 <div id="container" data-role="content">
-	<h2>Sign up</h2>
+	<h2>Sign up as yourself, an artist, or an organization!</h2>
 	 
 	<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-	 
-	<h4>We require your Email so you can access the same profile with different social network accounts.</h4>
-	<p>We will Not share it with anyone outside ubjective.com without your premission.</p>
+
+	<% if false %>
+	<%= f.input :role, collection: ["Yourself", "Artist or Band","Organization, Brand or other"], as: :radio_buttons, label: "Use Rockstage as:" %>
+	<% end %>
+	
+	<%= f.input :role, collection: User::ROLES, as: :radio_buttons, label: "Use Rockstage as a:" %>
+	
+
 	<%= f.input :email %>
 	<%= f.input :profile_name %>
-	<%= f.input :first_name %>
-	<%= f.input :last_name %>
 	 
 	<% if @user.password_required? %>
 	<%= f.input :password %>

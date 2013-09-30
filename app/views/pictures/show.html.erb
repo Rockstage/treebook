@@ -10,7 +10,7 @@
     </div>
   <% else %>
     <a href="#" data-rel="back" data-direction="reverse" data-position="inline" data-icon="back">Back</a>
-    <h1 class="breadcrumbnav"><%= link_to @user.first_name, profile_path(@user) %> &raquo; <%= link_to 'Gallery', albums_path(@user) %> &raquo; <%= link_to @album.title, album_pictures_path(@user, @album) %> &raquo; <%= @picture.caption %> &laquo;</h1>
+    <h1 class="breadcrumbnav"><%= link_to @user.profile_name, profile_path(@user) %> &raquo; <%= link_to 'Gallery', albums_path(@user) %> &raquo; <%= link_to @album.title, album_pictures_path(@user, @album) %> &raquo; <%= @picture.caption %> &laquo;</h1>
     <a href="#notifications" data-role="button" data-position="inline" data-icon="star">Notifications</a>
   <% end %>
 <% end %>

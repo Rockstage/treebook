@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActiveRecord::RecordNotFound, with: :render_404
 
+  #rescue_from CanCan::AccessDenied do |exception|
+    #render :nothing, :alert => exception.message
+  #end
+
   # Used to implemet page-specific actions such as adding specific css rules
   def page_code
   	0

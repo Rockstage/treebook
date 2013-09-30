@@ -14,7 +14,15 @@
 			<%= f.input :password, input_html: { class: 'input-xlarge' } %>
 
 		  <% if devise_mapping.rememberable? -%>
+		  	<% if false %>
 		    <div><%= f.input :remember_me, as: :boolean, data: { role: 'none' } %></div>
+		    <% end %>
+
+		    <label>Remember me</label>
+		    <select name="user[remember_me]" id="user_remember_me" data-role="slider" type="checkbox">
+		    	<option value="false">No</option>
+		    	<option value="true">Yes</option>
+		    </select>
 		  <% end -%>
 
 		  <div>

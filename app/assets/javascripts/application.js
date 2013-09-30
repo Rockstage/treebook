@@ -112,7 +112,7 @@ Handlebars.registerHelper('activityLink', function() {
 	return new Handlebars.SafeString( html );
 });
 
-window.pollInterval = window.setInterval( pollActivity, 15000 );
+window.pollInterval = window.setInterval( pollActivity, 30000 );
 pollActivity();
 
 

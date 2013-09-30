@@ -1,0 +1,52 @@
+<div id="about-me" data-role="content" class="ui-body-a no-padding">
+	<div class="ui-grid-a">
+		<div class="ui-block-a grid-about">
+			<h2 class="gray">About</h2>
+			<p>
+				<% if @user.about %>
+					<%= simple_format @user.about %>
+				<% elsif current_user == @user && @user.about == nil %>
+					<%= link_to "Tell us something About you.", edit_user_registration_path %>
+				<% end %>
+			</p>
+		</div>
+		<div class="ui-block-b grid-music">
+			<h2 class="gray">Music</h2>
+			<p>
+				<% if @user.music %>
+					<%= simple_format @user.music %>
+				<% elsif current_user == @user && @user.music == nil %>
+					<%= link_to "Name your favourite Artists.", edit_user_registration_path %>
+				<% end %>
+			</p>
+		</div>
+		<div class="ui-block-c grid-character">
+			<h2 class="gray">Character</h2>
+			<p>
+				<% if @user.character %>
+					<%= simple_format @user.character %>
+				<% elsif current_user == @user && @user.character == nil %>
+					<%= link_to "Tell us about your Character.", edit_user_registration_path %>
+				<% end %>
+			</p>
+		</div>
+		<div class="ui-block-d grid-interests">
+			<h2 class="gray">Interests</h2>
+			<p>
+				<% if @user.interests %>
+					<%= simple_format @user.interests %>
+				<% elsif current_user == @user && @user.interests == nil %>
+					<%= link_to "Name a few of your Interests.", edit_user_registration_path %>
+				<% end %>
+			</p>
+		</div>
+	</div>
+
+	<div class="grid-avatar">
+		<% if @user.avatar? %>
+            <%= link_to(image_tag(@user.avatar(:avatar)), profile_path(@user), class: 'smooth-image') %>
+        <% else %>
+	        <%= link_to(image_tag(@user.default_avatar), profile_path(@user), class: 'smooth-image') %>
+        <% end %>
+	</div>
+</div>

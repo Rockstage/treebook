@@ -22,6 +22,7 @@
 	top: 0;
 	left: 1em;
 	text-align: left;
+	padding-right: 10%;
 }
 
 .grid-music {
@@ -30,7 +31,7 @@
 	height: 50%;
 	top: 0;
 	right: 1em;
-
+	padding-left: 10%;
 }
 
 .grid-character {
@@ -39,7 +40,7 @@
 	height: 50%;
 	bottom: 0;
 	left: 1em;
-
+	padding-right: 10%;
 }
 
 .grid-interests {
@@ -48,6 +49,7 @@
 	height: 50%;
 	bottom: 0;
 	right: 1em;
+	padding-left: 10%; 
 }
 
 .grid-avatar {
@@ -64,9 +66,70 @@
 	border-radius: 100%;
 }
 
+#about-me h2 {
+
+}
+
+#profile-name {
+	padding-left: 11%;
+}
+
+/* -------------- ARTIST PROFILE ------------- */
+
+#artist-background {
+	height: 100%;
+	background-size: cover;
+}
 
 
+#parallelograms-left {
+	height: 100%;
+}
 
+.parallelogram-left-top {
+	position: absolute;
+	left: -250px;
+	width: 400px;
+	height: 100%;
+	-webkit-transform: skew(-27deg);
+	-moz-transform: skew(-27deg);
+	-o-transform: skew(-27deg);
+	transform: skew(-27deg);
+	background: url("broken_noise.png");
+	opacity: 0.95;
+	z-index: 2;
+}
+
+.parallelogram-left-bottom {
+	position: absolute;
+	left: -175px;
+	width: 300px;
+	height: 70%;
+	margin-top: 30%;
+	-webkit-transform: skew(35deg);
+	-moz-transform: skew(35deg);
+	-o-transform: skew(35deg);
+	transform: skew(35deg);
+	background: url("broken_noise.png");
+	opacity: 0.95;
+	z-index: 1;
+}
+
+.parallelogram-left-content {
+	position: absolute;
+	top: 5px;
+	left: 10px;
+	z-index: 3;
+}
+
+.parallelogram-left-content * {
+	color: white;
+	text-shadow: 1px;
+}
+
+.parallelograms-left-content img {
+	max-width: 75px;
+}
 
 
 

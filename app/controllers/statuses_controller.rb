@@ -19,6 +19,7 @@ class StatusesController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @status }
     end
+    authorize! :read, @status
   end
 
   # GET /statuses/new

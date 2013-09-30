@@ -1,0 +1,147 @@
+
+
+<div id="person-profile" data-role="content" class="no-padding">
+	<section id="profile-widget">
+		<div class="navbar-inner">
+			<header id="profile-widget-header" class="center-contents bottom-spacing">
+	        <%= avatar_profile_link @user, {}, "data-transition" => "slidedown" %>
+			<p><%= @user.full_name %></p>
+			</header>
+			<nav>
+				<ul id="profile-widget-links">
+					<li>
+						<% if @user.first_name %>
+						<%= @user.first_name %>
+						<% elsif current_user == @user && @user.first_name == nil %>
+						<%= link_to "Add Name", edit_user_registration_path %>
+						<% end %>
+					</li>
+					<li>
+						<% if @user.gender %>
+						<%= @user.gender.humanize %>
+						<% elsif current_user == @user && @user.gender == nil %>
+						<%= link_to "Add Gender", edit_user_registration_path %>
+						<% end %>
+					</li>
+					<li>
+						<% if @user.location %>
+						<%= @user.location %>
+						<% elsif current_user == @user && @user.location == nil %>
+						<%= link_to "Add Location", edit_user_registration_path %>
+						<% end %>
+					</li>
+					<li class="gray"><%= @user.relationship %></li>
+					<% if user_signed_in? %>
+						<span id="friend-status">
+							<% if current_user.friends.include?(@user) || current_user.pending_friends.include?(@user) %>
+							<%= link_to "Edit Friendship", edit_user_friendship_path(friend_id: @user), class: 'btn' %>
+							<% else %>
+								<% if current_user != @user %>
+									<%= link_to "+Connect", new_user_friendship_path(friend_id: @user), class: 'btn', id: 'add-friendship', data: { friend_id: @user.to_param } %>
+								<% end %>
+							<% end %>
+						</span>
+					<% end %>
+				</ul>
+			</nav>
+		</div>
+	</section>
+
+
+	<div id="profile-name">
+		<h1>
+			<%= @user.full_name %>
+		</h1>
+	</div>
+
+  	<section class="horizontalContainer">
+    	<div class="horizontalSlider" id="parallax">
+    		<div class="horizontalBackground" id="background" data-stellar-background-ratio="1.6" style="background-image: url(<%= @user.background(:desktop) %>);">
+		 	</div>
+      		<div class="horizontalContent" id="activityContent">
+		    	<% if @activities %>
+					<%= render :template => 'activities/index' %>
+				<% end %>
+	      	</div>
+	    </div>
+	</section>
+</div>
+
+
+
+
+<% if false %>
+<div class="horizontalContent">
+	<div id="parallax">
+		<% if @user.gravatar_url %>
+			<div id="background">
+			</div>
+		<% else %>
+			<div id="background"></div>
+		<% end %>
+		<div class="page-header">
+			<h1><%= @user.full_name %></h1>
+				<%= link_to "Albums", albums_path(@user), class: 'btn' %>
+
+				<% if signed_in? %>
+				<span id="friend-status">
+					<% if current_user.friends.include?(@user) || current_user.pending_friends.include?(@user) %>
+					<%= link_to "Edit Friendship", edit_user_friendship_path(friend_id: @user), class: 'btn' %>
+					<% else %>
+						<% if current_user != @user %>
+							<%= link_to "Add Friend", new_user_friendship_path(friend_id: @user), class: 'btn', id: 'add-friendship', data: { friend_id: @user.to_param } %>
+						<% end %>
+					<% end %>
+				</span>
+			<% end %>
+		</div>
+		<div id="foreground">
+			
+			<!-- ul id="activities" class="columns" also known as the user stream -->
+			<% if @activities %>
+				<%= render :template => 'activities/index' %>
+			<% end %>
+			<!-- do not place content below as the stream is paginated -->
+		</div>
+	</div>
+</div>
+<% end %>
+
+
+<script language="JavaScript" type="text/javascript">
+$(document).ready(function() {
+   $(".horizontalSlider").mousewheel(function(event, delta) {
+      this.scrollLeft -= (delta * 30);
+      event.preventDefault();
+   });
+});
+</script>
+
+<script type="text/javascript">
+	$('.horizontalSlider').stellar({
+		verticalOffset: 50
+	});
+</script>
+
+<% if false %>
+<script type="text/javascript">
+	$('.horizontalSlider').stellar();
+</script>
+
+
+<script type="text/javascript">
+window.onscroll = function() {
+    var speed = 2.0;
+    document.getElementById('background').style.backgroundPosition = (-window.pageXOffset / speed) + "px " + (-window.pageYOffset / speed) + "px";
+}
+</script>
+
+
+<script type="text/javascript">
+$(".horizontalContainer").onscroll = function() {
+    var speed = 2.0;
+    document.getElementById('background').style.backgroundPosition = (-window.pageXOffset / speed) + "px " + (-window.pageYOffset / speed) + "px";
+}
+</script>
+<% end %>
+

@@ -1,5 +1,7 @@
 
 <p class="smaller">Uploaded a new Picture.</p>
+
+<% if false %>
 <div id="links">
 	<a id="gallery" href="<%= activity.targetable.asset.url %>" title="Title"><img src="<%= activity.targetable.asset.url(:medium) %>" alt="alt"></a>
 </div>
@@ -7,6 +9,7 @@
 <p class="muted smaller">
 	to their <%= link_to activity.targetable.album.title, album_path(activity.user.profile_name, activity.targetable.album_id) %> album!
 </p>
+<% end %>
 
 
 

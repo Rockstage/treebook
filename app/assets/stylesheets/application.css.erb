@@ -44,20 +44,20 @@ body {
   	overflow-y: hidden; */
   	text-shadow: none;
 }
-/*
+
 #page {
-	background: none;
+	height: 80%;
 }
 
+
 #container {
-	background: none;
+	height: 100%;
 }
 
 .ui-panel-content-wrap {
-	background: none;
+	
 }
 
-*/
 
 .ui-panel-content-wrap {
 	height: 100% !important;
@@ -125,6 +125,14 @@ h2 {
 	border-radius: 3px;
 }
 
+.thumb img {
+	width: 80px;
+}
+
+.medthumb img {
+	width: 180px;
+}
+
 textarea.large-text {
 	height: 2em;
 	line-height: 1em;
@@ -139,8 +147,24 @@ textarea.large-text {
 }
 
 textarea.large-text:focus,
-textarea.large-text:hover {
+textarea.large-text:hover,
+textarea.medium-text:focus,
+textarea.medium-text:hover {
 	background: white;
+	border: none;
+}
+
+textarea.medium-text {
+	height: 1em;
+	line-height: 1em;
+	font-family: GOTHIC;
+	font-size: 1.2em;
+	vertical-align: bottom;
+	background: none;
+	border: none;
+	border-bottom: 1px solid black;
+	border-radius: 2px;
+	box-shadow: none;
 }
 
 
@@ -178,7 +202,7 @@ div.dark-bg {
 .x-back {
 	font-size: 20px;
 	color: #5f5f64;
-	padding: 15px;
+	`: 15px;
 	font-weight: bold;
 }
 
@@ -215,6 +239,17 @@ h1.breadcrumbnav a:hover {
 }
 
 /* -------------------------- PROFILE PAGE --------------------- */
+
+#person-profile {
+	height: 100%;
+}
+
+#person-profile {
+	
+}
+
+
+
 /*
 #profile-page {
 	padding-left: 11%;
@@ -334,6 +369,7 @@ h1.breadcrumbnav a:hover {
 
 /* ----------- ALBUM GRID ---------- */
 
+
 .horizontalContainer {
 	position: absolute;
 	top: 0;
@@ -346,7 +382,8 @@ h1.breadcrumbnav a:hover {
 	overflow-x: scroll;
 	overflow-y: hidden;
 	height: 100%;
-	white-space: nowrap;
+	white-space: normal;
+	-webkit-overflow-scrolling: touch;
 }
 
 .horizontalContent {
@@ -402,6 +439,34 @@ ul.album-grid-list * {
 	-webkit-column-break-inside: avoid;
 	-moz-column-break-inside: avoid;
 	margin: 0;
+}
+
+.horizontalBackground {
+	width: 75%;
+	z-index: -1;
+	position: fixed;
+	left: -30px;
+	top: 0;
+	bottom: 0;
+	margin-left: 0;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	overflow: hidden;
+	/*
+		-webkit-transform: translate3d(-540px, 0px, 0px);
+	-webkit-transition: opacity .5s;
+	-webkit-transition-delay: 0s;
+	-webkit-transition-duration: 0.5s;
+	-webkit-transition-property: margin-left;
+	-webkit-transition-timing-function: cubic-bezier(0.25,0.1,0.25,1);
+	*/
+}
+
+#activityContent {
+	left: 70%;
+	background: rgb(238,238,238);
 }
 
 .album-pictures-grid-img {
@@ -507,7 +572,7 @@ ul.album-grid-list * {
 	min-width: 120px;
 	*width: 9.994680851063829;
 	z-index: 1030 !important;
-	margin: 5% 0 0 0;
+	margin: 45px 0 0 0;
 }
 
 #profile-widget > * {
@@ -620,10 +685,10 @@ ul#profile-widget-links {
 .alert {
 	position: absolute;
 	width: 40%;
-	top: 42px;
+	top: 82px;
 	left: 30%;
 	right: 30%;
-	z-index: 999;
+	z-index: 1000;
 }
 
 ul.breadcrumb {
@@ -845,6 +910,52 @@ audio::-webkit-media-controls-volume-slider {
 	border-bottom: 1px solid #5f5f64;
 }
 */
+
+/* ------- SwipeJS ------ */
+
+.swipe {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+}
+.swipe-wrap {
+  overflow: hidden;
+  position: relative;
+  width:80%;
+}
+.swipe-wrap > div {
+  float:left;
+  width:100%;
+  position: relative;
+  z-index: 999;
+}
+
+#mySwipe div b {
+  display:block;
+  font-weight:bold;
+  color:#14ADE5;
+  font-size:20px;
+  text-align:center;
+  margin:10px;
+  padding:100px 10px;
+  box-shadow: 0 1px #EBEBEB;
+  background: #fff;
+  border-radius: 3px;
+  border: 1px solid;
+  border-color: #E5E5E5 #D3D3D3 #B9C1C6;
+}
+
+#console {
+  font-size: 12px;
+  font-family:"Inconsolata", "Monaco", "Consolas", "Andale Mono", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+  color: #999;
+  line-height: 18px;
+  margin-top: 20px;
+  max-height: 150px;
+  overflow: auto;
+}
+
+
 
 #main-flow {
 	position: fixed;

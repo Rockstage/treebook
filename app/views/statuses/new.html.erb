@@ -11,16 +11,17 @@
       
       <%= simple_form_for(@status, html: { class: "form-inline", multipart: true }) do |f| %>
 
-     <div class="span2"><%= avatar_profile_link current_user, {} %></div>
-            <div class="span9">
-              <%= f.input :content, input_html: { rows: 1, class: 'input-xxlarge large-text' }, label: '', placeholder: 'What&#39;s on your mind, '.html_safe + current_user.first_name + '?' %>
-            </div>
+        <div class="span2"><%= avatar_profile_link current_user, {} %>
+        </div>
+        <div class="span9">
+          <%= f.input :content, input_html: { rows: 1, class: 'input-xxlarge large-text' }, label: '', placeholder: 'What&#39;s on your mind, '.html_safe + current_user.first_name + '?' %>
+        </div>
 
 
 
         <div class="span12">
           <%= link_to "Attach a File", new_status_with_upload_path, "data-role" => "button" %>
-        <button type="submit" data-theme="b" data-position="inline" data-icon="check">Submit</submit>
+        <button type="submit" data-theme="b" data-position="inline" data-icon="check">Submit</button>
         </div>
 
 

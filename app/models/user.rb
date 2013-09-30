@@ -6,12 +6,19 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :profile_name, :avatar
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, 
+                  :profile_name, :avatar, :role, :location, :background,
+                  # PERSONAL
+                  :birthday, :gender, :relationship, 
+                  :about, :music, :character, :interests,
+                  # ARTIST
+                  :artist_name, :genre, :bio, :members, :influence, :soundslike, :contacts
+
   # attr_accessible :title, :body
 
-  validates :first_name, presence: true, length: { :maximum => 50 }
+  # validates :first_name, presence: true, length: { :maximum => 50 }
 
-  validates :last_name, presence: true, length: { :maximum => 50 }
+  # validates :last_name, presence: true, length: { :maximum => 50 }
 
   validates :email, presence: true, uniqueness: true
 
@@ -19,8 +26,12 @@ class User < ActiveRecord::Base
             uniqueness: true,
             format: {
               with: /\A[a-zA-Z0-9_-]+\z/,
-              message: 'Must be formatted correctly.'
+              message: 'Use can only use a-z, A-Z, 0-9, - and _'
             }
+
+  validates :role, presence: true
+
+  # validates :gender, presence: true
 
   # validates :age, presence: true, length: '> 13' or something similar
 
@@ -53,12 +64,18 @@ class User < ActiveRecord::Base
                                       conditions: { state: 'accepted' }
   has_many :accepted_friends, through: :accepted_user_friendships, source: :friend
 
-  # If changing styles, also change in picture model and do the rake task to clean up
+  # If changing styles do the rake task to clean up
   has_attached_file :avatar, styles: {
     thumb: "80x80#", avatar: "300x300#"
   }
   validates_attachment_size :avatar, :less_than => 3.megabytes
   validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png', 'image/gif']
+
+  has_attached_file :background, styles: {
+    mobile: "1136x640>", desktop: "1920x1080>"
+  }
+  validates_attachment_size :background, :less_than => 7.megabytes
+  validates_attachment_content_type :background, :content_type => ['image/jpeg', 'image/png', 'image/gif']
 
   # Deletes all associated objects - statuses, albums, pictures
   after_destroy :delete_associations
@@ -66,6 +83,10 @@ class User < ActiveRecord::Base
   def default_avatar
     "avatar.png"
   end
+
+  # Setting up a constant for user roles without admins and moderators
+  ROLES = %w[person artist other]
+  GENDER = %w[male female]
 
   # Remove this when setting default avatars and the associated rake task
   #def self.get_gravatars
@@ -80,8 +101,29 @@ class User < ActiveRecord::Base
   #end
   #URI.prase tells paperclip to fetch a URI instead of the returned string
 
+
+  # Also add if user is friends to show full name, otherwise profile name
   def full_name
-  	first_name + " " + last_name
+    if role == "person"
+      if first_name && last_name
+    	first_name + " " + last_name
+      else
+      profile_name
+      end
+    elsif role == "artist"
+      if artist_name
+        artist_name
+      else
+        profile_name
+      end
+    elsif role == "other"
+      profile_name
+    end
+  end
+
+  def age(dob)
+    now = Time.now.utc.to_date
+    now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
   end
 
   #to param method helps when link to various locations

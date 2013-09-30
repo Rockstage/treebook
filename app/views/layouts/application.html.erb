@@ -7,7 +7,7 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body onload="startTime();">
+<body onload="">
 		<% if false %>
 		<div id="player">
 			<audio controls loop class="music_player">
@@ -56,15 +56,6 @@
 
 	</div>
 	<!-- END OF PAGE/AJAX -->
-	
-
-
-	<% if false %>
-	<video id="main-flow" class="full-screen-video" poster="<%= asset_path("RockstageFlowback.png") %>" autobuffer autoplay loop>
-		<source src="<%= asset_path("RockstageBackground.mov") %>" />
-	</video>
-	<% end %>
-
 
 </body>
 

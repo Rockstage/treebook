@@ -1,50 +1,95 @@
-<%= render_breadcrumbs %>
-<div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel" data-start-slideshow="true" data-filter=":even">
-  <% @pictures.each do |picture| %>
-    <div class="slides"></div>
-    <h3 class="title"></h3>
-    <a class="prev">‹</a>
-    <a class="next">›</a>
-    <a class="close">×</a>
-    <a class="play-pause"></a>
-    <ol class="indicator"></ol>
-  <% end %>
+<% content_for :heading do %>
+  <h2>Slideshow</h2>
+<% end %>
+
+
+<div data-role="content" id="contentSlider">
+  <div id='mySwipe' style='min-width:500px; margin:0 auto' class='swipe'>
+      <div class='swipe-wrap'>
+          <div><b>1</b>
+          </div>
+          <div><b>2</b>
+          </div>
+          <div><b>3</b>
+          </div>
+      </div>
+  </div>
+  <div style='text-align:center;padding-top:20px;'>
+      <button onclick='mySwipe.prev()'>prev</button>
+      <button onclick='mySwipe.next()'>next</button>
+  </div>
 </div>
 
-<div id="links" style="display: none;">
-  <ul class="thumbnails">
-    <% @pictures.each do |picture| %>
-      <li class="span4">
-        <div class="thumbnail">
-          <a href="<%= picture.asset.url %>" title="<% if picture.caption %><%= picture.caption %><% end %>">
-              <img src="<%= picture.asset.url(:medium) %>" alt="<% if picture.caption %><%= picture.caption %><% end %>" style="max-height: 170px; width: auto;">
-          </a>
+<script type="text/javascript">
+  var elem = document.getElementById('mySwipe');
+window.mySwipe = Swipe(elem, {
+  // startSlide: 4,
+  // auto: 3000,
+  // continuous: true,
+  // disableScroll: true,
+  // stopPropagation: true,
+  // callback: function(index, element) {},
+  // transitionEnd: function(index, element) {}
+  // you can leave out these comments.
+});
+</script>
+
+<% if false %>
+<div id="slideshow" data-role="content" class="no-padding">
+  
+  <div id='mySwipe' style='max-width:500px;margin:0 auto' class='swipe'>
+    <div class='swipe-wrap'>
+      <% @pictures.each do |picture| %>
+        <div><%= image_tag(picture.asset.url(:hd)) %></div>
+      <% end %>
+    </div>
+  </div>
+
+  <div id='slider' class='swipe'>
+    <div class='swipe-wrap'>
+      <% @pictures.each do |picture| %>
+        <div>
+          <%= image_tag(picture.asset.url(:hd)) %>
         </div>
-      </li>
-    <% end %>
-  </ul>
+      <% end %>
+    </div>
+  </div>
+
+  <div style='text-align:center;padding-top:20px;'>
+    
+    <button onclick='mySwipe.prev()'>prev</button> 
+    <button onclick='mySwipe.next()'>next</button>
+
+  </div>
+
 </div>
 
+<script type="text/javascript">
+var elem = document.getElementById('mySwipe');
 
 
-
-
-<script>
-document.getElementById('links').onclick = function (event) {
-    event = event || window.event;
-    var target = event.target || event.srcElement,
-        link = target.src ? target.parentNode : target,
-        options = {index: link, event: event},
-        links = this.getElementsByTagName('a');
-    blueimp.Gallery(links, options);
-};
+window.mySwipe = Swipe(elem, {
+    continuous: true
+  
+});
 </script>
-<script>
-blueimp.Gallery(
-    document.getElementById('links').getElementsByTagName('a'),
-    {
-        container: '#blueimp-gallery-carousel',
-        carousel: true
-    }
-);
+
+
+<script type="text/javascript">
+
+// outside ready function so that buttons still have a var to attach function calls to like slider.next()
+var slider;
+
+// process AFTER jquery mobile. 
+// i "think" the problem that somehow jquery mobile stops swipejs from detecting the width of the div (in the setup function) 
+$(document).ready(function(){
+
+    slider = new Swipe(document.getElementById('myslider'), {
+        callback: function(e, pos) {  
+             // some callback code here
+        }
+    });
+
+});
 </script>
+<% end %>

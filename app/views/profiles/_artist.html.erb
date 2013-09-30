@@ -1,0 +1,19 @@
+<div id="container" data-role="content" class="no-padding">
+	<div id="artist-background" style="background-image: url('<%= asset_path('sempiternal.png') %>');">
+		<div id="parallelograms-left">
+			<div class="parallelogram-left-top">
+			</div>
+			<div class="parallelogram-left-bottom">
+			</div>
+			<div class="parallelogram-left-content">
+				<% if @user.avatar? %>
+		            <%= link_to(image_tag(@user.avatar(:avatar)), profile_path(@user), class: 'smooth-image medthumb') %>
+		        <% else %>
+			        <%= link_to(image_tag(@user.default_avatar), profile_path(@user), class: 'smooth-image medthumb') %>
+		        <% end %>
+				<h2>#31, BG</h2>
+				<h4><%= @user.genre %></h4>
+			</div>
+		</div>
+	</div>
+</div>

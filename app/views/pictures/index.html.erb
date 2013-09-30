@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% else %>
-    <h1 class="breadcrumbnav"><%= link_to @user.first_name, profile_path(@user) %> &raquo; <%= link_to 'Gallery', albums_path(@user) %> &raquo; <%= @album.title %> &laquo;</h1>
+    <h1 class="breadcrumbnav"><%= link_to @user.profile_name, profile_path(@user) %> &raquo; <%= link_to 'Gallery', albums_path(@user) %> &raquo; <%= @album.title %> &laquo;</h1>
     <a href="#notifications" data-role="button" data-position="inline" data-icon="star">Notifications</a>
   <% end %>
 <% end %>
@@ -66,14 +66,9 @@ $(document).ready(function(){
 
 <script language="JavaScript" type="text/javascript">
 $(document).ready(function() {
-
    $(".horizontalSlider").mousewheel(function(event, delta) {
-
       this.scrollLeft -= (delta * 30);
-    
       event.preventDefault();
-
    });
-
 });
 </script>
