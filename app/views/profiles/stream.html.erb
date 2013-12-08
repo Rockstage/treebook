@@ -1,0 +1,20 @@
+<% content_for :heading do %>
+	<a href="#sidebar" data-position="inline"><span class="glyphicon glyphicon-big glyphicon-align-justify"></span></a>
+	<h2>&raquo; <%= @user.profile_name %> &laquo;</h2>
+	<a href="#notifications" data-position="inline" ><span class="glyphicon glyphicon-bullhorn"></span></a>
+<% end %>
+
+<div data-role="content" class="transparent-white no-side-padding">
+	<div class="user-background" style="background-image: url(<%= stream_profile_background current_user, {}, class: '' %>);"></div>
+	<h1>Welcome, <%= link_to current_user.first_name, profile_path(current_user) %><%= link_to "Post &#8629;".html_safe, new_status_path, class: 'pull-right', data: { transition: 'slide' } %></h1>
+	<hr class="colorful-border">
+	<section class="horizontalContainer">
+    	<div class="horizontalSlider" id="parallax">
+      		<div class="horizontalContent" id="activityContent">
+		    	<% if @activities %>
+					<%= render :template => 'activities/index' %>
+				<% end %>
+	      	</div>
+	    </div>
+	</section>
+</div>

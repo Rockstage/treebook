@@ -84,6 +84,10 @@ class User < ActiveRecord::Base
     "avatar.png"
   end
 
+  def default_background
+    "background_default.jpg"
+  end
+
   # Setting up a constant for user roles without admins and moderators
   ROLES = %w[person artist other]
   GENDER = %w[male female]

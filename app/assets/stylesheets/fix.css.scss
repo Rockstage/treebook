@@ -1,0 +1,37 @@
+// Include all fixes required for overwriting jQuery Mobile and Bootstrap
+
+#page {
+	
+}
+
+.ui-content {
+	padding-top: 40px;
+}
+
+.glyphicon {
+	color: rgba(50,50,50,0.8);
+}
+
+.glyphicon:hover {
+	color: rgb(50,50,50);
+}
+
+.ui-link-inherit {
+	font-size: 0.9em;
+	font-weight: 100;
+	#sidebar & {
+		text-transform: uppercase;
+	}
+}
+
+* {
+	text-shadow: none;
+}
+
+.ui-body-c {
+	background: #eee;
+}
+
+.ui-footer .row {
+	margin: 0;
+}

@@ -1,3 +1,3 @@
-<p>Is now friends with</p>
-<%= avatar_profile_link activity.targetable.friend, {}, class: '' %>
-<h4 class="media-heading"><%= activity.targetable.friend.first_name %></h4>
+<span class="gray">Is now friends with</span>
+<%= thumb_profile_link activity.targetable.friend, {}, class: 'pull-right activity-friend' %>
+<h4 class="media-heading"><%= link_to activity.targetable.friend.first_name, profile_path(activity.targetable.friend) %></h4>

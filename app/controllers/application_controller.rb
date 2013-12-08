@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
     #render :nothing, :alert => exception.message
   #end
 
+  # before_filter :prepare_for_mobile
+
   # Used to implemet page-specific actions such as adding specific css rules
   def page_code
   	0
@@ -30,6 +32,18 @@ class ApplicationController < ActionController::Base
     render file: 'public/404', status: :not_found
   end
 
+  def mobile_device?
+    if session[:mobile_param]
+      session[:mobile_param] == "1"
+    else
+      request.user_agent =~ /Mobile|webOS/
+    end
+  end
+  helper_method :mobile_device?
 
+  def prepare_for_mobile
+    session[:mobile_param] = params[:mobile] if params[:mobile]
+    request.format = :mobile if mobile_device?
+  end
 
 end

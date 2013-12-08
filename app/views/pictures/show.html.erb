@@ -46,12 +46,13 @@
 <% content_for :footer do %>
   <div data-role="footer" data-position="fixed">
     <div class="footer-content">
-      <div class="row-fluid tight">
-        <div class="span6 image-info-left">
-          <h2><%= @picture.caption %></h2>
+      <div class="row">
+        <div class="col-sm-6 image-info-left">
+          <h1><%= @picture.caption %></h1>
           <p><%= @picture.description %></p>
         </div>
-        <div class="span6 image-info-right">
+        <div class="col-sm-6 image-info-right">
+          <a href="#" class="btn btn-primary">+1 Support</a> | <a href="#" class="btn btn-success">+Share</a>
           <p class="gray">Uploader: <%= @user.profile_name %> | Copyrights: <%= @user.profile_name %></p>
         </div>
       </div>

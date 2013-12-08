@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+  before_filter :authenticate_user!
   before_filter :find_user
 
   def show
@@ -10,6 +11,21 @@ class ProfilesController < ApplicationController
   	else
   		render file: 'public/404', status: 404, formats: [:html]
   	end
+  end
+
+  def stream
+    if @user 
+      @statuses = @user.statuses.all
+      @status ||= Status.new
+      @activities = Activity.for_user(current_user, params)
+      render action: :stream
+    else
+      render file: 'public/404', status: 404, formats: [:html]
+    end
+  end
+
+  def player
+    
   end
 
   def about_me

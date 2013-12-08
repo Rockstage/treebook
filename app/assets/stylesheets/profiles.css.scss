@@ -1,3 +1,30 @@
+// PROFILE VIEW
+
+#activityContent {
+	left: 70%;
+	background: rgb(238,238,238);
+}
+
+.horizontalBackground {
+	width: 75%;
+	z-index: -1;
+	position: fixed;
+	left: -30px;
+	top: 0;
+	bottom: 0;
+	margin-left: 0;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	overflow: hidden;
+	@media(max-width:767px){
+		display: none;
+	}
+}
+
+
+
 .grid-about * {
 	vertical-align: top;
 	text-align: left;
@@ -98,6 +125,15 @@
 	background: url("broken_noise.png");
 	opacity: 0.95;
 	z-index: 2;
+}
+
+.triangle-left-top {
+	position: absolute;
+	width: 0;
+	height: 0;
+	border-top: 500px solid red;
+	border-right: 500px solid transparent;
+	z-index: 3;
 }
 
 .parallelogram-left-bottom {

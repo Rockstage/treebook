@@ -7,9 +7,9 @@
 	<% end %>
 </div>
 
-<ul data-role="listview" data-theme="a" id="sidebar-links">
+<ul data-role="listview" data-enhance="" id="sidebar-links" data-theme="a">
 	<% if user_signed_in? %>
-		<li><%= link_to "Home", profile_path(current_user), "data-transition" => "slidedown" %></li>
+		<li><%= link_to "Home", stream_path(current_user), "data-transition" => "slidedown" %></li>
 		<li><a href="#browsePage" role="button" class="" data-toggle="modal">Browse</a></li>
 		<li><%= link_to "Charts", profile_path(current_user) %></li>
 		<li><%= link_to "Discover", profile_path(current_user) %></li>
@@ -18,6 +18,7 @@
 		<li></li>
 		<li><%= link_to "Edit Profile", edit_user_registration_path(current_user) %></li>
 		<li><%= link_to "Authentications", authentications_path %></li>
+		<li><%= link_to "Globals", global_path %></li>
 		<li><%= link_to "Log out", logout_path, "data-ajax" => "false" %></li>
 	<% else %>
 		<li><%= link_to "Home", login_path %></li>

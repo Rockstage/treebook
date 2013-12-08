@@ -1,84 +1,91 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Rockstage</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body onload="">
+	<head>
+	  <title>Rockstage</title>
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <%= stylesheet_link_tag    "application", :media => "all" %>
+	  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	  <%= csrf_meta_tags %>
+	</head>
+	<body>
+
+		<!-- INSERT PLAYER HERE -->
 		<% if false %>
 		<div id="player">
-			<audio controls loop class="music_player">
-				<source src="<%= asset_path("RockstageSoundtrackFinal.mp3") %>" type="audio/mpeg">
-			</audio>
+                <audio controls loop class="music_player">
+                        <source src="<%= asset_path("RockstageSoundtrackFinal.mp3") %>" type="audio/mpeg">
+                </audio>
+        </div>
+        <% end %>
+
+		<div id="page" data-role="page">
+
+			<div data-role="panel" data-display="push" id="sidebar" data-theme="a">
+				<%= render template: 'layouts/_sidebar' %>
+			</div>
+
+			<div data-role="panel" data-display="overlay" data-position="right" id="notifications" data-theme="a">
+				<%= render template: 'layouts/_notifications' %>
+			</div>
+
+			<div id="head" data-role="header" data-position="fixed" data-theme="a" data-position="fixed" data-position="inline">
+				<%= yield :heading %>
+			</div>
+
+			<% flash.each do |type, message| %>
+			    <div class="alert <%= flash_class type %>">
+			      <button data-role="none" class="close" data-dismiss="alert">x</button>
+			      <%= message %>
+			    </div>
+			<% end %>
+
+				<%= yield %>
+
+			<%= yield :footer %>
+
+
+
+
+
+			<% if false %>
+			<video id="main-flow" class="full-screen-video" poster="<%= asset_path("RockstageFlowback.png") %>" autobuffer autoplay loop>
+				<source src="<%= asset_path("RockstageBackground.mov") %>" />
+			</video>
+			<% end %>
+
+		
+
+
 		</div>
-		<% end %>
+		<!-- END OF PAGE/AJAX -->
+		
+	</body>
+	<!-- ALL JAVASCRIPT COMPILED -->
+	<%= javascript_include_tag "application" %>
+	<!-- end -->
 
-	<div id="page" data-role="page" data-theme="c">
+	<!-- NOTIFICATIONS -->
+	<% if user_signed_in? %>
+		<script id="activities-template" type="text/x-handlebars-template">
+			{{#each activities}}
+			{{activityLink}}
+			{{/each}}
+		</script>
+	<% end %>
 
-		<div data-role="panel" data-display="push" id="sidebar" data-theme="a">
-			<%= render template: 'layouts/_sidebar' %>
-		</div>
-
-		<div data-role="panel" data-display="overlay" data-position="right" id="notifications" data-theme="a">
-			<%= render template: 'layouts/_notifications' %>
-		</div>
-
-		<div id="head" data-role="header" data-position="fixed" data-theme="a" data-position="fixed" data-position="inline">
-			<%= yield :heading %>
-		</div>
-
-		<% flash.each do |type, message| %>
-		    <div class="alert <%= flash_class type %>">
-		      <button data-role="none" class="close" data-dismiss="alert">x</button>
-		      <%= message %>
-		    </div>
-		<% end %>
-
-			<%= yield %>
-
-		<%= yield :footer %>
-
-
-
-
-
-		<% if false %>
-		<video id="main-flow" class="full-screen-video" poster="<%= asset_path("RockstageFlowback.png") %>" autobuffer autoplay loop>
-			<source src="<%= asset_path("RockstageBackground.mov") %>" />
-		</video>
-		<% end %>
-
-	<!-- Notification Polls -->
-
-
-	</div>
-	<!-- END OF PAGE/AJAX -->
-
-</body>
-
-<% if user_signed_in? %>
+	<% if false %>
 	<script id="activities-template" type="text/x-handlebars-template">
+		<a class="dropdown-toggle" href="#">Notifications ({{count}})</a>
+		<ul class="dropdown-menu">
 		{{#each activities}}
-		{{activityLink}}
+			{{activityLink}}
 		{{/each}}
+		<li class="divider"></li>
+		<li><a href="{{activityFeedLink}}">All Activities</a></li>
+		</ul>	
 	</script>
-<% end %>
-
-<% if false %>
-<script id="activities-template" type="text/x-handlebars-template">
-	<a class="dropdown-toggle" href="#">Notifications ({{count}})</a>
-	<ul class="dropdown-menu">
-	{{#each activities}}
-		{{activityLink}}
-	{{/each}}
-	<li class="divider"></li>
-	<li><a href="{{activityFeedLink}}">All Activities</a></li>
-	</ul>	
-</script>
-<% end %>
+	<% end %>
+	<!-- End of notifications -->
 
 
 </html>

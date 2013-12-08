@@ -1,5 +1,5 @@
 class StatusesController < ApplicationController
-  before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_filter :authenticate_user!, only: [:index, :new, :create, :edit, :update, :destroy]
   # before_filter :ensure_proper_user, only: [:new, :edit]
 
   rescue_from ActiveModel::MassAssignmentSecurity::Error, with: :render_permission_error
@@ -8,6 +8,10 @@ class StatusesController < ApplicationController
   # GET /statuses.json
   def index
     statuses_dashboard
+  end
+
+  def global
+    
   end
 
   # GET /statuses/1
@@ -19,7 +23,7 @@ class StatusesController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @status }
     end
-    authorize! :read, @status
+    # authorize! :read, @status
   end
 
   # GET /statuses/new

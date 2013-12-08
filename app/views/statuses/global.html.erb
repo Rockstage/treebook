@@ -1,0 +1,75 @@
+<% content_for :heading do %>
+  <a href="#sidebar" data-position="inline"><span class="glyphicon glyphicon-big glyphicon-align-justify"></span></a>
+  <h1>CSS PLAYGROUND!</h1>
+  
+<% end %>
+<div id="container" data-role="content">
+	<div data-enhance="false">
+		<div class="content-light">
+			<h1>HEADINGS and Text</h1>
+			<hr />
+			<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt</h1>
+			<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt</h2>
+			<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt</h3>
+			<h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt</h4>
+			<h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt</h5>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt</p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt<br />
+
+			
+			<h1>Buttons and Links</h1>
+			<hr />
+
+			<h1>Other</h1>
+			<hr />
+		</div>
+		<div class="content-dark">
+			<h1>HEADINGS and Text</h1>
+			<hr />
+			<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt</h1>
+			<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt</h2>
+			<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt</h3>
+			<h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt</h4>
+			<h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt</h5>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt</p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt<br />
+
+			<h1>Buttons and Links</h1>
+			<hr />
+
+			<h1>Other</h1>
+			<hr />
+		</div>
+
+		<% if mobile_device? %>
+		<ul class="block-list">
+			<li>
+				<a href="#">Testing Link 1</a>
+			</li>
+			<li>
+				<a href="#">Testing Link 2</a>
+			</li>
+			<li>
+				<a href="#">Testing Link 3</a>
+			</li>
+		</ul>
+		<% else %>
+		<p>This is not a mobile device!</p>
+		<% end %>
+
+	</div>
+</div>

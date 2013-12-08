@@ -45,6 +45,11 @@ module ApplicationHelper
 		link_to(image_tag(avatar_url, image_options), profile_path(user.profile_name), html_options)
 	end
 
+	def stream_profile_background(user, image_options={}, html_options={})
+		background_url = user.background? ? user.background.url(:mobile) : user.default_background
+		image_path(background_url)
+	end
+
 	def flash_class(type)
 		case type
 		when :alert

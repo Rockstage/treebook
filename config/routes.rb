@@ -4,6 +4,7 @@ Rockstage::Application.routes.draw do
 
   resources :activities, only: [:index]
   
+  # root to: 'statuses#index'
   root to: 'statuses#index'
 
   get "clock/index"
@@ -35,6 +36,7 @@ Rockstage::Application.routes.draw do
 
   resources :statuses
   get 'feed', to: 'statuses#index', as: :feed
+  get 'global', to: 'statuses#global', as: :global
 
 
   #to create /emmy/albums
@@ -51,6 +53,8 @@ Rockstage::Application.routes.draw do
   match ':profile_name/albums/:album_id/slideshow', to: 'pictures#slideshow', as: 'slideshow'
   match 'statuses/new/new_with_upload', :controller => 'statuses', :action => 'new_with_upload', as: 'new_status_with_upload'
   # get ':profile_name/about', to: 'profiles#about_me', as: 'about_me'
+  match ':id/player', to: 'profiles#player', as: 'player'
+  match ':id/stream', to: 'profiles#stream', as: 'stream'
 
 
   # The priority is based upon order of creation:

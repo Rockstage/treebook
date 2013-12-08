@@ -1,26 +1,31 @@
 <ul class="columns" id="activities">
-	<h2>
-		<% if (@user && @user == current_user) %>
-		
-			<% if false %>
-			<%= link_to "Post a New Status", new_status_path, class: "btn btn-primary" %>
+	<% if false %>
+		<h2>
+			<% if (@user && @user == current_user) %>
+			
+				
+				<%= link_to "Post a New Status", new_status_path, class: "btn btn-primary" %>
+				
+				<%= simple_form_for(@status, html: { class: "form-inline", multipart: true }) do |f| %>
+					<%= f.input :content, input_html: { rows: 1, class: 'medium-text' }, label: '', placeholder: 'What&#39;s on your mind, '.html_safe + current_user.first_name + '?' %>
+				<% end %>
+			<% else %>
+			Recent activity
 			<% end %>
-			<%= simple_form_for(@status, html: { class: "form-inline", multipart: true }) do |f| %>
-				<%= f.input :content, input_html: { rows: 1, class: 'medium-text' }, label: '', placeholder: 'What&#39;s on your mind, '.html_safe + current_user.first_name + '?' %>
-			<% end %>
-		<% else %>
-		Recent activity
-		<% end %>
-	</h2>
+		</h2>
+	<% end %>
 		
 
-<% @activities.reverse.each do |activity| %>
-	
+<% @activities.each do |activity| %>
+	<!-- If Activity.type array >= 3 of a same activity.user display the last 3 objects
+		 OR For each Activity.type where User_id is the same for each activity, display the last 3 objects -->
+		 <!-- Activity.where(:type => "targetable_type" & Activity.user_id same).last(3).each do -->
 		<% if activity.targetable %>
 			<li>
-				<div id="feed" class="media">
-					<%= avatar_profile_link activity.user, {}, class: 'pull-left thumb' %>
-					<div id="feed-body" class="media-body">
+				<div class="feed media">
+					<div class="stream-background" style="background-image: url(<%= stream_profile_background activity.user, {}, class: '' %>);"></div>
+					<%= thumb_profile_link activity.user, {}, class: 'pull-left stream-avatar' %>
+					<div class="feed-body media-body">
 						<h4 class="feed-heading media-heading">
 							<%= activity.user.full_name %>
 						</h4>
@@ -29,6 +34,7 @@
 							<small id="feed-small"><%= time_ago_in_words(activity.created_at) + ' ago' %></small>
 							</blockquote>
 					</div>
+					
 				</div>
 				
 			</li>

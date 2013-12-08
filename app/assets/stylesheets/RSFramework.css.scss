@@ -1,0 +1,293 @@
+html {
+	height: 100%;
+}
+
+/* Landscape phones and down */
+@media(max-width:767px){}
+
+/* Landscape phone to portrait tablet */
+@media(min-width:768px){}
+
+/* Portrait tablet to landscape and desktop */
+@media(min-width:992px){}
+
+/* Large desktop */
+@media(min-width:1200px){}
+
+// THIS IS THE ROCKSTAGE FRAMEWORK FOR FRONT-END DESIGN
+// THE FOLLOWING STYLES CAN BE USED GLOBALY THROUGHOUT THE WEBSITE
+
+
+// FONTS & FONT Attributes ------------------------------------------------------------------
+@font-face {
+  font-family: 'GOTHIC';
+  src: url('GOTHIC.eot?#iefix') format('embedded-opentype'),
+       url('GOTHIC.ttf')  format('truetype'),
+       url('GOTHIC.svg#svgFontName') format('svg');
+}
+
+h1 {
+	font-size: 3.5em;
+	font-weight: 100;
+}
+
+h2 {
+	font-size: 2.5em;
+	font-weight: 200;
+}
+
+h3 {
+	font-size: 2em;
+	font-weight: 400;
+}
+
+h4 {
+	font-size: 1.5em;
+	font-weight: 500;
+}
+
+a {
+	font-weight: 100;
+}
+
+img {
+	max-width: 100%;
+}
+
+// GLOBAL VARIABLES ----------------------------------------------------------------------
+
+	// Backgrounds DUB
+$background-color-light: #eee;
+$background-color-dark: #141414;
+$box-shadow: 0px 1px 5px #888888;
+$box-shadow-inset: inset 0px 0px 10px black;
+
+	// Fonts and colors DUB
+$color-light: #eee;
+$color-dark: #141414;
+$color-cyan: #00ccff;
+$color-red: red;
+
+// 5 - 10 Shades of Gray
+// Red, lighter red and darker red
+// Cyan
+// Ultra dark Cyan
+// Link Blue
+
+body {
+	height: 100%;
+	background-color: $background-color-light;
+	color: $color-dark;
+}
+
+
+
+.content-light * {
+	color: $color-dark;
+	background-color: $background-color-light;
+}
+
+.content-dark {
+	color: $color-light;
+	background-color: $background-color-dark;
+}
+
+
+
+
+
+
+
+
+
+// FORMS ------------------
+
+// Sign-in Page Container
+.form-signin {
+	max-width: 330px;
+	padding: 15px;
+	margin: 0 auto;
+	background-color: white;
+	border-radius: 5px;
+	border-bottom: 1px solid #d6d6d6;
+	border-right: 1px solid #d6d6d6;
+	z-index: 3;
+	@media(min-width:768px) {
+		margin-top: 20%;
+	}
+}
+
+// controls is the div containing the input
+.controls {
+	> * {
+	border-top: 1px solid #d6d6d6;
+	border-left: 1px solid #d6d6d6;
+	border-bottom: 1px solid #e6e6e6;
+	border-right: 1px solid #e6e6e6;
+	border-radius: 5px;
+	background: #eee;
+	&:hover, &:focus {
+		background: #fcfcfc;
+		}
+	}
+	abbr {
+		display: none;
+	}
+}
+
+
+
+
+
+// GLOBAL MIXINS -------------------------
+
+
+
+
+
+
+
+.horizontalContainer {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	.horizontalSlider {
+		overflow-x: scroll;
+		overflow-y: hidden;
+		height: 100%;
+		white-space: normal;
+		-webkit-overflow-scrolling: touch;
+		@media(max-width:767px) {
+			// Mobile styles here
+		}
+		.horizontalContent {
+			position: relative;
+			left: 0;
+			height: 100%;
+			> * {
+				border-sizing: border-box;
+				float: left;
+				height: 100%;
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+ul.horizontalGridList {
+	display: block;
+	float: left;
+	width: 360px;
+	margin: 0;
+	white-space: normal;
+	column-gap: 0;
+	column-width: 360px;
+	-webkit-column-gap: 0;
+	-webkit-column-width: 360px;
+	-moz-column-gap: 0;
+	-moz-column-width: 360px;
+	list-style: none;
+	padding: 0;
+	li {
+		column-break-inside: avoid;
+		-webkit-column-break-inside: avoid;
+		-moz-column-break-inside: avoid;
+		margin: 0;
+	}
+}
+
+
+// GLOBAL STYLES --------------------------
+
+ul {list-style: none;}
+
+#background-image {
+	width: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	z-index: -1;
+	@media(max-width:767px) {
+		height: 150px;
+		position: relative;
+		
+		top: -55px;
+		box-shadow: $box-shadow-inset;
+	}
+
+	@media(min-width:768px) {
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background-position: center;
+
+	}
+}
+
+.container {
+	z-index: 3;
+}
+
+// SHORTCUTS ---------------------------------------------------------------------------
+
+// Font Sizes
+
+.large {font-size: 5em;}
+
+.bigger {font-size: 4em;}
+
+h1.large {font-size: 5em;}
+
+h2.large {font-size: 4em;}
+
+.smaller {font-size: 0.8em;}
+
+.ligher {font-weight: 100;}
+
+.glyphicon {font-size: 1em;}
+
+// Colors
+
+.color-light {color: $color-light;}
+
+.gray {color: gray;}
+
+.black {color: black;}
+
+.cyan {color: $color-cyan;}
+
+.red {color: $color-red;}
+
+hr.colorful-border {
+	margin-top: 0;
+	border: 1px solid #00ccff;
+}
+
+.colorful {
+	color: #01d9c7;
+}
+
+// Box-Modeling
+
+.center {margin: 0 auto;}
+
+.no-side-padding {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.no-side-padding {
+	h1, h2, h3, h4, h5, p, hr {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}
+
+
