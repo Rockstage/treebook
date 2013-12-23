@@ -1,28 +1,52 @@
 <% content_for :heading do %>
-  <a href="#sidebar" data-position="inline" class="ui-btn-left" data-icon="home">Menu</a>
-  <h1>Welcome to Rockstage, Sign up for free!</h1>
+  <a href="#" data-role="button" data-rel="back" data-direction="reverse" data-icon="back">Back</a>
+  <h1>Welcome to Rockstage!</h1>
 <% end %>
 
-<div id="container" data-role="content">
-	<h2>Sign up as yourself, an artist, or an organization!</h2>
+<div id="container" data-role="content" class="no-side-padding sign-up-page">
+	<div id="background-image" class="sign_up_page" ></div>
+	<h2 class="text-center color-light">Sign up as yourself, an artist, or an organization!</h2>
 	 
-	<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+	<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: {:data => {:ajax => 'false'}}) do |f| %>
 
-	<% if false %>
-	<%= f.input :role, collection: ["Yourself", "Artist or Band","Organization, Brand or other"], as: :radio_buttons, label: "Use Rockstage as:" %>
-	<% end %>
-	
-	<%= f.input :role, collection: User::ROLES, as: :radio_buttons, label: "Use Rockstage as a:" %>
-	
+		
 
-	<%= f.input :email %>
-	<%= f.input :profile_name %>
-	 
-	<% if @user.password_required? %>
-	<%= f.input :password %>
-	<%= f.input :password_confirmation %>
-	<% end %>
-	 
-	<div><button type="submit" data-theme="b" data-position="inline" data-icon="check" data-ajax="false">Sign up!</button></div>
+		<div class="form form-register" data-enhance="false">
+			<% if false %>
+			<%= f.input :role, collection: ["Yourself", "Artist or Band","Organization, Brand or other"], as: :radio_buttons, label: "Use Rockstage as:" %>
+			<% end %>
+			
+			<fieldset>
+				<legend>User type</legend>
+			<div class="radio-inline radio-big radio-user-type">
+				<label>
+					<%= f.input :role, collection: User::ROLES, as: :radio_buttons, label: "Use Rockstage as a:" %>
+				</label>
+
+			</div>
+			<p><small>Personal profiles are Fan-like profiles | Artist profiles can upload music and participate in the charts | other profiles are for venues, organizations, etc.</small></p>
+			<fieldset>
+
+			<fieldset>
+				<legend>Info</legend>
+				<div class="form-group">
+					<%= f.input :email, input_html: { class: 'form-control' }, label: false, placeholder: 'Email', required: true %>
+				</div>
+				<div class="form-group">
+					<%= f.input :profile_name, input_html: { class: 'form-control' }, label: false, placeholder: 'Profile Name', required: true %>
+				</div>
+			</fieldset>
+			 
+			<% if @user.password_required? %>
+				<div class="form-group">
+					<%= f.input :password, input_html: { class: 'form-control' }, label: false, placeholder: 'Password', required: true %>
+				</div>
+				<div class="form-group">
+					<%= f.input :password_confirmation, input_html: { class: 'form-control' }, label: false, placeholder: 'Password Confirmation', required: true %>
+				</div>
+			<% end %>
+			<input type="checkbox" required="true">I agree with the terms of service [beta]</input>
+			<button type="submit" class="btn btn-primary btn-lg btn-block">Sign up!</button><br />
+		</div>
 	<% end %>
 </div>

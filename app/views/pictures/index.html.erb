@@ -1,19 +1,28 @@
-<% content_for :heading do %>
-  <a href="<%= albums_path(@user) %>" data-role="button" data-direction="reverse" data-icon="back">Back</a>
-  <% if signed_in? && current_user == @user %>
-    <h1 class="breadcrumbnav"><%= link_to 'Gallery', albums_path(current_user) %> &raquo; <%= @album.title %> &laquo;</h1>
-    <div data-role="navbar">
-      <ul>
-        <li><%= link_to "Edit Album", edit_album_path(current_user, @album), data: { transition: 'flip' } %></li>
-        <li><%= link_to "Upload Pictures", new_album_picture_path(current_user, @album), data: { transition: 'slideup' } %></li>
-        <li><%= link_to "Delete Album", album_path(current_user, @album), method: :delete, data: { confirm: "Are you sure you want to permanently delete this album and all of its pictures?"} %></li>
-      </ul>
-    </div>
-  <% else %>
-    <h1 class="breadcrumbnav"><%= link_to @user.profile_name, profile_path(@user) %> &raquo; <%= link_to 'Gallery', albums_path(@user) %> &raquo; <%= @album.title %> &laquo;</h1>
-    <a href="#notifications" data-role="button" data-position="inline" data-icon="star">Notifications</a>
-  <% end %>
+
+<% content_for :heading_menu do %>
+  <a href="#" data-rel="back" data-direction="reverse" class="back-link"><span class="glyphicon glyphicon-chevron-left"></span></a>
+  <a href="#">home</a>
+  <a href="#">browse</a>
+  <a href="#">charts</a>
+  <a href="#">discover</a>
 <% end %>
+
+<% if signed_in? && current_user == @user %>
+  <% content_for :heading_title do %>
+  <h1 class="breadcrumbnav"><%= link_to 'Gallery', albums_path(current_user) %> &raquo; <%= @album.title %> &laquo;</h1>
+  <% end %>
+  <% content_for :subheading do %>
+    <ul>
+      <li><%= link_to "Edit Album", edit_album_path(current_user, @album), data: { transition: 'flip' } %></li>
+      <li><%= link_to "Upload Pictures", new_album_picture_path(current_user, @album), data: { transition: 'slideup' } %></li>
+      <li><%= link_to "Delete Album", album_path(current_user, @album), method: :delete, data: { confirm: "Are you sure you want to permanently delete this album and all of its pictures?"} %></li>
+    </ul>
+  <% end %>
+<% else %>
+  <h1 class="breadcrumbnav"><%= link_to @user.profile_name, profile_path(@user) %> &raquo; <%= link_to 'Gallery', albums_path(@user) %> &raquo; <%= @album.title %> &laquo;</h1>
+  <a href="#notifications" data-role="button" data-position="inline" data-icon="star">Notifications</a>
+<% end %>
+
 
 <% content_for :footer do %>
   <div data-role="footer" data-position="fixed">

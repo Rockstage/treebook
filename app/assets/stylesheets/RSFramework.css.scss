@@ -103,17 +103,28 @@ body {
 // FORMS ------------------
 
 // Sign-in Page Container
-.form-signin {
-	max-width: 330px;
+.form {
 	padding: 15px;
 	margin: 0 auto;
 	background-color: white;
 	border-radius: 5px;
 	border-bottom: 1px solid #d6d6d6;
 	border-right: 1px solid #d6d6d6;
+}
+
+.form-signin {
+	max-width: 330px;
 	z-index: 3;
 	@media(min-width:768px) {
 		margin-top: 20%;
+	}
+}
+
+.form-register {
+	max-width: 660px;
+	z-index: 3;
+	@media(max-width:767px) {
+		margin-top: 0;
 	}
 }
 
@@ -135,8 +146,28 @@ body {
 	}
 }
 
-
-
+.radio {
+	.controls & {
+		background: none;
+		border: none;
+		border-radius: 0;
+		border-bottom: 1px solid $color-cyan;
+		.radio-big & {
+			padding: 30px;
+			margin: 10px;
+			font-size: 1.5em;
+			font-weight: 300;
+		}
+		.radio-user-type & {
+				padding: 20px 52px;
+				margin: 5px;
+				background-color: $background-color-light;
+				border-radius: 3px 10px 3px 10px;
+				box-shadow: $box-shadow;
+				float: left;
+			}
+	}
+}
 
 
 // GLOBAL MIXINS -------------------------
@@ -216,9 +247,15 @@ ul {list-style: none;}
 	@media(max-width:767px) {
 		height: 150px;
 		position: relative;
-		
 		top: -55px;
 		box-shadow: $box-shadow-inset;
+		.sign-in-page & {
+			background-image: url('RSWelcomeM.png');
+		}
+		.sign-up-page & {
+			background-image: url('backgrounds/sign-up-background3.jpg');
+			background-position: center;
+		}
 	}
 
 	@media(min-width:768px) {
@@ -227,7 +264,12 @@ ul {list-style: none;}
 		top: 0;
 		left: 0;
 		background-position: center;
-
+		.sign-in-page & {
+			background-image: url('RSWelcome.png');
+		}
+		.sign-up-page & {
+			background-image: url('backgrounds/sign-up-background3.jpg');
+		}
 	}
 }
 
@@ -289,5 +331,189 @@ hr.colorful-border {
 		padding-right: 15px;
 	}
 }
+
+// NAVIGATION ---------------------------------------------------------------------------
+// GLOBALS
+
+.ui-header {
+	background: url('header_menu_bg.png') center no-repeat;
+	height: 43px;
+	.row {
+		height: 42px;
+		overflow-y: hidden;
+		overflow-x: visible;
+	}
+}
+
+// back-link menu-link
+
+.heading_title {
+	text-align: center;
+	vertical-align: center;
+	font-size: 0.37em;
+	h1 {
+		margin: 10px 0;
+	}
+}
+
+.heading_player {
+	text-align: center;
+	vertical-align: center;
+	margin: 6px 0 4px 0;
+}
+
+.heading_menu {
+	padding: 18px 0 0 80px;
+
+	a {
+		font-size: 1.2em;
+		color: #eee;
+		text-decoration: none;
+		padding: 0 5px;
+		border-right: 1px solid gray;
+	}
+	a.back-link {
+		.glyphicon {
+			color: #eee;
+			font-size: 0.8em;
+		}
+	}
+}
+
+.heading_left {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 42px;
+	height: 42px;
+	z-index: 5;
+	a {
+		float: left;
+		display: block;
+		width: 41px;
+		height: 41px;
+		.glyphicon {
+			font-size: 1.7em;
+			padding: 8px 0 7px 5px;
+			color: lighten(#202020, 40%);
+		}
+		&:hover {
+			border-left: 3px solid #00ccff;
+		}
+	}
+}
+
+.heading_right {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 42px;
+	height: 42px;
+	z-index: 5;
+	a {
+		float: right;
+		display: block;
+		width: 41px;
+		height: 41px;
+		.glyphicon {
+			font-size: 1.7em;
+			padding: 8px 5px 7px 0;
+			color: lighten(#202020, 50%);
+		}
+		&:hover {
+			border-right: 3px solid #00ccff;
+		}
+	}
+}
+
+
+// TABLET
+@media(min-width:768px) and (max-width: 991px){
+
+#tablet-nav {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 50px;
+	height: 100%;
+	overflow: hidden;
+	z-index: 5;
+	.content {
+		width: 49px;
+		height: 100%;
+		background: #202020;
+		ul {
+			list-style-type: none;
+			position: relative;
+			height: 100%;
+			margin: 0;
+			padding: 80px 0 0 0;
+			li {
+				border-top: 1px solid #111;
+				overflow: hidden;
+				list-style-position: inside;
+				width: 49px;
+				&.bottom {
+					position: absolute;
+					bottom: 0;
+				}
+				a {
+					float: left;
+					display: block;
+					width: 49px;
+					height: 50px;
+					cursor: pointer;
+					background: #202020;
+					overflow: hidden;
+					border-top: 1px solid #333;
+					text-decoration: none;
+					&:hover, &.active {
+						background: darken(#202020, 5%);
+						border-left: 1px solid red;
+					}
+					.glyphicon {
+						font-size: 1.7em;
+						padding: 7px 12px 1px 12px;
+						color: lighten(#202020, 30%);
+					}
+					p {
+						text-align: center;
+						color: gray;
+						font-size: 0.7em;
+
+					}
+				}
+			}
+		}
+	}
+}
+
+.ui-panel-content-wrap {
+	padding-left: 49px;
+
+}
+
+
+
+.ui-footer {
+	z-index: 4;
+	padding-left: 49px;
+}
+
+.ui-mini {
+	
+}
+
+}
+
+// ANIMATIONS ------------------------------------------------------
+a {
+	transition: 0.3s;
+	-webkit-transition: 0.3s;
+	-moz-transition: 0.3s;
+}
+
+
+
 
 

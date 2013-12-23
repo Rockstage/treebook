@@ -4,14 +4,10 @@
   
 <% end %>
 
-<div id="container" data-role="content" class="no-side-padding">
-		<% if mobile_device? %>
-			<div id="background-image" class="sign_up_page" style="background-image: url(<%= image_path('RSWelcome.png') %>)"></div>
-		<% else %>
-			<div id="background-image" class="sign_up_page" style="background-image: url(<%= image_path('RSWelcome.png') %>)"></div>
-		<% end %>
+<div id="container" data-role="content" class="no-side-padding sign-in-page">
+			<div id="background-image" class="sign_up_page"></div>
 		<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {:data => {:ajax => 'false'}}) do |f| %>
-		<div class="form-signin" data-enhance="false">
+		<div class="form form-signin" data-enhance="false">
 			<fieldset>
 				<legend>Sign In <span class="pull-right gray smaller"><%= link_to "or Sign Up", new_user_registration_path %></span></legend>
 				<div class="form-group">

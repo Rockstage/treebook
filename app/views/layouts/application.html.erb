@@ -24,12 +24,16 @@
 				<%= render template: 'layouts/_sidebar' %>
 			</div>
 
+			<div id="tablet-nav" class="visible-sm" data-enhance="false">
+				<%= render template: 'layouts/_tabletbar' %>
+			</div>
+
 			<div data-role="panel" data-display="overlay" data-position="right" id="notifications" data-theme="a">
 				<%= render template: 'layouts/_notifications' %>
 			</div>
 
-			<div id="head" data-role="header" data-position="fixed" data-theme="a" data-position="fixed" data-position="inline">
-				<%= yield :heading %>
+			<div id="head" data-role="header" data-theme="a" data-position="fixed" data-position="inline">
+				<%= render template: 'layouts/_topbar' %>
 			</div>
 
 			<% flash.each do |type, message| %>
