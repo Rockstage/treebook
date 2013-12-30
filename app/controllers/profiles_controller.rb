@@ -7,6 +7,7 @@ class ProfilesController < ApplicationController
   		@statuses = @user.statuses.all
       @status ||= Status.new
 		  @activities = @user.activities.all
+      # Shows all activity by the @user
   		render action: :show
   	else
   		render file: 'public/404', status: 404, formats: [:html]
@@ -18,6 +19,7 @@ class ProfilesController < ApplicationController
       @statuses = @user.statuses.all
       @status ||= Status.new
       @activities = Activity.for_user(current_user, params)
+      # Shows all activity including friends' activity
       render action: :stream
     else
       render file: 'public/404', status: 404, formats: [:html]

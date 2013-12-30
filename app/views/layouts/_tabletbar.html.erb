@@ -1,8 +1,12 @@
 <div class="content">
 	<ul data-role="none">
+		<li>
+			<a href="#" data-rel="back" data-direction="reverse" class="back-link"><span class="glyphicon glyphicon-chevron-left"></span></a>
+		</li>
+		
 		<% if user_signed_in? %>
 		<li>
-			<a href="" class="active"><span class="glyphicon glyphicon-home"></span><p>home</p></a>
+			<a href="<%= profile_path(current_user) %>"><span class="glyphicon glyphicon-home"></span><p>home</p></a>
 		</li>
 		<li>
 			<a href=""><span class="glyphicon glyphicon-search"></span><p>browse</p></a>
@@ -13,8 +17,16 @@
 		<li>
 			<a href=""><span class="glyphicon glyphicon-headphones"></span><p>discover</p></a>
 		</li>
+		
 		<li class="bottom">
 			<a href=""><span class="glyphicon glyphicon-user"></span><p>profile</p></a>
+		</li>
+		<% else %>
+		<li>
+			<a href="<%= new_user_session_path %>"><span class="glyphicon glyphicon-user"></span><p>Sign in</p></a>
+		</li>
+		<li>
+			<a href="<%= new_user_registration_path %>"><span class="glyphicon glyphicon-plus-sign"></span><p>Sign up</p></a>
 		</li>
 		<% end %>
 	</ul>

@@ -1,9 +1,76 @@
 <% content_for :heading do %>
-	<a href="#sidebar" data-position="inline"><span class="glyphicon glyphicon-big glyphicon-align-justify"></span></a>
-	<h2>&raquo; <%= @user.profile_name %> &laquo;</h2>
-	<a href="#notifications" data-position="inline" ><span class="glyphicon glyphicon-bullhorn"></span></a>
+	<h1>&raquo; My Stream &laquo;</h1>
 <% end %>
 
+<div id="stream" data-role="content" class="no-padding office" data-enhance="">
+
+	<div class="row">
+		<div class="col-md-3 color-light">
+			
+				<h1 class="three-em">Welcome to HQ, <%= link_to current_user.first_name, profile_path(current_user) %></h1>
+				<h3><%= link_to "Post &#8629;".html_safe, new_status_path, class: '', data: { transition: 'slidedown' } %></h3>
+				<hr />
+				<h1 class="two-em">Recommended Artists:</h1>
+				<p>Deftones</p>
+				<p>Parkway Drive</p>
+				<p>Bring me the Horizon</p>
+				<hr />
+				<h1 class="two-em">Local News:</h1>
+				<p>New rehearsal studio - Soundstrike</p>
+				<p>Rammstein comming to Bulgaria</p>
+				<p>Local rockstar Ivan Vasov touring Europe</p>
+				<hr />
+				<h1 class="two-em">Upcoming Events</h1>
+				<p>Metalcore Friday @ 8ball Club</p>
+				<p>Xmas Hardcore Mashup</p>
+				<p>New Year's fullbright Rock 'n Roll</p>
+				<hr />
+				<h1 class="two-em">People</h1>
+				<p>Sammie Raean</p>
+				<p>Jakeup Stone</p>
+				<p>Tiffany Mayday</p>
+				<hr />
+				<h1 class="two-em">Worldwide:</h1>
+				<p>What does the fox say aiming for 1 billion views</p>
+				<p>Line6 starts a digital revolution in music tech</p>
+				<p>Bad Pop music and Record Labels are facing rebellion</p>
+				<hr />
+
+
+		</div>
+		<div class="col-md-9">
+
+			
+
+			<ul class="stream-feed" data-role="listview" data-filter="true" data-enhance="false">
+				<% if @activities %>
+						<% @activities.each do |activity| %>
+							<% if activity.targetable %>
+								<li class="stream-item" data-role="none">
+									<%= thumb_profile_link activity.user, {}, class: 'stream-avatar' %>
+									<div class="stream-item-container">
+										<div class="arrow"></div>
+										<div class="stream-item-content">
+											<strong><%= activity.user.full_name %></strong>
+											<%= link_to "X", @status, method: :delete, data: { confirm: "Are you sure your want to delete this status?"} %>
+											<hr />
+											<%= render partial: "activities/#{activity.targetable_type.underscore}/#{activity.action}", locals: { activity: activity } %>
+											<small id="feed-small"><%= time_ago_in_words(activity.created_at) + ' ago' %></small>
+										</div>
+									</div>
+								</li>
+							<% end %>
+						<% end %>
+				<% else %>
+					<p>You have no stream activity, connect with people, artists and organizations to fill your stream.</p>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+
+</div>
+
+<% if false %>
 <div data-role="content" class="transparent-white no-side-padding">
 	<div class="user-background" style="background-image: url(<%= stream_profile_background current_user, {}, class: '' %>);"></div>
 	<h1>Welcome, <%= link_to current_user.first_name, profile_path(current_user) %><%= link_to "Post &#8629;".html_safe, new_status_path, class: 'pull-right', data: { transition: 'slide' } %></h1>
@@ -18,3 +85,4 @@
 	    </div>
 	</section>
 </div>
+<% end %>

@@ -2,6 +2,7 @@ html {
 	height: 100%;
 }
 
+
 /* Landscape phones and down */
 @media(max-width:767px){}
 
@@ -29,6 +30,10 @@ html {
 h1 {
 	font-size: 3.5em;
 	font-weight: 100;
+	a {
+		font-size: inherit !important;
+		font-weight: inherit !important;
+	}
 }
 
 h2 {
@@ -128,6 +133,18 @@ body {
 	}
 }
 
+.form-register-edit {
+	background-color: lighten(#eee, 4%);
+	padding-left: 15px;
+	padding-top: 20px;
+	@media(min-width:768px) and (max-width: 991px) {
+		padding-left: 55px;
+	}
+	fieldset {
+		padding: 10px 20px 10px 10px;
+	}
+}
+
 // controls is the div containing the input
 .controls {
 	> * {
@@ -144,6 +161,23 @@ body {
 	abbr {
 		display: none;
 	}
+}
+
+.help-block {
+	background: none;
+	border: none;
+	&:hover {
+		background: none;
+	}
+}
+
+.help-inline {
+	background: none;
+	border: none;
+	border-radius: 0;
+	border-bottom: 2px solid red;
+	font-size: 1.1em;
+	color: red;
 }
 
 .radio {
@@ -167,6 +201,40 @@ body {
 				float: left;
 			}
 	}
+}
+
+textarea.large-text {
+	height: 2em;
+	line-height: 1em;
+	font-family: GOTHIC;
+	font-size: 2em;
+	vertical-align: baseline;
+	background: none;
+	border: none;
+	border-bottom: 1px solid black;
+	border-radius: 2px;
+	box-shadow: none;
+
+}
+
+textarea.large-text:focus,
+textarea.large-text:hover,
+textarea.medium-text:focus,
+textarea.medium-text:hover {
+	background: white;
+	border: none;
+}
+
+textarea.medium-text {
+	height: 1em;
+	line-height: 1em;
+	font-size: 1.2em;
+	vertical-align: bottom;
+	background: none;
+	border: none;
+	border-bottom: 1px solid black;
+	border-radius: 2px;
+	box-shadow: none;
 }
 
 
@@ -280,6 +348,13 @@ ul {list-style: none;}
 // SHORTCUTS ---------------------------------------------------------------------------
 
 // Font Sizes
+.one-em {
+	font-size: 1em;
+}
+.two-em {font-size: 2em;}
+.three-em {font-size: 3em;}
+.four-em {font-size: 4em;}
+.five-em {font-size: 5em;}
 
 .large {font-size: 5em;}
 
@@ -332,12 +407,19 @@ hr.colorful-border {
 	}
 }
 
+// Backgrounds
+
+.office {
+	background: url('office.png');
+	height: 100%;
+}
+
 // NAVIGATION ---------------------------------------------------------------------------
 // GLOBALS
 
 .ui-header {
 	background: url('header_menu_bg.png') center no-repeat;
-	height: 43px;
+	height: 44px;
 	.row {
 		height: 42px;
 		overflow-y: hidden;
@@ -371,6 +453,10 @@ hr.colorful-border {
 		text-decoration: none;
 		padding: 0 5px;
 		border-right: 1px solid gray;
+		&:hover {
+			border-bottom: 1px solid red;
+			color: white;
+		}
 	}
 	a.back-link {
 		.glyphicon {
@@ -400,6 +486,9 @@ hr.colorful-border {
 		&:hover {
 			border-left: 3px solid #00ccff;
 		}
+	}
+	@media(max-width:767px){
+		width: 84px;
 	}
 }
 
@@ -476,6 +565,13 @@ hr.colorful-border {
 						padding: 7px 12px 1px 12px;
 						color: lighten(#202020, 30%);
 					}
+					&.back-link {
+						height: 30px;
+						.glyphicon {
+							font-size: 1.3em;
+							padding: 5px 7px 2px 12px;
+						}
+					}
 					p {
 						text-align: center;
 						color: gray;
@@ -490,7 +586,7 @@ hr.colorful-border {
 
 .ui-panel-content-wrap {
 	padding-left: 49px;
-
+	height: 100%;
 }
 
 

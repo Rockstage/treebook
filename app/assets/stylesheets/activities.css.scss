@@ -10,7 +10,7 @@ ul#activities {
 	width: 100%;
 	height: 100px;
 	overflow: hidden;
-	background-color: rgba(0,0,0,0.5);
+	background-color: rgba(0,0,0,0);
 	border-top: 1px solid black;
 }
 
@@ -25,12 +25,6 @@ ul#activities {
 .feed blockquote {
 	padding: 3px 5px;
 	border-left: 1px solid #eee;
-}
-
-.stream-avatar > img {
-	margin: 10px 0 0 10px;
-	border-radius: 50%;
-	height: 60px;
 }
 
 .feed-body {
@@ -62,7 +56,11 @@ ul#activities {
     filter: blur(2px);
 }
 
-
+.stream-avatar > img {
+			margin: 10px 0 0 10px;
+			border-radius: 50%;
+			height: 60px;
+		}
 
 .activity-friend img {
 	border-radius: 50%;
@@ -132,3 +130,111 @@ ul#activities {
 }
 
 }
+
+
+#stream {
+	margin: 0 auto;
+
+	ul.stream-feed {
+		padding: 1px 5px 0 0;
+
+		li.stream-item {
+			width: 100%;
+			min-height: 80px;
+			margin: 10px 0;
+
+			.stream-avatar {
+				position: absolute;
+				& > img {
+				margin: 5px 0 0 5px;
+				border: 1px solid #0cf;
+				border-radius: 50%;
+				height: 60px;
+				&:hover {
+					border: 1px solid red;
+					transition: 2s;
+					-webkit-transition: 2s;
+					-moz-transition: 2s;
+				}
+				}
+			}
+
+			div.stream-item-container {
+				position: relative;
+				margin-left: 80px;
+				
+				padding: 1px;
+				text-align: left;
+				white-space: normal;
+				background-color: #fff;
+				border: 1px solid rgba(0,0,0,0.2);
+				border-radius: 6px;
+				box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+				-webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+				.arrow {
+					width: 0;
+					height: 0;
+					border: 7px solid transparent;
+					position: absolute;
+					border-right: 7px solid #FFF;
+					top: 25px;
+					right: 100%;
+					transform: translateX(0);
+					-webkit-transform: translateX(0);
+					-moz-transform: translateX(-50%);
+				}
+				.stream-item-content {
+					padding: 9px 14px;
+					hr {
+						margin: 3px 0;
+					}
+
+				}
+
+			}
+
+		}
+
+	.ui-li {
+		border: none;
+	}
+
+	.ui-btn-inner {
+		
+	}
+
+	.ui-btn-up-c {
+		background: none;
+		border: none;
+		&:hover {
+			background: none;
+		}
+	}
+
+	.ui-btn-hover-c {
+		background: none;
+		cursor: default;
+	}
+
+	.ui-btn-text {
+		font-weight: normal;
+	}
+
+	.ui-link-inherit {
+		overflow: visible;
+	}
+
+	.ui-input-search {
+		background: none;
+		& * {
+			display: none;
+		}
+	}
+
+	}
+
+}
+
+
+
+

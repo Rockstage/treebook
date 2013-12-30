@@ -1,11 +1,9 @@
 <% content_for :heading do %>
-	<a href="#sidebar" data-position="inline" class="ui-btn-left" data-icon="home">Menu</a>
 	<% if signed_in? && current_user == @user %>
-	<h1>Gallery</h1>
-	<%= link_to "New Album", new_album_path(current_user), data: { transition: 'slideup' } %>
+		<h1>Gallery &raquo; <%= link_to "New Album", new_album_path(current_user), data: { transition: 'slideup' } %> &laquo;</h1>
+		
 	<% else %>
-	<h1 class="breadcrumbnav"><%= link_to @user.profile_name, profile_path(@user) %> &raquo; Gallery &laquo;</h1>
-	<a href="#notifications" data-role="button" data-position="inline" data-icon="star">Notifications</a>
+		<h1 class="breadcrumbnav"><%= link_to @user.profile_name, profile_path(@user) %> &raquo; Gallery &laquo;</h1>	
 	<% end %>
 <% end %>
 
@@ -21,18 +19,14 @@
 	</div>
 <% end %>
 
-<div id="gallery" class="no-padding">
+<div id="gallery" data-role="content" class="no-padding">
 	<section class="horizontalContainer">
 		<div class="horizontalSlider">
 			<div class="horizontalContent">
 				<ul class="horizontalGridList album-grid-list">
 					<% @albums.each do |album| %>
-					  <li>
-					  	<div class="album-grid-img" style="background-image: url(<%= album_thumbnail(album) %>);">
-						    <div class="album-grid-overlay">
-						    	<a href="<%= album_pictures_path(@user, album) %>" class="album-grid-overlay-link" data-transition="pop"></a>
-							</div>
-						</div>
+					  <li  class="album-grid-img" style="background-image: url(<%= album_thumbnail(album) %>);">
+				    	<a href="<%= album_pictures_path(@user, album) %>" class="album-grid-overlay-link" data-transition="pop"></a>
 					  </li>
 					<% end %>
 				</ul>

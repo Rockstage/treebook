@@ -1,10 +1,11 @@
 <% content_for :heading do %>
-	<a href="#sidebar" data-position="inline" class="ui-btn-left" data-icon="home">Menu</a>
-	<h1>&raquo; <%= @user.profile_name %> &laquo;</h1>
-	<% if current_user != @user %>
-		<%= link_to "+Connect", new_user_friendship_path(friend_id: @user), class: 'btn', id: 'add-friendship', data: { friend_id: @user.to_param } %>
-	<% end %>
-	<a href="#notifications" data-role="button" data-position="inline" data-icon="star">Notifications</a>
+	<h1>
+		&raquo; <%= @user.profile_name %> &laquo;
+		<% if current_user != @user %>
+			<%= link_to "+Connect", new_user_friendship_path(friend_id: @user), class: '', id: '', data: { friend_id: @user.to_param } %>
+		<% end %>
+	</h1>
+	
 <% end %>
 
 <%= render "#{@user.role}" %>

@@ -1,15 +1,7 @@
 
-<% content_for :heading_menu do %>
-  <a href="#" data-rel="back" data-direction="reverse" class="back-link"><span class="glyphicon glyphicon-chevron-left"></span></a>
-  <a href="#">home</a>
-  <a href="#">browse</a>
-  <a href="#">charts</a>
-  <a href="#">discover</a>
-<% end %>
-
 <% if signed_in? && current_user == @user %>
-  <% content_for :heading_title do %>
-  <h1 class="breadcrumbnav"><%= link_to 'Gallery', albums_path(current_user) %> &raquo; <%= @album.title %> &laquo;</h1>
+  <% content_for :heading do %>
+    <h1 class="breadcrumbnav"><%= link_to 'Gallery', albums_path(current_user) %> &raquo; <%= @album.title %> &laquo;</h1>
   <% end %>
   <% content_for :subheading do %>
     <ul>
@@ -19,8 +11,9 @@
     </ul>
   <% end %>
 <% else %>
-  <h1 class="breadcrumbnav"><%= link_to @user.profile_name, profile_path(@user) %> &raquo; <%= link_to 'Gallery', albums_path(@user) %> &raquo; <%= @album.title %> &laquo;</h1>
-  <a href="#notifications" data-role="button" data-position="inline" data-icon="star">Notifications</a>
+  <% content_for :heading do %>
+    <h1 class="breadcrumbnav"><%= link_to @user.profile_name, profile_path(@user) %> &raquo; <%= link_to 'Gallery', albums_path(@user) %> &raquo; <%= @album.title %> &laquo;</h1>
+  <% end %>
 <% end %>
 
 

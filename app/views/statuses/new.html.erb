@@ -1,31 +1,34 @@
 <% content_for :heading do %>
-  <a href="#" data-rel="back" data-direction="reverse" data-position="inline" data-icon="back">Back</a>
   <h1>New Status</h1>
-
 <% end %>
 
 
-<div id="container" data-role="content">
-  <div class="content-fluid" style="width: 725px; margin: auto;">
-    <div class="row-fluid">
+<div data-role="content" data-enhance="">
+  <div class="row" style="width: 725px; margin: auto;">
+    
       
-      <%= simple_form_for(@status, html: { class: "form-inline", multipart: true }) do |f| %>
-
-        <div class="span2"><%= avatar_profile_link current_user, {} %>
+      <%= simple_form_for(@status, html: { multipart: true }) do |f| %>
+        
+        <div class="col-sm-3">
+            <%= avatar_profile_link current_user, {} %>
         </div>
-        <div class="span9">
-          <%= f.input :content, input_html: { rows: 1, class: 'input-xxlarge large-text' }, label: '', placeholder: 'What&#39;s on your mind, '.html_safe + current_user.first_name + '?' %>
+        
+        <div class="col-sm-9">
+          <fieldset>
+            <div class="form-group">
+                <%= f.input :content, input_html: { rows: 1, class: 'form-control large-text' }, label: false, placeholder: 'What&#39;s on your mind, '.html_safe + current_user.first_name + '?' %>
+            </div>
+          </fieldset>
         </div>
+        
 
-
-
-        <div class="span12">
-          <%= link_to "Attach a File", new_status_with_upload_path, "data-role" => "button" %>
-        <button type="submit" data-theme="b" data-position="inline" data-icon="check">Submit</button>
+        <div class="col-sm-12">
+            <button type="submit" class="btn btn-primary btn-large pull-right" style="width: 200px;">Submit</button> 
+            <%= link_to "Attach a File", new_status_with_upload_path, class: 'btn btn-default pull-right' %>
         </div>
 
 
       <% end %>
-    </div>
+    
   </div>
 </div>

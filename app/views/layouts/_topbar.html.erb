@@ -1,20 +1,35 @@
 
-
 <div data-enhance="false">
 	<div class="heading_left">
 		<a href="#sidebar"><span class="glyphicon glyphicon-align-left"></span></a>
+		<a href="#" data-rel="back" data-direction="reverse" class="back-link visible-xs"><span class="glyphicon glyphicon-chevron-left"></span></a>
 	</div>
 
 	<div class="row">
 		<div class="heading_menu col-md-4 visible-md visible-lg">
-			<%= yield :heading_menu %>
+		  <a href="#" data-rel="back" data-direction="reverse" class="back-link"><span class="glyphicon glyphicon-chevron-left"></span></a>
+		  <% if user_signed_in? %>
+		  	<%= link_to "home", stream_path(current_user) %>
+		  	<%= link_to "browse", "#" %>
+		  	<%= link_to "charts", "#" %>
+		  	<%= link_to "discover", "#" %>
+		  <% else %>
+		  	<%= link_to "sign in", new_user_session_path %>
+		  	<%= link_to "sign up", new_user_registration_path %>
+		  <% end %>
 		</div>
+
 		<div class="heading_player col-sm-6 col-md-4 hidden-xs">Now playing: Deftones - Change</div>
-		<div class="heading_title col-xs-11 col-sm-6 col-md-4"><%= yield :heading_title %></div>
+
+		<div class="heading_title col-xs-11 col-sm-6 col-md-4">
+			<%= yield :heading %>
+		</div>
 	</div>
 
 	<div class="heading_right">
+		<% if user_signed_in? %>
 		<a href="#notifications"><span class="glyphicon glyphicon-bullhorn"></span></a>
+		<% end %>
 	</div>
 
 	
